@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C2C Gift House</title>
+<script>
+  // Turn pretty links like /c2c/admin/pos or /c2c/shop into the app's own #/ routes.
+  (function(){
+    var path = location.pathname, base = '/';
+    if (location.hostname.slice(-10) === '.github.io') {
+      var seg = path.split('/'); base = '/' + seg[1] + '/'; path = '/' + seg.slice(2).join('/');
+    }
+    path = path.replace(/\/index\.html$/, '').replace(/\/+$/, '') || '/';
+    location.replace(base + '#' + path + location.search);
+  })();
+</script>
+</head>
+<body style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;padding:24px"><a href="./">Go to C2C Gift House</a></body>
+</html>

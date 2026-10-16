@@ -1,0 +1,1933 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#8b1e3f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="C2C Gift House">
+<meta property="og:title" content="C2C Gift House — Gauribidanur">
+<meta property="og:description" content="Branded household &amp; gifting products at up to 80% below MRP. Shop online with delivery &amp; gift packing, or visit us on MG Road, Gauribidanur.">
+<meta property="og:image" content="https://krabiya.github.io/c2c/og.png">
+<meta property="og:url" content="https://krabiya.github.io/c2c/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>C2C Gift House</title>
+<meta name="description" content="C2C Gift House, Gauribidanur — branded household & gifting products at up to 80% below MRP. Demo website with online store and shop billing system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<script src="vendor/html5-qrcode.min.js" defer></script>
+<script src="vendor/JsBarcode.all.min.js" defer></script>
+<script src="vendor/qrcode.min.js" defer></script>
+<style>
+:root{
+  --bg:#faf6f0; --surface:#fff; --surface2:#f4eee6; --ink:#1d1715; --ink2:#4a413c; --muted:#7a6f67; --line:#ece4d9; --line2:#ddd2c3;
+  --brand:#8b1e3f; --brand2:#6d1631; --brand-soft:#f8e8ed; --gold:#c8902e; --gold-soft:#fbf1dc;
+  --green:#17784a; --green-soft:#e3f4ea; --red:#b83227; --red-soft:#fdeaea; --amber:#a86a12; --amber-soft:#fdf3dc; --blue:#2459a6; --blue-soft:#e6eefa;
+  --r:14px; --r-sm:10px;
+  --sh:0 1px 2px rgba(40,20,10,.05),0 4px 16px rgba(40,20,10,.06); --sh2:0 12px 40px rgba(40,20,10,.16);
+  --f-d:'Fraunces',Georgia,serif; --f:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --wrap:1240px; --inv:#1d1715; --on-inv:#fff; --amber-ink:#6b4a0f; --adm-bg:#f6f3ef; --wish-bg:rgba(255,255,255,.92); --tile-ink:rgba(0,0,0,.38);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;color:inherit}
+input,select,textarea{font:inherit;color:inherit}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--f-d);font-weight:600;letter-spacing:-.01em;margin:0;line-height:1.15}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.muted{color:var(--muted)} .small{font-size:13px} .tiny{font-size:12px} .b{font-weight:700} .w100{width:100%} .tr{text-align:right} .nowrap{white-space:nowrap}
+.row{display:flex;gap:12px;align-items:center} .row.wrap-ok{flex-wrap:wrap} .sp{flex:1}
+.grid{display:grid;gap:16px}
+.hide{display:none!important}
+::selection{background:var(--brand-soft)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:999px;padding:11px 20px;font-weight:700;font-size:14px;transition:.15s;white-space:nowrap;background:var(--surface);border-color:var(--line2)}
+.btn:hover{border-color:var(--ink2)}
+.btn-brand{background:var(--brand);color:#fff;border-color:var(--brand)} .btn-brand:hover{background:var(--brand2);border-color:var(--brand2)}
+.btn-dark{background:var(--inv);color:var(--on-inv);border-color:var(--inv)} .btn-dark:hover{opacity:.9}
+.btn-gold{background:var(--gold);color:#fff;border-color:var(--gold)}
+.btn-wa{background:#1fa855;color:#fff;border-color:#1fa855} .btn-wa:hover{background:#178a45}
+.btn-ghost{background:transparent;border-color:var(--line2)}
+.btn-sm{padding:8px 14px;font-size:13px} .btn-xs{padding:5px 10px;font-size:12px} .btn-lg{padding:15px 26px;font-size:15px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.icon-btn{width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--surface);display:inline-grid;place-items:center;position:relative;flex:none}
+.icon-btn svg{width:20px;height:20px}
+.count{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;border-radius:99px;background:var(--brand);color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;padding:0 5px;border:2px solid var(--surface)}
+
+/* Forms */
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-size:13px;font-weight:700;color:var(--ink2)}
+.inp{width:100%;border:1px solid var(--line2);background:var(--surface);border-radius:var(--r-sm);padding:11px 13px;outline:none;transition:.15s}
+.inp:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+textarea.inp{resize:vertical;min-height:84px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px} .f3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 14px}
+.check{display:flex;gap:10px;align-items:center;font-size:14px;cursor:pointer;padding:4px 0}
+.check input{width:17px;height:17px;accent-color:var(--brand)}
+.opt{border:1.5px solid var(--line2);border-radius:var(--r-sm);padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;background:var(--surface);transition:.15s}
+.opt:has(input:checked){border-color:var(--brand);background:var(--brand-soft)}
+.opt input{accent-color:var(--brand);margin-top:3px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line2);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.chip.on{background:var(--inv);color:var(--on-inv);border-color:var(--inv)}
+.seg{display:inline-flex;background:var(--surface2);border-radius:999px;padding:4px;gap:2px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:8px 16px;font-weight:700;font-size:13px;color:var(--ink2)}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:var(--sh)}
+
+/* Cards / pills */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.pad{padding:20px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+.p-green{background:var(--green-soft);color:var(--green)} .p-red{background:var(--red-soft);color:var(--red)} .p-amber{background:var(--amber-soft);color:var(--amber)} .p-blue{background:var(--blue-soft);color:var(--blue)} .p-gray{background:var(--surface2);color:var(--ink2)} .p-brand{background:var(--brand-soft);color:var(--brand)} .p-dark{background:var(--inv);color:var(--on-inv)}
+
+/* Notice + strip + header */
+.notice{background:var(--amber-soft);color:var(--amber-ink);text-align:center;font-size:13px;font-weight:600;padding:9px 16px;border-bottom:1px solid #f1dfb6}
+.strip{background:#1d1715;color:#e9e2da;font-size:12.5px}
+.strip .wrap{display:flex;gap:28px;justify-content:center;padding-top:8px;padding-bottom:8px;overflow:hidden;white-space:nowrap}
+.strip b{color:#fff}
+.hdr{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.hdr .wrap{display:flex;align-items:center;gap:20px;height:72px}
+.logo{display:flex;align-items:center;gap:11px;flex:none}
+.logo-m{width:42px;height:42px;border-radius:12px;background:var(--brand);color:#fff;display:grid;place-items:center;font-family:var(--f-d);font-weight:700;font-size:16px;letter-spacing:-.02em;position:relative;box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
+.logo-m:after{content:"";position:absolute;top:-4px;right:-4px;width:12px;height:12px;border-radius:4px;background:var(--gold);transform:rotate(45deg)}
+.logo-t b{display:block;font-family:var(--f-d);font-size:19px;line-height:1.05;font-weight:700}
+.logo-t span{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.search{flex:1;max-width:560px;position:relative}
+.search input{width:100%;border:1.5px solid var(--line2);background:var(--bg);border-radius:999px;padding:11px 18px 11px 44px;outline:none}
+.search input:focus{border-color:var(--brand);background:var(--surface)}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted)}
+.hnav{display:flex;gap:4px;align-items:center}
+.hnav a{padding:9px 13px;border-radius:999px;font-weight:700;font-size:14px;color:var(--ink2)}
+.hnav a:hover,.hnav a.on{background:var(--surface2);color:var(--ink)}
+.hact{display:flex;gap:8px;align-items:center;margin-left:auto}
+.catnav{background:var(--surface);border-bottom:1px solid var(--line)}
+.catnav .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px}
+.catnav .wrap::-webkit-scrollbar{display:none}
+.catnav a{white-space:nowrap;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:600;color:var(--ink2)}
+.catnav a:hover,.catnav a.on{background:var(--brand-soft);color:var(--brand)}
+
+/* Hero */
+.hero{padding:40px 0 28px}
+.hero-g{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);background:var(--brand-soft);padding:6px 12px;border-radius:999px}
+.hero h1{font-size:clamp(34px,5vw,58px);margin:18px 0 16px;font-weight:600}
+.hero h1 em{font-style:italic;color:var(--brand)}
+.hero p.lead{font-size:17px;color:var(--ink2);max-width:540px;margin:0 0 26px}
+.hero-stats{display:flex;gap:30px;margin-top:30px;flex-wrap:wrap}
+.hero-stats div b{display:block;font-family:var(--f-d);font-size:26px;font-weight:600}
+.hero-stats div span{font-size:13px;color:var(--muted)}
+.deal{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh2);padding:18px;transform:rotate(1deg)}
+.deal .tile,.deal .ph,.deal a>img{height:250px;border-radius:16px}
+.deal-tag{position:absolute;top:-12px;left:20px;background:var(--gold);color:#fff;font-weight:800;font-size:12px;padding:6px 12px;border-radius:999px;letter-spacing:.04em;box-shadow:var(--sh)}
+.deal-float{position:absolute;bottom:-16px;right:-12px;background:var(--inv);color:var(--on-inv);border-radius:14px;padding:10px 14px;font-size:12px;box-shadow:var(--sh2);transform:rotate(-2deg)}
+.deal-float b{color:var(--gold);font-size:14px}
+
+/* Price compare */
+.cmp{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.cmp-r{display:grid;grid-template-columns:88px 1fr 84px;gap:10px;align-items:center;font-size:13px}
+.cmp-t{height:10px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.cmp-f{height:100%;border-radius:99px;background:#b9aea3}
+.cmp-r.us .cmp-f{background:var(--brand)}
+.cmp-r.us{font-weight:800}
+.cmp-r .v{text-align:right;font-variant-numeric:tabular-nums}
+
+/* Sections */
+.sec{padding:34px 0}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px}
+.sec-h h2{font-size:clamp(24px,3vw,32px)}
+.sec-h p{margin:6px 0 0;color:var(--muted)}
+.sec-h a.more{font-weight:700;color:var(--brand);font-size:14px;white-space:nowrap}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.trust div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;gap:12px;align-items:flex-start}
+.trust i{font-style:normal;font-size:22px;width:42px;height:42px;border-radius:12px;background:var(--gold-soft);display:grid;place-items:center;flex:none}
+.trust b{display:block;font-size:14px} .trust span{font-size:12.5px;color:var(--muted)}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.cat{border-radius:var(--r);padding:18px 14px;background:var(--bg-c);border:1px solid rgba(0,0,0,.04);display:flex;flex-direction:column;gap:6px;transition:.15s;min-height:128px}
+.cat:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.cat i{font-style:normal;font-size:32px}
+.cat b{font-size:14px;line-height:1.25} .cat span{font-size:12px;color:var(--ink2);opacity:.75}
+
+/* Product tile & cards */
+.tile{background:radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.9),rgba(255,255,255,0) 60%),var(--bg-c,#eee);display:grid;place-items:center;position:relative;overflow:hidden;width:100%;height:100%}
+.tile .te{font-size:clamp(46px,6vw,74px);filter:drop-shadow(0 8px 10px rgba(0,0,0,.14));transform:translateY(-6px)}
+.tile .tb{position:absolute;left:12px;bottom:10px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--tile-ink)}
+.ph{width:100%;height:100%;position:relative;overflow:hidden;background:var(--bg-c,#eee)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.pi{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat}
+.ph.cut .pi{inset:9%;background-size:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.14))}
+.ph.cut{background:radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.95),rgba(255,255,255,0) 65%),var(--bg-c,#eee)}
+.ph.cut img{object-fit:contain;padding:9%;filter:drop-shadow(0 10px 12px rgba(0,0,0,.14))}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:16px}
+.hscroll{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(212px,232px);gap:16px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.hscroll>*{scroll-snap-align:start}
+.pc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;position:relative;transition:.15s}
+.pc:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.pc-img{display:block;aspect-ratio:1/0.86;position:relative}
+.pc-img img{width:100%;height:100%;object-fit:cover}
+.pc-img,.pd-img{overflow:hidden}
+.pc-img>.ph,.pc-img>.tile,.pc-img>img,.pd-img>.ph,.pd-img>.tile,.pd-img>img{position:absolute;inset:0}
+.pd-img{position:relative}
+.badge-off{position:absolute;top:10px;left:10px;background:var(--brand);color:#fff;font-weight:800;font-size:12px;padding:4px 9px;border-radius:8px}
+.sc{position:absolute;bottom:10px;right:10px}
+.wish{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:99px;border:0;background:var(--wish-bg);color:#c8bcb0;font-size:17px;display:grid;place-items:center;box-shadow:var(--sh)}
+.wish.on{color:var(--brand)}
+.pc-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.pc-brand{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pc-name{font-weight:700;font-size:14px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:36px}
+.pc-name:hover{color:var(--brand)}
+.pc-price{display:flex;align-items:baseline;gap:8px;margin-top:4px}
+.pc-price b{font-size:19px;font-weight:800}
+.pc-price s{color:var(--muted);font-size:13px}
+.pc-save{font-size:12px;color:var(--green);font-weight:700;margin-bottom:10px}
+.pc-body .btn{margin-top:auto}
+
+/* Banners */
+.banner{border-radius:22px;padding:30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;position:relative;overflow:hidden}
+.banner h2{font-size:clamp(24px,3.4vw,36px)}
+.banner p{margin:8px 0 0;opacity:.85;max-width:560px}
+.b-dark{background:linear-gradient(120deg,#2a1218,#5b1530 60%,#8b1e3f);color:#fff}
+.b-gold{background:linear-gradient(120deg,#fbf1dc,#f6e2b6);color:#3d2a08}
+.cd{display:flex;gap:8px}
+.cd div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:10px 12px;text-align:center;min-width:64px}
+.cd b{display:block;font-family:var(--f-d);font-size:28px;font-variant-numeric:tabular-nums;line-height:1}
+.cd span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+
+/* Tables */
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:12px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl-wrap{overflow-x:auto}
+.mini{width:44px;height:44px;border-radius:10px;overflow:hidden;flex:none}
+.mini .te{font-size:22px;transform:none} .mini .tb{display:none}
+.mini img{width:100%;height:100%;object-fit:cover}
+
+/* Shop layout */
+.shop{display:grid;grid-template-columns:250px 1fr;gap:26px;padding:26px 0 40px}
+.filters{position:sticky;top:90px;align-self:start}
+.fgrp{border-bottom:1px solid var(--line);padding:14px 0}
+.fgrp:first-child{padding-top:0}
+.fgrp h4{margin:0 0 8px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.flink{display:flex;justify-content:space-between;padding:6px 10px;border-radius:8px;font-size:14px;cursor:pointer}
+.flink:hover{background:var(--surface2)} .flink.on{background:var(--brand-soft);color:var(--brand);font-weight:700}
+.flink span{color:var(--muted);font-size:12px}
+.shop-top{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.shop-top h1{font-size:28px}
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty i{font-style:normal;font-size:44px;display:block;margin-bottom:10px}
+
+/* Product page */
+.crumb{font-size:13px;color:var(--muted);padding:18px 0}
+.crumb a:hover{color:var(--brand)}
+.pd{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding-bottom:40px}
+.pd-img{border-radius:22px;overflow:hidden;aspect-ratio:1/0.9;border:1px solid var(--line);position:sticky;top:90px}
+.pd-img .te{font-size:clamp(90px,14vw,170px)}
+.pd-img img{width:100%;height:100%;object-fit:cover}
+.pd h1{font-size:clamp(26px,3vw,36px);margin:6px 0 12px}
+.pbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin:18px 0}
+.pbig{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pbig b{font-size:36px;font-weight:800;letter-spacing:-.02em}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line2);border-radius:999px;background:var(--surface)}
+.qty button{width:36px;height:36px;border:0;background:transparent;font-size:18px;font-weight:700}
+.qty span,.qty input{min-width:34px;width:40px;text-align:center;font-weight:800;border:0;background:transparent;outline:none}
+.qty.sm button{width:28px;height:28px;font-size:15px}
+.assure{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.assure div{display:flex;gap:10px;align-items:center;font-size:13px;background:var(--surface2);border-radius:12px;padding:11px 12px}
+.specs td:first-child{color:var(--muted);width:42%}
+
+/* Cart / checkout */
+.cart-g{display:grid;grid-template-columns:1fr 380px;gap:26px;padding:24px 0 50px;align-items:start}
+.cl{display:grid;grid-template-columns:76px 1fr auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.cl:last-child{border-bottom:0}
+.cl .mini{width:76px;height:76px}
+.sum-r{display:flex;justify-content:space-between;padding:7px 0;font-size:14px}
+.sum-r.tot{font-size:19px;font-weight:800;border-top:1px solid var(--line);margin-top:8px;padding-top:14px}
+.steps{display:flex;gap:0;margin:20px 0 6px}
+.step{flex:1;text-align:center;position:relative;font-size:12px;font-weight:700;color:var(--muted)}
+.step:before{content:"";position:absolute;top:13px;left:-50%;right:50%;height:3px;background:var(--line2);z-index:0}
+.step:first-child:before{display:none}
+.step i{font-style:normal;width:28px;height:28px;border-radius:99px;background:var(--surface);border:3px solid var(--line2);display:grid;place-items:center;margin:0 auto 6px;position:relative;z-index:1;font-size:12px}
+.step.done{color:var(--ink)} .step.done i{background:var(--green);border-color:var(--green);color:#fff} .step.done:before{background:var(--green)}
+
+/* Footer */
+.foot{background:#1d1312;color:#cfc4ba;padding:46px 0 26px;margin-top:30px}
+.foot-g{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:30px}
+.foot h4{color:#fff;font-size:14px;margin:0 0 12px;letter-spacing:.04em}
+.foot a{display:block;padding:4px 0;font-size:14px} .foot a:hover{color:#fff}
+.foot .logo-t b{color:#fff}
+.foot-b{border-top:1px solid #3a2a27;margin-top:30px;padding-top:18px;font-size:12.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* Mobile tab bar */
+.tabbar{display:none}
+
+/* Toast / modal / tip */
+#toasts{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:300;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:min(92vw,440px)}
+.toast{background:var(--inv);color:var(--on-inv);padding:12px 18px;border-radius:14px;font-size:14px;font-weight:600;box-shadow:var(--sh2);animation:tin .25s ease;pointer-events:auto;display:flex;gap:10px;align-items:center}
+.toast.ok{background:#135c39} .toast.warn{background:#7a4b07} .toast.err{background:#8a231b}
+@keyframes tin{from{opacity:0;transform:translateY(10px)}}
+.ov{position:fixed;inset:0;background:rgba(20,10,8,.5);z-index:200;display:grid;place-items:center;padding:16px;animation:fin .2s}
+@keyframes fin{from{opacity:0}}
+.md{background:var(--surface);border-radius:20px;width:min(560px,100%);max-height:92vh;overflow:auto;box-shadow:var(--sh2);animation:tin .25s}
+.md-h{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface);z-index:2}
+.md-h h3{font-size:20px}
+.md-b{padding:20px}
+.x{border:0;background:var(--surface2);width:34px;height:34px;border-radius:99px;font-size:18px}
+#tip{position:fixed;z-index:400;background:var(--inv);color:var(--on-inv);padding:8px 11px;border-radius:10px;font-size:12.5px;pointer-events:none;box-shadow:var(--sh2);display:none;line-height:1.4;max-width:240px}
+#tip b{font-size:14px}
+.demo-fab{position:fixed;right:18px;bottom:18px;z-index:90;background:var(--inv);color:var(--on-inv);border:0;border-radius:999px;padding:11px 16px;font-weight:700;font-size:13px;box-shadow:var(--sh2);display:flex;gap:8px;align-items:center}
+.demo-fab .dot{width:8px;height:8px;border-radius:99px;background:#3ddc84;box-shadow:0 0 0 3px rgba(61,220,132,.25)}
+.dlist a{display:flex;gap:12px;padding:11px 12px;border-radius:12px;align-items:flex-start}
+.dlist a:hover{background:var(--surface2)}
+.dlist i{font-style:normal;font-size:20px;width:30px;text-align:center}
+.dlist b{display:block;font-size:14px} .dlist span{font-size:12.5px;color:var(--muted)}
+.dsec{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:14px 12px 4px}
+
+/* ===== ADMIN ===== */
+.adm{display:grid;grid-template-columns:248px 1fr;min-height:100vh;background:var(--adm-bg)}
+.side{background:#1b1413;color:#cbbfb5;padding:18px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px;overflow-y:auto}
+.side .logo{padding:4px 8px 18px}
+.side .logo-t b{color:#fff;font-size:17px} .side .logo-t span{color:#9b8d82}
+.side a.nl{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;font-weight:600;font-size:14px}
+.side a.nl:hover{background:rgba(255,255,255,.06);color:#fff}
+.side a.nl.on{background:var(--brand);color:#fff}
+.side a.nl svg{width:19px;height:19px;flex:none}
+.side .nb{margin-left:auto;background:var(--gold);color:#1b1413;font-size:11px;font-weight:800;border-radius:99px;padding:1px 8px}
+.side .sd{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7d6f66;font-weight:800;margin:14px 12px 4px}
+.side-f{margin-top:auto;padding-top:14px;border-top:1px solid #2e2321}
+.adm-main{min-width:0}
+.adm-top{height:64px;background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 24px;position:sticky;top:0;z-index:30}
+.adm-top h1{font-family:var(--f);font-size:19px;font-weight:800;letter-spacing:-.01em}
+.adm-body{padding:24px;max-width:1400px}
+.menu-btn{display:none}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:18px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.kpi span{font-size:12.5px;color:var(--muted);font-weight:600;display:flex;gap:6px;align-items:center}
+.kpi b{display:block;font-size:27px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.kpi small{font-size:12.5px;color:var(--muted)}
+.kpi small.up{color:var(--green);font-weight:700} .kpi small.dn{color:var(--red);font-weight:700}
+.dash-g{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-bottom:16px}
+.ch-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}
+.ch-h h3{font-family:var(--f);font-size:15px;font-weight:800}
+.ch-h p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.chart svg{width:100%;height:auto;display:block}
+.chart .gl{stroke:var(--line);stroke-width:1}
+.chart .ax{fill:var(--muted);font-size:11px;font-family:var(--f)}
+.chart .bar{fill:var(--brand)}
+.chart .bar.today{fill:var(--gold)}
+.chart .hit{fill:transparent;cursor:pointer}
+.chart .hit:hover+.bar,.chart g.col:hover .bar{opacity:.82}
+.chart .dl{fill:var(--ink);font-size:11.5px;font-weight:700;font-family:var(--f)}
+.hb{display:flex;flex-direction:column;gap:10px}
+.hb-r{display:grid;grid-template-columns:minmax(90px,150px) 1fr 74px;gap:10px;align-items:center;font-size:13px}
+.hb-r .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2)}
+.hb-t{height:12px;background:var(--surface2);border-radius:4px;overflow:hidden}
+.hb-f{height:100%;background:var(--brand);border-radius:0 4px 4px 0}
+.hb-r .v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.live{display:flex;gap:10px;align-items:center;background:var(--green-soft);color:var(--green);border-radius:12px;padding:11px 14px;font-size:13.5px;font-weight:600;margin-bottom:18px}
+.live .dot{width:9px;height:9px;border-radius:99px;background:#1fa855;box-shadow:0 0 0 4px rgba(31,168,85,.2);animation:pulse 1.6s infinite;flex:none}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(31,168,85,.05)}}
+.list-r{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.list-r:last-child{border-bottom:0}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.toolbar .inp{max-width:320px}
+.stk{display:inline-flex;align-items:center;gap:6px}
+.stk b{min-width:30px;text-align:center;font-variant-numeric:tabular-nums}
+
+/* POS */
+.pos{display:grid;grid-template-columns:1fr 1.05fr;gap:16px;align-items:start}
+.scanbox{position:relative;background:#120d0c;border-radius:16px;overflow:hidden;min-height:250px;display:grid;place-items:center;margin:14px 0}
+#reader{width:100%}
+#reader video{width:100%!important;display:block;border-radius:16px}
+.scan-ph{color:#d8cdc4;text-align:center;padding:26px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.scan-ph .ic{font-size:40px}
+.scan-line{position:absolute;left:12%;right:12%;top:50%;height:2px;background:#ff4d6d;box-shadow:0 0 12px #ff4d6d;animation:scan 2s ease-in-out infinite;pointer-events:none}
+@keyframes scan{0%,100%{transform:translateY(-55px)}50%{transform:translateY(55px)}}
+.scan-in{display:flex;gap:8px;position:relative}
+.scan-in .inp{font-size:16px;padding:13px 14px 13px 44px;font-variant-numeric:tabular-nums}
+.scan-in svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--muted)}
+.sugg{position:absolute;top:100%;left:0;right:0;background:var(--surface);border:1px solid var(--line2);border-radius:12px;box-shadow:var(--sh2);z-index:10;margin-top:6px;overflow:hidden}
+.sugg button{display:flex;gap:10px;align-items:center;width:100%;border:0;background:transparent;padding:9px 12px;text-align:left;font-size:13.5px}
+.sugg button:hover{background:var(--surface2)}
+.dchips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.dchip{display:flex;gap:8px;align-items:center;border:1px dashed var(--line2);border-radius:10px;padding:6px 10px 6px 6px;background:var(--bg);font-size:12px;text-align:left}
+.dchip:hover{border-color:var(--brand);background:var(--brand-soft)}
+.dchip .mini{width:30px;height:30px;border-radius:7px} .dchip .mini .te{font-size:16px}
+.dchip code{font-size:10.5px;color:var(--muted);display:block}
+.flash{animation:flash .6s}
+@keyframes flash{0%{background:#dff7e8}100%{background:transparent}}
+.bl{display:grid;grid-template-columns:44px 1fr auto auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line2)}
+.bl .nm{font-weight:700;font-size:14px;line-height:1.25}
+.bl .lt{font-weight:800;min-width:72px;text-align:right;font-variant-numeric:tabular-nums}
+.bill-tot{background:var(--surface2);border-radius:14px;padding:14px 16px;margin-top:14px}
+.bill-tot .grand{display:flex;justify-content:space-between;align-items:baseline;font-weight:800}
+.bill-tot .grand b{font-size:32px;letter-spacing:-.02em}
+.pay{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.pay button{border:1.5px solid var(--line2);background:var(--surface);border-radius:12px;padding:12px 8px;font-weight:800;font-size:14px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.pay button span{font-size:20px}
+.pay button.on{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
+.qrbox{display:flex;gap:16px;align-items:center;background:var(--surface2);border-radius:14px;padding:14px}
+.qrbox #upiqr{background:#fff;padding:8px;border-radius:10px;flex:none}
+.qrbox #upiqr img,.qrbox #upiqr canvas{width:120px!important;height:120px!important}
+.pcheck{text-align:center;padding:10px}
+.pcheck .pc-hero{height:200px;border-radius:16px;overflow:hidden;margin-bottom:14px}
+
+/* Receipt */
+.rcpt{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;background:#fffdf8;border:1px dashed var(--line2);border-radius:10px;padding:18px;max-width:340px;margin:0 auto;color:#111}
+.rcpt h4{font-family:var(--f-d);font-size:20px;text-align:center;margin:0}
+.rcpt .c{text-align:center} .rcpt hr{border:0;border-top:1px dashed #999;margin:9px 0}
+.rcpt .r{display:flex;justify-content:space-between;gap:8px}
+.rcpt .big{font-size:16px;font-weight:800}
+
+/* Labels */
+.lsheet{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.lbl{border:1px dashed #bbb;border-radius:8px;padding:10px 10px 8px;background:#fff;text-align:center;break-inside:avoid}
+.lbl .ln{font-size:11px;font-weight:700;line-height:1.2;height:27px;overflow:hidden}
+.lbl .lb{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#666}
+.lbl svg{width:100%;height:62px}
+.lbl .lp{font-size:15px;font-weight:800} .lbl .lp s{font-size:10px;color:#666;font-weight:500;margin-left:4px}
+.login{min-height:100vh;display:grid;place-items:center;background:radial-gradient(80% 60% at 20% 10%,#5b1530,#1b1413);padding:16px}
+.login .card{width:min(400px,100%);padding:30px}
+.pin{display:flex;gap:10px;justify-content:center;margin:18px 0}
+.pin input{width:54px;height:60px;text-align:center;font-size:24px;font-weight:800;border:1.5px solid var(--line2);border-radius:12px;outline:none}
+.pin input:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.wa-prev{background:#e7ddd3;border-radius:14px;padding:14px;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:12px 12px}
+.wa-bub{background:#fff;border-radius:4px 12px 12px 12px;padding:10px 12px 18px;font-size:13.5px;white-space:pre-wrap;position:relative;box-shadow:0 1px 1px rgba(0,0,0,.08);max-width:340px}
+.wa-bub .wa-img{border-radius:8px;overflow:hidden;height:150px;margin:-4px -6px 8px}
+.wa-bub small{position:absolute;right:10px;bottom:4px;font-size:10.5px;color:#8a8a8a}
+.ostat{display:flex;gap:10px;flex-wrap:wrap}
+.oc{padding:16px 18px;border-bottom:1px solid var(--line)}
+.oc:last-child{border-bottom:0}
+
+/* Responsive */
+@media (max-width:1060px){
+  .hnav{display:none}
+  .foot-g{grid-template-columns:1fr 1fr}
+  .trust{grid-template-columns:1fr 1fr}
+  .dash-g{grid-template-columns:1fr}
+  .pos{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .hero-g,.pd,.cart-g{grid-template-columns:1fr}
+  .deal{transform:none;max-width:460px}
+  .shop{grid-template-columns:1fr}
+  .filters{position:fixed;inset:0 20% 0 0;background:var(--surface);z-index:150;padding:20px;overflow-y:auto;transform:translateX(-105%);transition:.25s;box-shadow:var(--sh2)}
+  .filters.open{transform:none}
+  .pd-img{position:relative;top:0}
+  .banner{grid-template-columns:1fr}
+  .adm{grid-template-columns:1fr}
+  .side{position:fixed;left:0;top:0;width:270px;z-index:160;transform:translateX(-105%);transition:.25s}
+  .side.open{transform:none;box-shadow:var(--sh2)}
+  .menu-btn{display:inline-grid}
+  .adm-body{padding:16px 16px 90px}
+  .adm-top{padding:0 16px}
+  .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--line);z-index:80;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+  .tabbar a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:700;color:var(--muted);padding:4px 0;position:relative}
+  .tabbar a.on{color:var(--brand)}
+  .tabbar svg{width:22px;height:22px}
+  .tabbar .count{top:-2px;right:calc(50% - 22px)}
+  body.has-tabs{padding-bottom:70px}
+  .demo-fab{bottom:82px;right:12px;padding:9px 13px}
+  #toasts{bottom:90px}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .hdr .wrap{height:62px;gap:10px}
+  .logo-t span{display:none}
+  .logo-m{width:38px;height:38px;font-size:14px}
+  .hdr .search{display:none}
+  .msearch{display:block!important;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+  .msearch .search{max-width:none;display:block}
+  .strip .wrap{justify-content:flex-start}
+  .strip .wrap span:nth-child(n+2){display:none}
+  .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .hscroll{grid-auto-columns:minmax(160px,172px);gap:10px}
+  .pc-body{padding:10px 11px 12px}
+  .pc-price b{font-size:16px}
+  .pc-name{font-size:13px}
+  .cats{grid-template-columns:repeat(3,1fr);gap:8px}
+  .cat{min-height:104px;padding:12px 10px}
+  .cat i{font-size:26px} .cat b{font-size:12.5px}
+  .trust{grid-template-columns:1fr}
+  .foot-g{grid-template-columns:1fr}
+  .f2,.f3{grid-template-columns:1fr}
+  .assure{grid-template-columns:1fr}
+  .banner{padding:22px}
+  .cd div{min-width:54px;padding:8px}
+  .cd b{font-size:22px}
+  .hb-r{grid-template-columns:90px 1fr 64px}
+  .kpi b{font-size:22px}
+  .sec{padding:24px 0}
+  .tbl-cards thead{display:none}
+  .tbl-cards tr{display:grid;grid-template-columns:44px 1fr auto;gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .tbl-cards td{padding:0;border:0}
+  .tbl-cards td.c-img{grid-row:span 3}
+  .tbl-cards td.c-hide{display:none}
+  .tbl-cards td.c-act{grid-column:2 / -1}
+  .cl{grid-template-columns:60px 1fr;}
+  .cl .mini{width:60px;height:60px}
+  .cl .cl-r{grid-column:2}
+}
+.msearch{display:none}
+@media (max-width:640px){.inp,.search input,select.inp,textarea.inp{font-size:16px}}
+.pd>*,.cart-g>*,.hero-g>*,.shop>*,.dash-g>*,.pos>*,.adm-main,.banner>*{min-width:0}
+html,body{overflow-x:hidden}
+.mfilter{display:none}
+@media (max-width:860px){.mfilter{display:inline-flex}}
+
+/* ===== Dark mode ===== */
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --bg:#141010; --surface:#1e1817; --surface2:#2a2220; --ink:#f3ede7; --ink2:#d3c8bf; --muted:#a5988f; --line:#332a27; --line2:#463a36;
+  --brand:#d0557b; --brand2:#b9446a; --brand-soft:#3a1b25; --gold:#dca54a; --gold-soft:#372b15;
+  --green:#5ccf97; --green-soft:#14301f; --red:#f27d72; --red-soft:#3b1a17; --amber:#f0b551; --amber-soft:#382a10; --blue:#86b0f0; --blue-soft:#18253c;
+  --sh:0 1px 2px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.3); --sh2:0 12px 40px rgba(0,0,0,.55);
+  --inv:#f3ede7; --on-inv:#1d1715; --amber-ink:#f3c97a; --adm-bg:#110d0c; --wish-bg:rgba(30,24,23,.9); --tile-ink:rgba(255,255,255,.45);
+  color-scheme:dark; } }
+:root[data-theme="dark"]{ --bg:#141010; --surface:#1e1817; --surface2:#2a2220; --ink:#f3ede7; --ink2:#d3c8bf; --muted:#a5988f; --line:#332a27; --line2:#463a36;
+  --brand:#d0557b; --brand2:#b9446a; --brand-soft:#3a1b25; --gold:#dca54a; --gold-soft:#372b15;
+  --green:#5ccf97; --green-soft:#14301f; --red:#f27d72; --red-soft:#3b1a17; --amber:#f0b551; --amber-soft:#382a10; --blue:#86b0f0; --blue-soft:#18253c;
+  --sh:0 1px 2px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.3); --sh2:0 12px 40px rgba(0,0,0,.55);
+  --inv:#f3ede7; --on-inv:#1d1715; --amber-ink:#f3c97a; --adm-bg:#110d0c; --wish-bg:rgba(30,24,23,.9); --tile-ink:rgba(255,255,255,.45);
+  color-scheme:dark; }
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .ph.cut, :root:not([data-theme="light"]) .tile, :root:not([data-theme="light"]) .cat{background:radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.07),rgba(255,255,255,0) 60%),color-mix(in srgb,var(--bg-c) 20%,#1e1817)!important} :root:not([data-theme="light"]) .b-gold{background:linear-gradient(120deg,#33270f,#4a3714);color:#fbecd0} :root:not([data-theme="light"]) .foot{background:#0c0909} :root:not([data-theme="light"]) .side{background:#0c0909} :root:not([data-theme="light"]) .wa-prev{background-color:#1a2420} :root:not([data-theme="light"]) .wa-bub{background:#24302b;color:#e9efe9} }
+:root[data-theme="dark"] .ph.cut, :root[data-theme="dark"] .tile, :root[data-theme="dark"] .cat{background:radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.07),rgba(255,255,255,0) 60%),color-mix(in srgb,var(--bg-c) 20%,#1e1817)!important}
+:root[data-theme="dark"] .b-gold{background:linear-gradient(120deg,#33270f,#4a3714);color:#fbecd0}
+:root[data-theme="dark"] .foot, :root[data-theme="dark"] .side{background:#0c0909}
+:root[data-theme="dark"] .wa-prev{background-color:#1a2420} :root[data-theme="dark"] .wa-bub{background:#24302b;color:#e9efe9}
+.rcpt,.lbl{color:#111} .lbl .lb,.lbl .lp s{color:#666}
+.theme-btn .sun{display:none}
+:root[data-theme="dark"] .theme-btn .sun{display:block} :root[data-theme="dark"] .theme-btn .moon{display:none}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .theme-btn .sun{display:block} :root:not([data-theme="light"]) .theme-btn .moon{display:none} }
+body,.card,.hdr,.pc,.adm-top{transition:background-color .2s,border-color .2s}
+
+
+@media print{
+  body *{visibility:hidden!important}
+  .printable,.printable *{visibility:visible!important}
+  .printable{position:absolute;left:0;top:0;width:100%}
+  .ov{background:none}
+  .lsheet{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+<div id="app"><div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#7a6f67"><div style="width:58px;height:58px;border-radius:16px;background:#8b1e3f;color:#fff;font:700 20px Georgia,serif;display:flex;align-items:center;justify-content:center">C2C</div><div>Loading C2C Gift House…</div><noscript>Please turn on JavaScript to use this website.</noscript></div></div>
+<div id="toasts"></div>
+<div id="tip"></div>
+
+<style id="photos">/* Demo product photos — see "Photo credits" in the footer */.pi-p1{background-image:url(img/p1.webp)}.pi-p2{background-image:url(img/p2.webp)}.pi-p3{background-image:url(img/p3.webp)}.pi-p4{background-image:url(img/p4.jpg)}.pi-p5{background-image:url(img/p5.jpg)}.pi-p6{background-image:url(img/p6.webp)}.pi-p7{background-image:url(img/p7.jpg)}.pi-p8{background-image:url(img/p8.jpg)}.pi-p9{background-image:url(img/p9.webp)}.pi-p10{background-image:url(img/p10.webp)}.pi-p11{background-image:url(img/p11.jpg)}.pi-p12{background-image:url(img/p12.jpg)}.pi-p13{background-image:url(img/p13.jpg)}.pi-p14{background-image:url(img/p14.jpg)}.pi-p15{background-image:url(img/p15.webp)}.pi-p16{background-image:url(img/p16.jpg)}.pi-p17{background-image:url(img/p17.webp)}.pi-p18{background-image:url(img/p18.jpg)}.pi-p19{background-image:url(img/p19.jpg)}.pi-p20{background-image:url(img/p20.jpg)}.pi-p21{background-image:url(img/p21.jpg)}.pi-p22{background-image:url(img/p22.jpg)}.pi-p23{background-image:url(img/p23.jpg)}.pi-p24{background-image:url(img/p24.webp)}.pi-p25{background-image:url(img/p25.jpg)}.pi-p26{background-image:url(img/p26.webp)}.pi-p27{background-image:url(img/p27.jpg)}.pi-p28{background-image:url(img/p28.webp)}.pi-p29{background-image:url(img/p29.jpg)}.pi-p30{background-image:url(img/p30.jpg)}.pi-p31{background-image:url(img/p31.webp)}.pi-p32{background-image:url(img/p32.jpg)}.pi-p33{background-image:url(img/p33.jpg)}.pi-p34{background-image:url(img/p34.webp)}.pi-p35{background-image:url(img/p35.jpg)}.pi-p36{background-image:url(img/p36.jpg)}.pi-p37{background-image:url(img/p37.jpg)}.pi-p38{background-image:url(img/p38.jpg)}.pi-p39{background-image:url(img/p39.jpg)}.pi-p40{background-image:url(img/p40.jpg)}.pi-p41{background-image:url(img/p41.jpg)}.pi-p42{background-image:url(img/p42.jpg)}.pi-p43{background-image:url(img/p43.jpg)}.pi-p44{background-image:url(img/p44.jpg)}.pi-p45{background-image:url(img/p45.webp)}.pi-p46{background-image:url(img/p46.webp)}.pi-p47{background-image:url(img/p47.webp)}.pi-p48{background-image:url(img/p48.jpg)}.pi-p49{background-image:url(img/p49.webp)}.pi-p51{background-image:url(img/p51.jpg)}.pi-p52{background-image:url(img/p52.jpg)}.pi-p53{background-image:url(img/p53.jpg)}.pi-p54{background-image:url(img/p54.jpg)}.pi-p55{background-image:url(img/p55.webp)}.pi-p56{background-image:url(img/p56.jpg)}.pi-p57{background-image:url(img/p57.jpg)}.pi-p58{background-image:url(img/p58.jpg)}.pi-p59{background-image:url(img/p59.jpg)}.pi-p60{background-image:url(img/p60.jpg)}.pi-p61{background-image:url(img/p61.jpg)}.pi-p62{background-image:url(img/p62.jpg)}.pi-p63{background-image:url(img/p63.jpg)}.pi-p64{background-image:url(img/p64.jpg)}.pi-p65{background-image:url(img/p65.jpg)}.pi-p66{background-image:url(img/p66.jpg)}.pi-p67{background-image:url(img/p67.jpg)}.pi-p68{background-image:url(img/p68.webp)}.pi-p69{background-image:url(img/p69.jpg)}.pi-p70{background-image:url(img/p70.webp)}.pi-p71{background-image:url(img/p71.jpg)}.pi-p72{background-image:url(img/p72.jpg)}.pi-p73{background-image:url(img/p73.jpg)}</style>
+<script>window.PHOTOS={"p1":1,"p2":1,"p3":1,"p4":0,"p5":0,"p6":1,"p7":0,"p8":0,"p9":1,"p10":1,"p11":0,"p12":0,"p13":0,"p14":0,"p15":1,"p16":0,"p17":1,"p18":0,"p19":0,"p20":0,"p21":0,"p22":0,"p23":0,"p24":1,"p25":0,"p26":1,"p27":0,"p28":1,"p29":0,"p30":0,"p31":1,"p32":0,"p33":0,"p34":1,"p35":0,"p36":0,"p37":0,"p38":0,"p39":0,"p40":0,"p41":0,"p42":0,"p43":0,"p44":0,"p45":1,"p46":1,"p47":1,"p48":0,"p49":1,"p51":0,"p52":0,"p53":0,"p54":0,"p55":1,"p56":0,"p57":0,"p58":0,"p59":0,"p60":0,"p61":0,"p62":0,"p63":0,"p64":0,"p65":0,"p66":0,"p67":0,"p68":1,"p69":0,"p70":1,"p71":0,"p72":0,"p73":0};window.PHOTO_CREDITS=[{"id":"p1","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p2","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p3","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p4","src":"Openverse","by":"Joe Shlabotnik","lic":"BY-NC-SA","url":"https://www.flickr.com/photos/40646519@N00/52504713681"},{"id":"p5","src":"Openverse","by":"HooverStreetStudios","lic":"BY-NC","url":"https://www.flickr.com/photos/68686397@N00/53943962479"},{"id":"p6","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p7","src":"Openverse","by":"","lic":"CC0","url":"https://www.rawpixel.com/image/5902269/photo-image-background-public-domain-blue"},{"id":"p8","src":"Openverse","by":"Homedust","lic":"BY","url":"https://www.flickr.com/photos/159630537@N08/42033707304"},{"id":"p9","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p10","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p11","src":"Openverse","by":"","lic":"BY-NC-SA","url":"https://collection.sciencemuseumgroup.org.uk/objects/co416493/thermos-flask-sunshine"},{"id":"p12","src":"Wikimedia Commons","by":"Bhaskaranaidu","lic":"PUBLIC DOMAIN","url":"https://commons.wikimedia.org/wiki/File:Idli_coocker.JPG"},{"id":"p13","src":"Wikimedia Commons","by":"Silar","lic":"CC BY-SA 3.0","url":"https://commons.wikimedia.org/wiki/File:02016_0756_Pochierte_Eier,_Ostergerichte,_Schlesische_Beskiden.JPG"},{"id":"p14","src":"Openverse","by":"HooverStreetStudios","lic":"BY-NC","url":"https://www.flickr.com/photos/68686397@N00/53925978616"},{"id":"p15","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p16","src":"Openverse","by":"\u2740Jo Zimny Photos\u2740","lic":"BY-NC-ND","url":"https://www.flickr.com/photos/78814955@N00/53991386007"},{"id":"p17","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p18","src":"Openverse","by":"Russell Hobbs Ltd","lic":"BY-NC-SA","url":"https://collection.sciencemuseumgroup.org.uk/objects/co8419734/electric-kettle-by-russell-hobbs"},{"id":"p19","src":"Wikimedia Commons","by":"Colin","lic":"CC BY-SA 3.0","url":"https://commons.wikimedia.org/wiki/File:Electric_steam_iron.jpg"},{"id":"p20","src":"Openverse","by":"","lic":"CC0","url":"https://www.rawpixel.com/image/6029896/white-fan-free-public-domain-cc0-photo"},{"id":"p21","src":"Wikimedia Commons","by":"Jacek Halicki","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:2023_Air_Duster_(1).jpg"},{"id":"p22","src":"Openverse","by":"juliensart","lic":"BY-NC-ND","url":"https://www.flickr.com/photos/18056291@N00/51981955633"},{"id":"p23","src":"Openverse","by":"TheBetterDay","lic":"BY-ND","url":"https://www.flickr.com/photos/94977883@N08/51424893301"},{"id":"p24","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p25","src":"Wikimedia Commons","by":"Dominik49","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Zasilanie_awaryjne_%C5%9Bwietl%C3%B3wki..jpg"},{"id":"p26","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p27","src":"Wikimedia Commons","by":"Wikirobert007","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Pikendusjuhe.jpg"},{"id":"p28","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p29","src":"Wikimedia Commons","by":"Hannah Clover","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Grey_knitted_blanket.jpg"},{"id":"p30","src":"Openverse","by":"Ninara","lic":"BY","url":"https://www.flickr.com/photos/37583176@N00/51760078789"},{"id":"p31","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p32","src":"Openverse","by":"\u2740*\u00b4\u25e1`*\u2740Jo Zimny Photos\u2740*\u00b4\u25e1`*\u2740","lic":"BY-NC-ND","url":"https://www.flickr.com/photos/78814955@N00/53891645943"},{"id":"p33","src":"Openverse","by":"Andras Fulop","lic":"BY-NC-SA","url":"https://www.flickr.com/photos/101240316@N03/51709014358"},{"id":"p34","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p35","src":"Openverse","by":"English Girl at Home","lic":"BY-NC-ND","url":"https://www.flickr.com/photos/14545665@N04/53632536053"},{"id":"p36","src":"Wikimedia Commons","by":"W.carter","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Mop_and_bucket.jpg"},{"id":"p37","src":"Openverse","by":"pockethifi","lic":"BY","url":"https://www.flickr.com/photos/31667440@N04/52280765689"},{"id":"p38","src":"Openverse","by":"adafruit","lic":"BY-NC-SA","url":"https://www.flickr.com/photos/35434449@N08/53658745356"},{"id":"p39","src":"Wikimedia Commons","by":"OathOn","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Medisure_Steam_Inhaler_displayed_on_a_pharmacy_shelf_at_Osbon_Pharmacy,_1a_Railway_Street,_Gillingham,_Kent,_England,_on_16_October_2025.jpg"},{"id":"p40","src":"Wikimedia Commons","by":"Stevepb","lic":"CC0","url":"https://commons.wikimedia.org/wiki/File:Pill_Organizer_With_Vitamins_And_Medicines.jpg"},{"id":"p41","src":"Openverse","by":"TheBetterDay","lic":"BY-ND","url":"https://www.flickr.com/photos/94977883@N08/51419279725"},{"id":"p42","src":"Openverse","by":"AMCSviatko","lic":"BY-NC-ND","url":"https://www.flickr.com/photos/49333775@N00/493426289"},{"id":"p43","src":"Openverse","by":"chrisinplymouth","lic":"BY-NC-SA","url":"https://www.flickr.com/photos/21450297@N06/3295283524"},{"id":"p44","src":"Openverse","by":"ghd ('good hair day')","lic":"BY-NC-SA","url":"https://collection.sciencemuseumgroup.org.uk/objects/co8414089/ghd-hair-straighteners"},{"id":"p45","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p46","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p47","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p48","src":"Openverse","by":"","lic":"CC0","url":"https://www.rawpixel.com/image/3290012/free-photo-image-birthday-cake-brie"},{"id":"p49","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p51","src":"Wikimedia Commons","by":"Karnaz","lic":"CC0","url":"https://commons.wikimedia.org/wiki/File:Osaka_protein_shaker.jpg"},{"id":"p52","src":"Wikimedia Commons","by":"Priwo","lic":"PUBLIC DOMAIN","url":"https://commons.wikimedia.org/wiki/File:Push_Up_Bars-01.jpg"},{"id":"p53","src":"Wikimedia Commons","by":"Ser Amantio di Nicolao","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Luggage_for_sale_at_Target.jpg"},{"id":"p54","src":"Wikimedia Commons","by":"Sandrine Z","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Belber_Striped_Suitcase.jpg"},{"id":"p55","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p56","src":"Openverse","by":"samuelemunemu321","lic":"PDM","url":"https://www.flickr.com/photos/144303299@N04/51885358730"},{"id":"p57","src":"Openverse","by":"Lynn Friedman","lic":"BY-NC-ND","url":"https://www.flickr.com/photos/72959997@N00/51784218129"},{"id":"p58","src":"Wikimedia Commons","by":"Ip19216811","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Couche_culotte_Couche-culotte_Jetable_Diaper_Nappy_Disposable_Windel_Einweg_Pa%C3%B1al_Desechables_b%C3%A9b%C3%A9_baby_beb%C3%A9_03.jpg"},{"id":"p59","src":"Wikimedia Commons","by":"Studio Moderna","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Dormeo_bedding_FLEUR_image_4.jpg"},{"id":"p60","src":"Openverse","by":"kgonnion","lic":"BY-NC-SA","url":"https://www.flickr.com/photos/194870939@N03/51841677645"},{"id":"p61","src":"Openverse","by":"M.P.N.texan","lic":"BY-NC","url":"https://www.flickr.com/photos/8113246@N02/51876537284"},{"id":"p62","src":"Openverse","by":"France1978","lic":"BY-SA","url":"https://www.flickr.com/photos/51764518@N02/48019545637"},{"id":"p63","src":"Openverse","by":"monkeyc.net","lic":"BY-NC-SA","url":"https://www.flickr.com/photos/73584213@N00/51972462592"},{"id":"p64","src":"Wikimedia Commons","by":"Kevin Brown","lic":"CC BY-SA 4.0","url":"https://commons.wikimedia.org/wiki/File:Parker_Vector_Stainless_Steel_Ballpoint_Pen.jpg"},{"id":"p65","src":"Openverse","by":"","lic":"CC0","url":"https://www.rawpixel.com/image/6054429/free-public-domain-cc0-photo"},{"id":"p66","src":"Openverse","by":"skeyndor.oficial","lic":"CC0","url":"https://www.flickr.com/photos/57794015@N05/51534290136"},{"id":"p67","src":"Openverse","by":"Samira Zaman","lic":"BY-NC-SA","url":"https://www.flickr.com/photos/44083360@N00/52714855297"},{"id":"p68","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p69","src":"Wikimedia Commons","by":"ajcespedes","lic":"CC0","url":"https://commons.wikimedia.org/wiki/File:Laundry_detergent_pods.jpg"},{"id":"p70","src":"DummyJSON (demo product images)","by":"","lic":"","url":""},{"id":"p71","src":"Wikimedia Commons","by":"Mk2010","lic":"CC BY-SA 3.0","url":"https://commons.wikimedia.org/wiki/File:Bug_zapper.jpg"},{"id":"p72","src":"Wikimedia Commons","by":"Chetvorno","lic":"CC0","url":"https://commons.wikimedia.org/wiki/File:Fluorescent_light_strip_2_tube.JPG"},{"id":"p73","src":"Openverse","by":"","lic":"CC0","url":"https://www.rawpixel.com/image/5904253/spray-bottles-free-public-domain-cc0-image"}];</script>
+<script>
+/* ============================================================
+   C2C GIFT HOUSE — DEMO
+   One HTML file: customer website + shop admin (billing,
+   barcode scanner, inventory, orders, reports, labels).
+   All data is stored in this browser (localStorage) so the
+   shop billing and the website stock stay in sync.
+   ============================================================ */
+
+const STORE = {
+  name:'C2C Gift House', owner:'Ataullah Baig',
+  phone:'9110261958', phone2:'9591444366', wa:'919110261958',
+  insta:'c2c_gift_house', opened:'20 October 2024',
+  addr:'Near Krishna Bhawan Hotel, Shah Inayath Masjid Complex, M G Road, Gauribidanur – 561208',
+  geo:'13.609904,77.517746'
+};
+
+const CATS = [
+  {id:'kitchen',   n:'Kitchen & Dining',  e:'🍽️', bg:'#fbe6cf'},
+  {id:'appliances',n:'Home Appliances',   e:'🔌', bg:'#dfeafb'},
+  {id:'home',      n:'Bedding & Décor',   e:'🛏️', bg:'#ece2fa'},
+  {id:'health',    n:'Health & Medical',  e:'🩺', bg:'#d9f0e5'},
+  {id:'care',      n:'Personal Care',     e:'🧴', bg:'#fbe0e7'},
+  {id:'fitness',   n:'Fitness',           e:'🏋️', bg:'#e2eed3'},
+  {id:'travel',    n:'Bags & Travel',     e:'🧳', bg:'#efe4d5'},
+  {id:'kids',      n:'Baby & Kids',       e:'🧸', bg:'#fdeebe'},
+  {id:'stationery',n:'Stationery',        e:'✏️', bg:'#d9eef3'},
+  {id:'gifts',     n:'Gift Sets',         e:'🎁', bg:'#fadccd'},
+  {id:'daily',     n:'Daily Essentials',  e:'🧼', bg:'#e4e9ec'},
+];
+
+const TAGS = {new:'New arrival', restock:'Restocked', limited:'Limited stock', weekend:'Weekend offer', combo:'Combo / BOGO', wholesale:'Wholesale available', featured:'Featured', warranty:'With warranty'};
+
+/* Real products & prices taken from the C2C Gift House WhatsApp group posts.
+   [name, brand, category, MRP, online price, our price, stock, emoji, tags, specs] */
+const RAW = [
+ ['Stainless Steel Pressure Cooker 5L','Pigeon','kitchen',5749,0,2875,6,'🍲','featured warranty','Capacity: 5 Litres|Material: Stainless steel|Also available: 3L & 2L|Offer: 50% off on MRP'],
+ ['Cookware Set of 4','Borosil','kitchen',0,3269,1249,4,'🍳','limited','Pieces: 4|Induction compatible: Yes|Online price (after discount): ₹3,269'],
+ ['Non-Stick Cookware Set (Tawa, Kadai, Frypan)','Nirlon','kitchen',2360,0,750,9,'🥘','weekend','Pieces: 3|Coating: Non-stick'],
+ ['12 Pcs Mug Set','Borosil','kitchen',1650,1320,649,3,'☕','limited','Pieces: 12 mugs|Material: Opal glass'],
+ ['Hot & Cold Stainless Steel Bottle','Cello','kitchen',1199,800,550,12,'🍶','','Material: Stainless steel|Insulation: Hot & cold|Colours: 2'],
+ ['1 Jug & 2 Glasses Set','Borosil','kitchen',1345,900,399,10,'🫗','new','Pieces: 3|Material: Borosilicate glass'],
+ ['Blue Porcelain 2 Pcs Mug Set','Vola','kitchen',0,900,249,14,'☕','','Pieces: 2|Material: Porcelain|Finish: Golden border'],
+ ['6 Pcs Water Glass Set','Sanjeev Kapoor','kitchen',795,0,399,8,'🥛','','Pieces: 6|Designs: 2 models available'],
+ ['Non-Stick Tawa 2-in-1 with Induction Base','Butterfly','kitchen',1440,0,799,5,'🍳','new','Base: Induction compatible|Type: 2 in 1'],
+ ['Hot Pot (2 Pcs Set)','Cello','kitchen',999,0,499,7,'🫕','','Pieces: 2|Insulated: Yes|Note: Till stock lasts'],
+ ['700ML Hot & Cold Jug','Nayasa','kitchen',999,400,265,11,'🫖','','Capacity: 700 ml|Insulation: Hot & cold'],
+ ['Thatte Idli Stand 6 Pcs','Saleem Steel','kitchen',0,0,795,4,'🥟','','Plates: 6|Weight: 1.3 kg|Material: Stainless steel'],
+ ['Egg Poacher','C2C Select','kitchen',0,700,349,6,'🍳','','Type: Steam egg poacher'],
+ ['24 Karat Gold-Rim 2 Pcs Glass Set','Baycher','gifts',12000,0,1499,3,'🥂','featured limited','Pieces: 2|Finish: 24K gold detailing|Packing: Gift box'],
+ ['Induction Stove 1200W','Bajaj','appliances',3690,0,1499,5,'🔥','warranty','Power: 1200 Watts|Warranty: Company warranty'],
+ ['Electric Rice Cooker 1.8L SS Double Pot','Pigeon','appliances',6195,0,3499,2,'🍚','warranty limited','Capacity: 1.8 L|Pot: SS double pot with SS lid|Warranty: Company warranty'],
+ ['500W Mixer Grinder','Cello','appliances',3855,0,1650,4,'🌀','limited','Power: 500 W|Jars: 3'],
+ ['Electric Kettle 1.5L','Prestige','appliances',0,1265,450,0,'🫖','','Capacity: 1.5 L|Body: Stainless steel'],
+ ['Electric Iron 1000W','Usha','appliances',1190,0,499,9,'👔','','Power: 1000 W|Soleplate: Non-stick'],
+ ['400mm Table Fan','Crompton','appliances',3149,2489,1499,3,'🌬️','warranty','Sweep: 400 mm|Warranty: Brand warranty'],
+ ['Vacuum Cleaner','Portronics','appliances',2999,1449,999,5,'🧹','restock featured','Type: Handheld|Status: Restocked'],
+ ['Steam Iron','Swiss Military','appliances',2199,1200,749,6,'♨️','','Type: Steam iron'],
+ ['Room Heater','Bajaj','appliances',1900,0,1350,0,'🔆','','Type: Radiant room heater'],
+ ['Google Nest Mini (2nd Gen)','Google','appliances',4499,2500,1850,2,'🔊','new limited','Type: Smart speaker|Assistant: Google Assistant'],
+ ['Rechargeable Emergency Light','Havells','appliances',1580,800,450,8,'🔦','','Type: Rechargeable LED'],
+ ['Portable Blender','Wonderchef','appliances',2500,1400,599,7,'🥤','','Power: Rechargeable|Use: Smoothies & juices'],
+ ['4+4 Spike Guard','GEEP','appliances',650,400,199,14,'🔌','','Sockets: 4 + 4'],
+ ['Double Bedsheet with 2 Pillow Covers (Pure Cotton)','Welspun','home',2499,0,499,15,'🛏️','featured','Size: Double|Fabric: 100% cotton|Includes: 2 pillow covers'],
+ ['All Season Blanket','Portico','home',0,1750,499,10,'🧣','new','Size: 1.50m × 2.20m|Note: Quality next level!'],
+ ['Carpet 2.12m × 1.52m','Raymond Homes','home',3000,0,1499,3,'🟫','','Size: 2.12m × 1.52m'],
+ ['Round Coffee Table','Nayasa','home',2190,1247,599,4,'🪑','','Finish: Aesthetic wood print'],
+ ['Crystal Flower Vase 20cm','Nachtmann','home',2090,0,599,5,'💐','','Height: 20 cm|Material: Crystal glass|Country of origin: Germany'],
+ ['Designer Wall Clock','Village Clockworks','home',0,2149,599,6,'🕰️','','Type: Wall clock'],
+ ['Rechargeable Crystal LED Table Lamp','i Gear','home',2000,0,399,9,'💡','','Power: Rechargeable|Light: Crystal LED'],
+ ['Anti-Skid Shower Mat','Solimo','home',1699,0,650,6,'🛁','','Size: 43 × 65 cm|Base: Rubber anti-skid'],
+ ['Twister Mop with Stick','Prestige','home',395,300,230,12,'🧽','','Type: Twister mop'],
+ ['Digital BP Monitor','Medtech','health',2090,0,750,4,'🩺','limited','Type: Automatic upper-arm'],
+ ['Digital Thermometer','Omron','health',266,200,115,20,'🌡️','','Type: Digital'],
+ ['Handyvap Steam Inhaler','Medtech','health',450,0,199,5,'💨','limited','Note: Last few pieces'],
+ ['Pill Box (3 Times × 7 Days)','Apollo','health',600,0,79,18,'💊','','Compartments: 21'],
+ ['Rechargeable Leg & Calf Air Massager','Lifelong','health',9999,5000,1899,2,'🦵','featured','Type: Air pressure massager|Power: Rechargeable'],
+ ['Lumbar Backrest Cushion','Vissco','health',0,900,325,7,'🪑','','Use: Office chair & car seat'],
+ ['Bluetooth Personal Weighing Scale','Eagle','health',2399,0,449,8,'⚖️','','Connectivity: Bluetooth'],
+ ['Hair Straightener','Philips','care',3995,3000,1199,4,'💇‍♀️','restock featured limited','Status: Restocked|Warranty: Brand warranty'],
+ ['Perfume & Body Spray Combo','Beardo','care',1400,0,499,8,'🧴','combo','Type: Gift combo'],
+ ['OUD White Travel Gift Set','Bella Vita','care',799,0,299,10,'🎁','','Type: Travel-size perfumes'],
+ ['30ml Parfum','The Man Company','care',899,350,199,12,'🌸','','Size: 30 ml'],
+ ['Rose Geranium Herbal Soap','Khadi Natural','care',0,150,49,40,'🧼','wholesale','Type: Handmade herbal soap'],
+ ['14 Pcs Gift Pack Set','Vicco','gifts',1154,0,499,6,'🎁','combo','Pieces: 14'],
+ ['Tummy Twister with Non-Slip Surface','Strauss','fitness',0,1049,399,6,'🌀','','Use: Core workout'],
+ ['Protein Shaker Bottle','Adrenex','fitness',0,500,149,15,'🥤','','Sizes: All sizes same price'],
+ ['Push-Up Board Kit','C2C Select','fitness',0,1200,599,5,'💪','','Type: Multi-position push-up board'],
+ ['Trolley Case 55cm','Safari','travel',9999,3000,1450,3,'🧳','featured limited','Size: 55 × 38 × 23 cm|Type: Cabin trolley'],
+ ['Trolley Bag','Aristocrat','travel',6199,0,1099,4,'🧳','weekend','Offer: 82% off on MRP'],
+ ['Leather Backpack','Gear','travel',2199,0,675,6,'🎒','','Material: Leatherette'],
+ ['Travel Neck Pillow','Frido','travel',3599,1600,349,9,'😴','new','Type: Memory foam'],
+ ['Bike Cover (Universal)','TVS','travel',485,0,285,10,'🏍️','','Fit: Suitable for all bikes'],
+ ['Baby Diaper Pants (S, M, L)','LuvLap','kids',949,0,549,12,'👶','','Sizes: S, M & L'],
+ ['Kids Bedsheet with Pillow Cover','C2C Select','kids',0,0,125,14,'🛌','','Print: Cartoon design'],
+ ['Modelling Clay 10 Shades','Doms','kids',85,0,59,30,'🎨','wholesale','Shades: 10'],
+ ['Soft Baby Swaddle (5 Pcs)','C2C Select','kids',0,0,149,10,'🍼','','Pieces: 5'],
+ ['Calculator & Ball Pen Gift Set','Pierre Cardin','stationery',700,0,315,7,'🧮','','Includes: Calculator + ball pen'],
+ ['2 Pcs Pen Set','Legend','stationery',0,699,199,12,'🖋️','','Pieces: 2'],
+ ['Octane Ball Pen','Classmate','stationery',10,0,6,200,'🖊️','wholesale','Bulk: Wholesale available'],
+ ['A4 Paper Pack (300 Sheets)','C2C Select','stationery',0,0,149,25,'📄','','Sheets: 300|Use: Print, Xerox, school & office'],
+ ['Lakshmi Ganesh Velvet Gift Box','C2C Select','gifts',0,500,199,9,'🪔','new','Design: Shubh Labh'],
+ ['Wedding Return-Gift Crockery','Assorted','gifts',0,0,99,60,'🍵','wholesale','Price range: ₹99 to ₹499|Use: Wedding & return gifts'],
+ ['Hand Wash 100ml','Dettol','daily',35,0,15,80,'🧴','wholesale','Size: 100 ml'],
+ ['Liquid Detergent Top Load (Sachet)','Surf Excel','daily',10,0,7.5,300,'🫧','wholesale','Bulk: Wholesale available'],
+ ['Chyawanprash 250g','Dabur','daily',0,160,69,24,'🍯','','Weight: 250 g'],
+ ['Mosquito Racket','GEEP','daily',1499,1200,449,0,'🏸','','Power: Rechargeable'],
+ ['LED Tube Light 20W','Surya','daily',450,0,99,25,'💡','weekend','Power: 20 W'],
+ ['Floor Cleaner — Buy 1 Get 1 Free','C2C Select','daily',119,0,99,20,'🧴','combo weekend','Offer: Buy 1 Get 1 free'],
+];
+
+const NAMES = ['Ayesha K','Ravi Kumar','Syeda Fathima','Manjunath G','Imran Pasha','Kavya R','Farhan Ali','Lakshmi N','Sameer Baig','Divya S','Mohammed Asif','Shilpa M'];
+const PLACES = ['Gauribidanur','Chikkaballapur','Hindupur','Doddaballapur','Bengaluru','Tumakuru'];
+
+/* ---------- utils ---------- */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const inr=n=>'₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2});
+const num=n=>Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2});
+const kfmt=n=>n>=100000?'₹'+(n/100000).toFixed(1)+'L':n>=1000?'₹'+(n/1000).toFixed(n>=10000?0:1)+'k':'₹'+Math.round(n);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cmpAt=p=>Math.max(p.mrp||0,p.on||0);
+const off=p=>{const c=cmpAt(p);return c>p.p?Math.round((1-p.p/c)*100):0};
+const catOf=id=>CATS.find(c=>c.id===id)||CATS[0];
+const P=id=>DB.products.find(p=>p.id===id);
+const has=(p,t)=>(p.t||[]).includes(t);
+const DAY=864e5;
+const fdate=ts=>new Date(ts).toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+const ftime=ts=>new Date(ts).toLocaleTimeString('en-IN',{hour:'numeric',minute:'2-digit'});
+const fdt=ts=>fdate(ts)+', '+ftime(ts);
+const startOfDay=(t=Date.now())=>{const d=new Date(t);d.setHours(0,0,0,0);return d.getTime()};
+function ean(b12){let s=0;for(let i=0;i<12;i++)s+=(+b12[i])*(i%2?3:1);return b12+((10-s%10)%10)}
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const waLink=(phone,text)=>`https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+/* ---------- data store ---------- */
+const KEY='c2c_gifthouse_site_v1';
+let DB;
+function seed(){
+  const r=rng(20241020), now=Date.now();
+  const products=RAW.map((x,i)=>({
+    id:'p'+(i+1), n:x[0], b:x[1], c:x[2], mrp:x[3], on:x[4], p:x[5], s:x[6], e:x[7],
+    t:x[8]?x[8].split(' '):[], sp:x[9], bc:ean('8906012'+String(i+1).padStart(5,'0')),
+    vis:true, added: now - (x[8].includes('new') ? Math.floor(r()*3) : 4+Math.floor(r()*120))*DAY
+  }));
+  const orders=[]; let bill=1001, ord=501;
+  const pick=()=>{ // cheaper items sell more often
+    const pool=products.filter(p=>p.p<1600); return r()<.82?pool[Math.floor(r()*pool.length)]:products[Math.floor(r()*products.length)];
+  };
+  for(let d=29; d>=0; d--){
+    const day=startOfDay(now-d*DAY), dow=new Date(day).getDay();
+    let n=6+Math.floor(r()*10)+(dow===0||dow===6?5:0);
+    for(let k=0;k<n;k++){
+      const ts=day+(10*60+Math.floor(r()*11*60))*60000;
+      if(ts>now) continue;
+      const items=[]; const cnt=1+Math.floor(r()*3);
+      for(let j=0;j<cnt;j++){const p=pick(); if(!items.find(i=>i[0]===p.id)) items.push([p.id,1+(r()<.2?1:0),p.p])}
+      const total=items.reduce((a,i)=>a+i[1]*i[2],0);
+      const pr=r(); orders.push({id:'B'+(bill++),ch:'store',ts,items,sub:total,disc:0,total,pay:pr<.45?'Cash':pr<.9?'UPI':'Card',status:'Completed'});
+    }
+    if(r()<.55||d<4){
+      const ts=day+(9*60+Math.floor(r()*13*60))*60000; if(ts>now) continue;
+      const items=[]; const cnt=1+Math.floor(r()*2);
+      for(let j=0;j<cnt;j++){const p=pick(); if(!items.find(i=>i[0]===p.id)) items.push([p.id,1,p.p])}
+      const sub=items.reduce((a,i)=>a+i[1]*i[2],0), del=sub>=499?0:49, gift=r()<.3?30:0;
+      const st=d>=3?'Delivered':d===2?(r()<.5?'Delivered':'Dispatched'):d===1?'Packed':'Placed';
+      const nm=NAMES[Math.floor(r()*NAMES.length)], pl=PLACES[Math.floor(r()*PLACES.length)];
+      orders.push({id:'C2C'+(ord++),ch:'online',ts,items,sub,del,gift,disc:0,total:sub+del+gift,pay:r()<.6?'UPI':'COD',status:st,
+        mode:pl==='Gauribidanur'&&r()<.5?'pickup':'delivery',
+        cust:{name:nm,phone:'9'+String(Math.floor(r()*1e9)).padStart(9,'0'),addr:'#'+(10+Math.floor(r()*300))+', '+['Main Road','2nd Cross','Station Road','MG Road','Market Street'][Math.floor(r()*5)]+', '+pl,pin:pl==='Gauribidanur'?'561208':'5'+String(Math.floor(r()*99999)).padStart(5,'0')}});
+    }
+  }
+  orders.sort((a,b)=>a.ts-b.ts);
+  bill=1001; ord=501; orders.forEach(o=>{o.id=o.ch==='store'?'B'+(bill++):'C2C'+(ord++)});
+  return {
+    products, orders, cart:[], wish:[],
+    enq:[
+      {id:'E1',name:'Farhan Ali',phone:'9535021827',org:'Wedding — 250 guests',need:'Return gift crockery sets ~250 pcs, budget ₹150/pc',ts:now-1*DAY,done:false},
+      {id:'E2',name:'Divya S',phone:'9632993326',org:'Sri Sai School',need:'Classmate pens 500 pcs + A4 paper 20 packs',ts:now-3*DAY,done:true},
+    ],
+    seq:{bill, ord},
+    settings:{noticeOn:false, notice:'📢 Dear Customers, our store will remain closed tomorrow due to personal work. All pending parcels will be dispatched today itself. 🙏',
+      delFee:49, freeAbove:499, gift:30, upi:'', hours:'10:00 AM – 9:30 PM · All days', pin:'1234'}
+  };
+}
+function load(){try{const s=localStorage.getItem(KEY);if(s){DB=JSON.parse(s);return}}catch(e){} DB=seed(); save();}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(DB));return true}catch(e){if(!save.warned){save.warned=1;setTimeout(()=>toast('⚠ Phone storage is full — some changes may not be saved. Try removing a few product photos.','err'))}return false}}
+const siteURL=()=>location.origin+location.pathname.replace(/index\.html$/,'');
+let AUTH=false; try{AUTH=sessionStorage.getItem('c2c_auth')==='1'}catch(e){}
+function setAuth(v){AUTH=v;try{sessionStorage.setItem('c2c_auth',v?'1':'0')}catch(e){}}
+
+/* ---------- icons ---------- */
+const I={
+ search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+ cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>',
+ heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-9.2-8.6C1.3 8.4 3 5 6.4 5c2 0 3.3 1.1 4 2.3h3.2C14.3 6.1 15.6 5 17.6 5 21 5 22.7 8.4 21.2 11.4 19 15.6 12 20 12 20z"/></svg>',
+ home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>',
+ grid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
+ tag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>',
+ pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+ dash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+ scan:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M10 8v8M13 8v8M17 8v8"/></svg>',
+ box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>',
+ plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>',
+ truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>',
+ chart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>',
+ label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9v6M10 9v6M13 9v6M16 9v6"/></svg>',
+ cog:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+ globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
+ menu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
+ out:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>',
+ more:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>',
+};
+
+/* ---------- small components ---------- */
+function img(p,cls=''){
+  if(p.img) return `<img src="${p.img}" alt="${esc(p.n)}" class="${cls}">`;
+  const ph=window.PHOTOS?PHOTOS[p.id]:null;
+  if(ph!=null) return `<div class="ph ${ph?'cut':''} ${cls}" style="--bg-c:${catOf(p.c).bg}"><i class="pi pi-${p.id}" role="img" aria-label="${esc(p.n)}"></i></div>`;
+  return `<div class="tile ${cls}" style="--bg-c:${catOf(p.c).bg}"><span class="te">${p.e||'📦'}</span><span class="tb">${esc(p.b)}</span></div>`;
+}
+function stockChip(p){
+  if(p.s<=0) return '<span class="pill p-dark sc">Sold out</span>';
+  if(p.s<=3) return `<span class="pill p-amber sc">Only ${p.s} left</span>`;
+  if(has(p,'restock')) return '<span class="pill p-green sc">Restocked</span>';
+  if(has(p,'new')) return '<span class="pill p-blue sc">New</span>';
+  return '';
+}
+function saveLine(p){
+  if(p.on&&p.on>p.p) return `<div class="pc-save">₹${num(p.on-p.p)} less than online</div>`;
+  if(p.mrp&&p.mrp>p.p) return `<div class="pc-save">You save ${inr(p.mrp-p.p)} on MRP</div>`;
+  return `<div class="pc-save" style="color:var(--muted)">Best price in town</div>`;
+}
+function card(p){
+  const o=off(p), c=cmpAt(p);
+  return `<article class="pc">
+    <a href="#/p/${p.id}" class="pc-img">${img(p)}${o?`<span class="badge-off">-${o}%</span>`:''}${stockChip(p)}</a>
+    <button class="wish ${DB.wish.includes(p.id)?'on':''}" onclick="toggleWish('${p.id}',this)" aria-label="Save to wishlist">♥</button>
+    <div class="pc-body">
+      <div class="pc-brand">${esc(p.b)}</div>
+      <a href="#/p/${p.id}" class="pc-name">${esc(p.n)}</a>
+      <div class="pc-price"><b>${inr(p.p)}</b>${c>p.p?`<s>${inr(c)}</s>`:''}</div>
+      ${saveLine(p)}
+      ${p.s>0?`<button class="btn btn-sm btn-brand w100" onclick="addToCart('${p.id}')">Add to cart</button>`
+             :`<button class="btn btn-sm btn-ghost w100" disabled>Sold out</button>`}
+    </div></article>`;
+}
+function cmpBars(p){
+  const rows=[]; if(p.mrp) rows.push(['MRP',p.mrp]); if(p.on) rows.push(['Online',p.on]); rows.push(['C2C price',p.p,1]);
+  const mx=Math.max(...rows.map(r=>r[1]));
+  return `<div class="cmp">${rows.map(r=>`<div class="cmp-r ${r[2]?'us':''}"><span>${r[0]}</span><div class="cmp-t"><div class="cmp-f" style="width:${Math.max(4,r[1]/mx*100)}%"></div></div><span class="v">${inr(r[1])}${r[0]==='Online'?'+':''}</span></div>`).join('')}</div>`;
+}
+function visible(){return DB.products.filter(p=>p.vis!==false)}
+function soldMap(since=0){const m={};DB.orders.forEach(o=>{if(o.ts>=since)o.items.forEach(i=>{m[i[0]]=(m[i[0]]||0)+i[1]})});return m}
+
+/* ---------- toast / modal / tooltip ---------- */
+function toast(msg,type=''){
+  const t=document.createElement('div'); t.className='toast '+type; t.innerHTML=msg; $('#toasts').appendChild(t);
+  setTimeout(()=>{t.style.transition='.3s';t.style.opacity='0';setTimeout(()=>t.remove(),300)},3200);
+}
+function modal(title,body,{wide=false,cls=''}={}){
+  closeModal();
+  const o=document.createElement('div'); o.className='ov'; o.id='ov';
+  o.innerHTML=`<div class="md ${cls}" style="${wide?'width:min(820px,100%)':''}" role="dialog" aria-modal="true"><div class="md-h"><h3>${title}</h3><button class="x" onclick="closeModal()" aria-label="Close">×</button></div><div class="md-b">${body}</div></div>`;
+  o.addEventListener('click',e=>{if(e.target===o)closeModal()});
+  document.body.appendChild(o);
+}
+function closeModal(){const o=$('#ov'); if(o){ if(o.dataset.cam) stopCamera(); o.remove(); }}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+const tip=$('#tip');
+document.addEventListener('mousemove',e=>{
+  const t=e.target.closest&&e.target.closest('[data-tip]');
+  if(!t){tip.style.display='none';return}
+  tip.innerHTML=t.dataset.tip; tip.style.display='block';
+  const w=tip.offsetWidth, x=Math.min(e.clientX+14, innerWidth-w-10);
+  tip.style.left=x+'px'; tip.style.top=(e.clientY-tip.offsetHeight-12)+'px';
+});
+
+/* ---------- cart / wishlist ---------- */
+function cartQty(id){const l=DB.cart.find(c=>c.id===id);return l?l.q:0}
+function cartCount(){return DB.cart.reduce((a,c)=>a+c.q,0)}
+function addToCart(id,q=1){
+  const p=P(id); if(!p) return;
+  const cur=cartQty(id);
+  if(cur+q>p.s){ toast(p.s<=0?'Sorry, this item is sold out':`Only ${p.s} in stock`,'warn'); return }
+  const l=DB.cart.find(c=>c.id===id); if(l) l.q+=q; else DB.cart.push({id,q});
+  save(); updateBadges();
+  toast(`✓ Added <b>${esc(p.n)}</b> &nbsp;<a href="#/cart" style="text-decoration:underline">View cart</a>`,'ok');
+}
+function setCartQty(id,q){
+  const p=P(id); const l=DB.cart.find(c=>c.id===id); if(!l) return;
+  if(q>p.s){toast(`Only ${p.s} in stock`,'warn'); q=p.s}
+  if(q<=0) DB.cart=DB.cart.filter(c=>c.id!==id); else l.q=q;
+  save(); render();
+}
+function toggleWish(id,el){
+  const i=DB.wish.indexOf(id); if(i>-1) DB.wish.splice(i,1); else DB.wish.push(id);
+  save(); if(el) el.classList.toggle('on',i===-1); updateBadges();
+  toast(i>-1?'Removed from wishlist':'♥ Saved to wishlist');
+}
+function updateBadges(){ $$('.cartN').forEach(e=>{const n=cartCount(); e.textContent=n; e.style.display=n?'grid':'none'}) }
+function cartTotals(coupon){
+  const S=DB.settings;
+  const lines=DB.cart.map(c=>({p:P(c.id),q:c.q})).filter(l=>l.p);
+  const sub=lines.reduce((a,l)=>a+l.p.p*l.q,0);
+  const mrp=lines.reduce((a,l)=>a+(cmpAt(l.p)||l.p.p)*l.q,0);
+  return {lines,sub,mrp,save:mrp-sub,S};
+}
+
+/* ---------- router ---------- */
+function parseHash(){const h=location.hash.slice(1)||'/';const [path,qs]=h.split('?');return {path,parts:path.split('/').filter(Boolean),q:Object.fromEntries(new URLSearchParams(qs||''))}}
+function go(h){location.hash=h}
+let lastPath='', timers=[];
+function render(){
+  timers.forEach(clearInterval); timers=[];
+  stopCamera(); closeModal();
+  const r=parseHash(), [a,b,c]=r.parts;
+  let html, admin=a==='admin';
+  document.body.classList.toggle('has-tabs',true);
+  if(admin){
+    if(!AUTH) html=pgLogin();
+    else{
+      const v=b||'dash';
+      const pages={dash:pgDash,pos:pgPOS,inventory:pgInv,product:()=>pgForm(c,r.q),orders:()=>pgOrders(r.q),sales:()=>pgSales(r.q),labels:pgLabels,settings:pgSettings};
+      html=(pages[v]||pgDash)(r);
+    }
+  } else {
+    const pages={'':pgHome,shop:()=>pgShop(r.q),p:()=>pgProduct(b),offers:pgOffers,cart:pgCart,checkout:pgCheckout,order:()=>pgOrder(b),track:()=>pgTrack(r.q),wholesale:pgWholesale,visit:pgVisit,wishlist:pgWish};
+    html=shell((pages[a||'']||pgHome)(r), a||'');
+  }
+  $('#app').innerHTML=html + (admin&&AUTH?`<button class="demo-fab" onclick="demoGuide()"><span class="dot"></span>Demo pages</button>`:'');
+  if(r.path!==lastPath){window.scrollTo(0,0);lastPath=r.path}
+  updateBadges();
+  AFTER.splice(0).forEach(fn=>{try{fn()}catch(e){console.error(e)}});
+}
+const AFTER=[];
+window.addEventListener('hashchange',render);
+window.addEventListener('storage',e=>{if(e.key===KEY){load(); const r=parseHash(); if(!(r.parts[0]==='admin'&&['pos','product','settings'].includes(r.parts[1]))) render()}});
+
+/* ============================================================
+   STOREFRONT
+   ============================================================ */
+function shell(content,active){
+  const S=DB.settings;
+  return `
+  ${S.noticeOn?`<div class="notice">${esc(S.notice)}</div>`:''}
+  <div class="strip"><div class="wrap"><span>🚚 <b>Free delivery</b> on orders above ${inr(S.freeAbove)}</span><span>🎁 <b>Gift packing</b> available</span><span>✅ <b>100% showroom articles</b> — not return / lot stock</span><span>📞 <b>${STORE.phone}</b></span></div></div>
+  <header class="hdr"><div class="wrap">
+    <a href="#/" class="logo"><div class="logo-m">C2C</div><div class="logo-t"><b>C2C Gift House</b><span>Gauribidanur</span></div></a>
+    <form class="search" onsubmit="event.preventDefault();go('#/shop?q='+encodeURIComponent(this.q.value))">${I.search}<input name="q" placeholder="Search cookers, bedsheets, bottles, gifts…" value="${esc(parseHash().q.q||'')}"></form>
+    <nav class="hnav">
+      <a href="#/shop" class="${active==='shop'?'on':''}">Shop</a>
+      <a href="#/offers" class="${active==='offers'?'on':''}">Offers</a>
+      <a href="#/wholesale" class="${active==='wholesale'?'on':''}">Wholesale</a>
+      <a href="#/visit" class="${active==='visit'?'on':''}">Visit Store</a>
+    </nav>
+    <div class="hact">
+      <button class="icon-btn theme-btn" onclick="toggleTheme()" aria-label="Switch light / dark mode" title="Light / dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <a href="#/wishlist" class="icon-btn" aria-label="Wishlist">${I.heart}</a>
+      <a href="#/cart" class="icon-btn" aria-label="Cart">${I.cart}<span class="count cartN">0</span></a>
+    </div>
+  </div></header>
+  <div class="msearch"><form class="search" onsubmit="event.preventDefault();go('#/shop?q='+encodeURIComponent(this.q.value))">${I.search}<input name="q" placeholder="Search products…" value="${esc(parseHash().q.q||'')}"></form></div>
+  <nav class="catnav"><div class="wrap">
+    <a href="#/shop" class="${active==='shop'&&!parseHash().q.cat?'on':''}">All Products</a>
+    ${CATS.map(c=>`<a href="#/shop?cat=${c.id}" class="${parseHash().q.cat===c.id?'on':''}">${c.e} ${c.n}</a>`).join('')}
+  </div></nav>
+  <main>${content}</main>
+  ${footer()}
+  <nav class="tabbar">
+    <a href="#/" class="${active===''?'on':''}">${I.home}Home</a>
+    <a href="#/shop" class="${active==='shop'||active==='p'?'on':''}">${I.grid}Shop</a>
+    <a href="#/offers" class="${active==='offers'?'on':''}">${I.tag}Offers</a>
+    <a href="#/cart" class="${active==='cart'||active==='checkout'?'on':''}">${I.cart}Cart<span class="count cartN">0</span></a>
+    <a href="#/visit" class="${active==='visit'?'on':''}">${I.pin}Store</a>
+  </nav>`;
+}
+function footer(){
+  return `<footer class="foot"><div class="wrap">
+    <div class="foot-g">
+      <div><div class="logo" style="margin-bottom:14px"><div class="logo-m">C2C</div><div class="logo-t"><b>C2C Gift House</b><span style="color:#9b8d82">Since Oct 2024</span></div></div>
+        <p class="small" style="max-width:300px;margin:0">Unique & branded household and gifting products at 30–80% below MRP. 100% showroom articles — brand new and unused.</p></div>
+      <div><h4>Shop</h4><a href="#/shop">All products</a><a href="#/offers">Today's offers</a><a href="#/shop?sort=new">New arrivals</a><a href="#/wholesale">Wholesale & bulk</a><a href="#/shop?cat=gifts">Gift sets</a></div>
+      <div><h4>Help</h4><a href="#/track">Track your order</a><a href="#/visit">Store location</a><a href="#/visit#faq">FAQs</a><a href="#/wishlist">My wishlist</a><a href="javascript:void(0)" onclick="photoCredits()">Photo credits</a></div>
+      <div><h4>Contact</h4><p class="small" style="margin:0 0 8px">${STORE.addr}</p><a href="tel:+91${STORE.phone}">📞 ${STORE.phone} · ${STORE.phone2}</a><a href="${waLink(STORE.wa,'Hi C2C Gift House!')}" target="_blank" rel="noopener">💬 WhatsApp us</a><a href="https://www.instagram.com/${STORE.insta}/" target="_blank" rel="noopener">📸 @${STORE.insta}</a></div>
+    </div>
+    <div class="foot-b"><span>© ${new Date().getFullYear()} C2C Gift House, Gauribidanur. All rights reserved.</span><span>UPI · Cash · Cash on Delivery</span></div>
+  </div></footer>`;
+}
+
+function pgHome(){
+  const V=visible(), sm=soldMap();
+  const hero=P('p44')||V[0];
+  const deals=V.filter(p=>off(p)>=60&&p.s>0).sort((a,b)=>off(b)-off(a)).slice(0,10);
+  const fresh=[...V].sort((a,b)=>b.added-a.added).slice(0,8);
+  const restock=V.filter(p=>has(p,'restock')||has(p,'featured')).slice(0,8);
+  const under=V.filter(p=>p.p<=99&&p.s>0).slice(0,10);
+  const weekend=V.filter(p=>has(p,'weekend'));
+  const compare=['p1','p53','p41','p21','p29'].map(P).filter(Boolean);
+  AFTER.push(startCountdown);
+  return `
+  <section class="hero"><div class="wrap hero-g">
+    <div>
+      <span class="eyebrow">✦ Gauribidanur's branded discount store</span>
+      <h1>Branded products.<br><em>Up to 80% below MRP.</em></h1>
+      <p class="lead">Showroom-fresh kitchenware, appliances, bedding, gifts & more — always cheaper than online. Shop here with home delivery & gift packing, or visit us on MG Road.</p>
+      <div class="row wrap-ok"><a href="#/shop" class="btn btn-brand btn-lg">Shop all products →</a><a href="#/offers" class="btn btn-lg">Today's offers</a></div>
+      <div class="hero-stats">
+        <div><b>${V.length}+</b><span>live deals in stock</span></div>
+        <div><b>1,200+</b><span>products sold since 2024</span></div>
+        <div><b>30–80%</b><span>below MRP, every day</span></div>
+      </div>
+    </div>
+    <div style="padding:14px 10px 20px">
+      <div class="deal">
+        <span class="deal-tag">⚡ DEAL OF THE DAY</span>
+        <a href="#/p/${hero.id}">${img(hero)}</a>
+        <div style="padding:14px 4px 4px">
+          <div class="row"><div><div class="pc-brand">${esc(hero.b)}</div><b style="font-size:17px">${esc(hero.n)}</b></div><span class="sp"></span><span class="pill p-brand">-${off(hero)}%</span></div>
+          ${cmpBars(hero)}
+          <div class="row" style="margin-top:14px"><span class="pill p-amber">Only ${hero.s} left</span><span class="sp"></span><button class="btn btn-sm btn-dark" onclick="addToCart('${hero.id}')">Add to cart</button></div>
+        </div>
+        <div class="deal-float">Compared with Amazon & Flipkart<br><b>You save ${inr(cmpAt(hero)-hero.p)}</b></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="wrap"><div class="trust">
+    <div><i>✅</i><p style="margin:0"><b>100% Showroom Articles</b><span>Not Flipkart/Amazon return, lot or second-hand stock.</span></p></div>
+    <div><i>🏷️</i><p style="margin:0"><b>Compare & Save</b><span>Every product shows MRP & online price — check before you buy.</span></p></div>
+    <div><i>🚚</i><p style="margin:0"><b>Delivery + Gift Packing</b><span>Home delivery available, free above ${inr(DB.settings.freeAbove)}.</span></p></div>
+    <div><i>📦</i><p style="margin:0"><b>Wholesale & Bulk</b><span>Special prices for weddings, shops, schools & events.</span></p></div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-h"><div><h2>Shop by category</h2><p>Household & gifting essentials from brands you trust</p></div><a class="more" href="#/shop">View all →</a></div>
+    <div class="cats">${CATS.map(c=>`<a href="#/shop?cat=${c.id}" class="cat" style="--bg-c:${c.bg};background:${c.bg}"><i>${c.e}</i><b>${c.n}</b><span>${V.filter(p=>p.c===c.id).length} products</span></a>`).join('')}</div>
+  </div></section>
+
+  <section class="wrap"><div class="banner b-dark">
+    <div><span class="eyebrow" style="background:rgba(255,255,255,.12);color:#ffd88a">🔥 Weekend offer</span>
+      <h2 style="margin-top:12px">Saturday & Sunday only prices</h2>
+      <p>${weekend.map(p=>esc(p.b)+' '+esc(p.n.split(' ').slice(0,3).join(' '))).slice(0,3).join(' · ')} and more — limited quantity.</p>
+      <a href="#/offers" class="btn btn-gold" style="margin-top:18px">See weekend deals</a></div>
+    <div><div class="tiny" id="cdLabel" style="opacity:.75;margin-bottom:8px;letter-spacing:.08em;text-transform:uppercase">Ends in</div><div class="cd" id="cd"></div></div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-h"><div><h2>Hot deals — 60% off & more</h2><p>Biggest savings on MRP right now</p></div><a class="more" href="#/shop?tag=deal50&sort=off">See all →</a></div>
+    <div class="hscroll">${deals.map(card).join('')}</div>
+  </div></section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="sec-h"><div><h2>New arrivals</h2><p>Fresh stock added this week</p></div><a class="more" href="#/shop?sort=new">See all →</a></div>
+    <div class="pgrid">${fresh.map(card).join('')}</div>
+  </div></section>
+
+  <section class="sec" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+    <div class="sec-h"><div><h2>Why buy from C2C?</h2><p>Same branded product. Much lower price. Compare yourself.</p></div></div>
+    <div class="card tbl-wrap"><table class="tbl">
+      <thead><tr><th>Product</th><th class="num">MRP</th><th class="num">Online price</th><th class="num">C2C price</th><th class="num">You save</th></tr></thead>
+      <tbody>${compare.map(p=>`<tr><td><a href="#/p/${p.id}" class="row" style="gap:10px"><div class="mini">${img(p)}</div><div><b>${esc(p.n)}</b><div class="tiny muted">${esc(p.b)}</div></div></a></td>
+        <td class="num muted">${p.mrp?inr(p.mrp):'—'}</td><td class="num muted">${p.on?inr(p.on)+'+':'—'}</td><td class="num b" style="color:var(--brand);font-size:16px">${inr(p.p)}</td><td class="num"><span class="pill p-green">${inr(cmpAt(p)-p.p)} · ${off(p)}%</span></td></tr>`).join('')}</tbody>
+    </table></div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-h"><div><h2>Back in stock & bestsellers</h2><p>Customer favourites — restocked after huge demand</p></div><a class="more" href="#/shop?sort=pop">See all →</a></div>
+    <div class="hscroll">${restock.map(card).join('')}</div>
+  </div></section>
+
+  <section class="wrap"><div class="banner b-gold">
+    <div><span class="eyebrow" style="background:var(--surface);color:var(--amber)">💍 Weddings & functions</span>
+      <h2 style="margin-top:12px">Return gifts from ₹99 to ₹499</h2>
+      <p>Crockery sets, glassware, velvet gift boxes and more — with bulk pricing and gift packing for weddings, housewarmings and corporate events.</p>
+      <div class="row wrap-ok" style="margin-top:18px"><a href="#/wholesale" class="btn btn-dark">Get a bulk quote</a><a href="#/shop?cat=gifts" class="btn">Browse gift sets</a></div></div>
+    <div style="font-size:84px;line-height:1">🎁🍵</div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-h"><div><h2>Under ₹99 store</h2><p>Daily essentials at wholesale prices</p></div><a class="more" href="#/shop?price=u99">See all →</a></div>
+    <div class="hscroll">${under.map(card).join('')}</div>
+  </div></section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="card" style="overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+      <iframe title="C2C Gift House location" src="https://maps.google.com/maps?q=${STORE.geo}&z=16&output=embed" style="border:0;width:100%;min-height:300px;height:100%" loading="lazy"></iframe>
+      <div class="pad" style="padding:30px">
+        <span class="eyebrow">📍 Visit our store</span>
+        <h2 style="margin:14px 0 10px">See it, touch it, take it home.</h2>
+        <p class="muted" style="margin:0 0 14px">${STORE.addr}</p>
+        <p style="margin:0 0 18px"><b>Open:</b> ${esc(DB.settings.hours)}<br><b>Call:</b> ${STORE.phone} · ${STORE.phone2}</p>
+        <div class="row wrap-ok"><a class="btn btn-brand" target="_blank" rel="noopener" href="https://maps.google.com/?q=${STORE.geo}">Get directions</a><a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink(STORE.wa,'Hi C2C Gift House! I have a question.')}">💬 WhatsApp</a></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap"><div class="banner" style="background:var(--surface);border:1px solid var(--line)">
+    <div><h2>Never miss a deal</h2><p class="muted">New stock arrives every day and the best items sell out fast. Follow us on Instagram or join our WhatsApp deals group for daily updates.</p></div>
+    <div class="row wrap-ok"><a class="btn btn-dark" href="https://www.instagram.com/${STORE.insta}/" target="_blank" rel="noopener">📸 @${STORE.insta}</a><a class="btn btn-wa" href="${waLink(STORE.wa,'Hi, please add me to the C2C Gift House deals group.')}" target="_blank" rel="noopener">Join WhatsApp group</a></div>
+  </div></div></section>`;
+}
+function startCountdown(){
+  const el=$('#cd'); if(!el) return;
+  const tick=()=>{
+    const now=new Date(), dow=now.getDay(); let target, label;
+    if(dow===6||dow===0){ target=new Date(now); target.setDate(now.getDate()+(dow===6?1:0)); target.setHours(23,59,59,0); label='Ends in'; }
+    else { target=new Date(now); target.setDate(now.getDate()+(6-dow)); target.setHours(0,0,0,0); label='Starts in'; }
+    let s=Math.max(0,Math.floor((target-now)/1000)); const d=Math.floor(s/86400); s%=86400; const h=Math.floor(s/3600); s%=3600; const m=Math.floor(s/60); s%=60;
+    const pad=n=>String(n).padStart(2,'0');
+    el.innerHTML=[[d,'days'],[pad(h),'hrs'],[pad(m),'min'],[pad(s),'sec']].map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');
+    const l=$('#cdLabel'); if(l) l.textContent=label;
+  };
+  tick(); timers.push(setInterval(tick,1000));
+}
+
+function setQ(k,v){const r=parseHash();const q={...r.q};if(v===''||v==null)delete q[k];else q[k]=v;const s=new URLSearchParams(q).toString();go('#/shop'+(s?'?'+s:''))}
+function pgShop(q){
+  const sm=soldMap(); let L=visible();
+  const cat=q.cat?catOf(q.cat):null;
+  if(q.cat) L=L.filter(p=>p.c===q.cat);
+  if(q.q){const t=q.q.toLowerCase();L=L.filter(p=>(p.n+' '+p.b+' '+catOf(p.c).n+' '+p.bc).toLowerCase().includes(t))}
+  const brands=[...new Set(L.map(p=>p.b))].sort();
+  if(q.brand) L=L.filter(p=>p.b===q.brand);
+  const PR={u99:[0,99,'Under ₹99'],u299:[100,299,'₹100 – ₹299'],u999:[300,999,'₹300 – ₹999'],o999:[1000,1e9,'₹1,000 & above']};
+  if(q.price&&PR[q.price]) L=L.filter(p=>p.p>=PR[q.price][0]&&p.p<=PR[q.price][1]);
+  if(q.stock) L=L.filter(p=>p.s>0);
+  if(q.tag==='deal50') L=L.filter(p=>off(p)>=50); else if(q.tag) L=L.filter(p=>has(p,q.tag));
+  const sorts={pop:(a,b)=>(sm[b.id]||0)-(sm[a.id]||0),new:(a,b)=>b.added-a.added,lh:(a,b)=>a.p-b.p,hl:(a,b)=>b.p-a.p,off:(a,b)=>off(b)-off(a)};
+  L.sort(sorts[q.sort||'pop']);
+  const title=q.q?`Results for “${esc(q.q)}”`:cat?cat.n:q.tag==='deal50'?'50% off & more':q.tag?TAGS[q.tag]:'All products';
+  const fl=(k,v,label,cnt)=>`<div class="flink ${q[k]===v?'on':''}" onclick="setQ('${k}','${q[k]===v?'':v}')">${label}${cnt!=null?`<span>${cnt}</span>`:''}</div>`;
+  const all=visible();
+  return `<div class="wrap shop">
+    <aside class="filters" id="filters">
+      <div class="row hide" id="fclose" style="margin-bottom:10px"><b>Filters</b><span class="sp"></span><button class="x" onclick="$('#filters').classList.remove('open')">×</button></div>
+      <div class="fgrp"><h4>Category</h4>${fl('cat','','All categories',all.length).replace("setQ('cat','')","setQ('cat','')")}${CATS.map(c=>fl('cat',c.id,c.e+' '+c.n,all.filter(p=>p.c===c.id).length)).join('')}</div>
+      <div class="fgrp"><h4>Price</h4>${Object.entries(PR).map(([k,v])=>fl('price',k,v[2])).join('')}</div>
+      <div class="fgrp"><h4>Deals</h4>${fl('tag','deal50','🔥 50% off & more')}${fl('tag','new','✨ New arrivals')}${fl('tag','restock','🔁 Back in stock')}${fl('tag','weekend','📅 Weekend offers')}${fl('tag','combo','🎁 Combos & BOGO')}${fl('tag','wholesale','📦 Wholesale available')}${fl('tag','warranty','🛡️ With warranty')}</div>
+      <div class="fgrp"><h4>Availability</h4><label class="check"><input type="checkbox" ${q.stock?'checked':''} onchange="setQ('stock',this.checked?'1':'')"> In stock only</label></div>
+      <div class="fgrp"><h4>Brand</h4><select class="inp" onchange="setQ('brand',this.value)"><option value="">All brands</option>${brands.map(b=>`<option ${q.brand===b?'selected':''}>${esc(b)}</option>`).join('')}</select></div>
+      ${Object.keys(q).length?`<button class="btn btn-sm btn-ghost w100" style="margin-top:14px" onclick="go('#/shop')">Clear all filters</button>`:''}
+    </aside>
+    <section>
+      <div class="shop-top"><div><h1>${title}</h1><div class="muted small">${L.length} product${L.length===1?'':'s'}</div></div><span class="sp"></span>
+        <button class="btn btn-sm mfilter" onclick="$('#filters').classList.add('open');$('#fclose').classList.remove('hide')">⚙ Filters</button>
+        <select class="inp" style="width:auto" onchange="setQ('sort',this.value)">
+          ${[['pop','Most popular'],['new','Newest first'],['off','Biggest discount'],['lh','Price: low to high'],['hl','Price: high to low']].map(o=>`<option value="${o[0]}" ${(q.sort||'pop')===o[0]?'selected':''}>${o[1]}</option>`).join('')}
+        </select></div>
+      ${L.length?`<div class="pgrid">${L.map(card).join('')}</div>`:`<div class="empty card"><i>🔍</i><b>No products found</b><p>Try a different search or clear filters.</p><a class="btn btn-brand" href="#/shop">Show all products</a></div>`}
+    </section>
+  </div>`;
+}
+
+function pgProduct(id){
+  const p=P(id); if(!p) return `<div class="wrap empty"><i>😕</i><b>Product not found</b><p><a class="btn btn-brand" href="#/shop">Back to shop</a></p></div>`;
+  const c=catOf(p.c), o=off(p);
+  const similar=visible().filter(x=>x.c===p.c&&x.id!==p.id).slice(0,8);
+  const specs=[['Brand',p.b],['Category',c.n],...(p.sp||'').split('|').filter(Boolean).map(s=>s.split(': ')),['Barcode',p.bc]];
+  const waTxt=`Hi C2C Gift House! I want to order:\n\n${p.b} – ${p.n}\nPrice: ${inr(p.p)}\nProduct ID: ${p.id.toUpperCase()}\n\nIs it available?`;
+  AFTER.push(()=>{window._pdq=1});
+  return `<div class="wrap">
+    <div class="crumb"><a href="#/">Home</a> / <a href="#/shop?cat=${c.id}">${c.n}</a> / ${esc(p.n)}</div>
+    <div class="pd">
+      <div><div class="pd-img">${img(p)}${o?`<span class="badge-off" style="font-size:15px;padding:6px 12px;top:16px;left:16px">-${o}% OFF</span>`:''}</div></div>
+      <div>
+        <div class="row wrap-ok" style="gap:6px">${(p.t||[]).filter(t=>TAGS[t]&&t!=='featured').map(t=>`<span class="pill p-gray">${TAGS[t]}</span>`).join('')}</div>
+        <div class="pc-brand" style="margin-top:12px;font-size:12.5px">${esc(p.b)}</div>
+        <h1>${esc(p.n)}</h1>
+        <div class="pbox">
+          <div class="pbig"><b>${inr(p.p)}</b>${cmpAt(p)>p.p?`<s class="muted" style="font-size:18px">${inr(cmpAt(p))}</s><span class="pill p-green" style="font-size:13px">You save ${inr(cmpAt(p)-p.p)}</span>`:''}</div>
+          <div class="tiny muted" style="margin-top:4px">Inclusive of all taxes</div>
+          ${cmpAt(p)?`<div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line)"><div class="tiny b muted" style="letter-spacing:.06em;text-transform:uppercase">Price comparison</div>${cmpBars(p)}</div>`:''}
+        </div>
+        <div style="margin-bottom:16px">${p.s<=0?'<span class="pill p-dark">● Sold out</span>':p.s<=3?`<span class="pill p-amber">● Hurry! Only ${p.s} left in stock</span>`:'<span class="pill p-green">● In stock</span>'}
+          <span class="tiny muted" style="margin-left:6px">Live stock — updated with every sale in our store</span></div>
+        ${p.s>0?`<div class="row wrap-ok">
+          <div class="qty"><button onclick="pdq(-1)">−</button><span id="pdq">1</span><button onclick="pdq(1,${p.s})">+</button></div>
+          <button class="btn btn-brand btn-lg" style="flex:1" onclick="addToCart('${p.id}',+$('#pdq').textContent)">Add to cart</button>
+          <button class="btn btn-dark btn-lg" onclick="addToCart('${p.id}',+$('#pdq').textContent);go('#/cart')">Buy now</button>
+        </div>`:`<div class="row wrap-ok"><button class="btn btn-lg btn-ghost" style="flex:1" disabled>Sold out</button></div>`}
+        <div class="row wrap-ok" style="margin-top:10px">
+          <a class="btn btn-wa" style="flex:1" target="_blank" rel="noopener" href="${waLink(STORE.wa,waTxt)}">💬 Order on WhatsApp</a>
+          <button class="btn" onclick="toggleWish('${p.id}')">♥ Wishlist</button>
+          <button class="btn" onclick="shareP('${p.id}')">↗ Share</button>
+        </div>
+        <div class="card pad" style="margin-top:18px;box-shadow:none">
+          <b class="small">Check delivery</b>
+          <form class="row" style="margin-top:8px" onsubmit="event.preventDefault();pinCheck(this.pin.value)"><input class="inp" name="pin" placeholder="Enter pincode" maxlength="6" inputmode="numeric" style="max-width:200px"><button class="btn btn-sm">Check</button></form>
+          <div id="pinr" class="small" style="margin-top:8px;color:var(--muted)">Free store pickup at MG Road, Gauribidanur. Free delivery above ${inr(DB.settings.freeAbove)}.</div>
+        </div>
+        <div class="assure">
+          <div>✅ 100% showroom article — brand new & unused</div>
+          <div>🎁 Gift packing available (+${inr(DB.settings.gift)})</div>
+          <div>🚚 Home delivery or free store pickup</div>
+          <div>${has(p,'warranty')?'🛡️ Comes with company warranty':'📦 Bulk / wholesale enquiries welcome'}</div>
+        </div>
+        <h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin:26px 0 8px">Product details</h3>
+        <table class="tbl specs card" style="box-shadow:none">${specs.map(s=>`<tr><td>${esc(s[0])}</td><td><b>${esc(s[1])}</b></td></tr>`).join('')}</table>
+      </div>
+    </div>
+    ${similar.length?`<section class="sec" style="padding-top:0"><div class="sec-h"><h2>More in ${c.n}</h2><a class="more" href="#/shop?cat=${c.id}">View all →</a></div><div class="hscroll">${similar.map(card).join('')}</div></section>`:''}
+  </div>`;
+}
+function pdq(d,max=99){const e=$('#pdq');let v=+e.textContent+d;v=Math.max(1,Math.min(max,v));e.textContent=v}
+function pinCheck(pin){
+  const e=$('#pinr'); if(!/^\d{6}$/.test(pin)){e.innerHTML='<span style="color:var(--red)">Please enter a valid 6-digit pincode</span>';return}
+  const d=pin.startsWith('5612')?'Same / next day delivery 🚀':pin.startsWith('56')||pin.startsWith('57')||pin.startsWith('58')?'Delivery in 2–3 days':'Delivery in 4–6 days';
+  e.innerHTML=`<span style="color:var(--green);font-weight:700">✓ Delivers to ${pin}</span> — ${d}`;
+}
+function shareP(id){const p=P(id);const t=`${p.b} ${p.n} — only ${inr(p.p)} at C2C Gift House (MRP ${inr(cmpAt(p))})`;
+  if(navigator.share) navigator.share({title:p.n,text:t,url:location.href}).catch(()=>{}); else {navigator.clipboard&&navigator.clipboard.writeText(t+' '+location.href);toast('Link copied — paste it in WhatsApp!')}}
+
+function pgOffers(){
+  const V=visible().filter(p=>p.s>0);
+  const wk=V.filter(p=>has(p,'weekend')), combo=V.filter(p=>has(p,'combo')), big=V.filter(p=>off(p)>=70).sort((a,b)=>off(b)-off(a)), lim=V.filter(p=>has(p,'limited')||p.s<=3);
+  AFTER.push(startCountdown);
+  return `<div class="wrap" style="padding-top:26px">
+    <div class="banner b-dark"><div><span class="eyebrow" style="background:rgba(255,255,255,.12);color:#ffd88a">📅 Weekend offer · Saturday & Sunday</span><h2 style="margin-top:12px">One-time prices. Limited pieces.</h2><p>Offers are valid in-store and online till stock lasts.</p></div>
+    <div><div class="tiny" id="cdLabel" style="opacity:.75;margin-bottom:8px;letter-spacing:.08em;text-transform:uppercase">Ends in</div><div class="cd" id="cd"></div></div></div>
+    <section class="sec"><div class="sec-h"><h2>Weekend deals</h2></div><div class="pgrid">${wk.map(card).join('')}</div></section>
+    <section class="sec" style="padding-top:0"><div class="sec-h"><div><h2>70% off & more</h2><p>Unbelievable prices on top brands</p></div></div><div class="hscroll">${big.map(card).join('')}</div></section>
+    <section class="sec" style="padding-top:0"><div class="sec-h"><div><h2>Combos & Buy 1 Get 1</h2><p>More value in every pack</p></div></div><div class="pgrid">${combo.map(card).join('')}</div></section>
+    <section class="sec" style="padding-top:0"><div class="sec-h"><div><h2>⚠ Limited stock — almost gone</h2><p>Grab them before they're sold out</p></div></div><div class="hscroll">${lim.map(card).join('')}</div></section>
+  </div>`;
+}
+
+function pgCart(){
+  const T=cartTotals(), S=DB.settings;
+  if(!T.lines.length) return `<div class="wrap"><div class="empty" style="padding:80px 0"><i>🛒</i><h2 style="color:var(--ink)">Your cart is empty</h2><p>Discover branded products at up to 80% below MRP.</p><a href="#/shop" class="btn btn-brand btn-lg">Start shopping</a></div></div>`;
+  const need=Math.max(0,S.freeAbove-T.sub);
+  return `<div class="wrap"><div class="cart-g">
+    <div><h1 style="font-size:30px;margin:6px 0 16px">Your cart <span class="muted" style="font-size:18px;font-family:var(--f)">(${cartCount()} items)</span></h1>
+      ${need>0?`<div class="live" style="background:var(--amber-soft);color:var(--amber-ink)"><span>🚚</span>Add ${inr(need)} more to get <b>FREE delivery</b></div>`:`<div class="live"><span class="dot"></span>Yay! Your order qualifies for <b>FREE delivery</b></div>`}
+      <div class="card" style="padding:4px 20px">${T.lines.map(l=>`<div class="cl">
+        <a href="#/p/${l.p.id}" class="mini">${img(l.p)}</a>
+        <div><div class="pc-brand">${esc(l.p.b)}</div><a href="#/p/${l.p.id}" class="b">${esc(l.p.n)}</a>
+          <div class="small" style="margin-top:4px"><b>${inr(l.p.p)}</b> ${cmpAt(l.p)>l.p.p?`<s class="muted">${inr(cmpAt(l.p))}</s> <span style="color:var(--green);font-weight:700">${off(l.p)}% off</span>`:''}</div>
+          ${l.p.s<=3?`<div class="tiny" style="color:var(--amber);font-weight:700">Only ${l.p.s} left</div>`:''}</div>
+        <div class="cl-r tr"><div class="qty sm"><button onclick="setCartQty('${l.p.id}',${l.q-1})">−</button><span>${l.q}</span><button onclick="setCartQty('${l.p.id}',${l.q+1})">+</button></div>
+          <div class="b" style="margin-top:8px">${inr(l.p.p*l.q)}</div><button class="tiny muted" style="border:0;background:none;text-decoration:underline" onclick="setCartQty('${l.p.id}',0)">Remove</button></div>
+      </div>`).join('')}</div>
+      <a href="#/shop" class="btn btn-ghost" style="margin-top:14px">← Continue shopping</a>
+    </div>
+    <aside class="card pad" style="position:sticky;top:90px">
+      <h3 style="font-family:var(--f);font-size:17px;font-weight:800;margin-bottom:10px">Order summary</h3>
+      <div class="sum-r"><span>Total MRP</span><span>${inr(T.mrp)}</span></div>
+      <div class="sum-r" style="color:var(--green);font-weight:700"><span>C2C discount</span><span>−${inr(T.save)}</span></div>
+      <div class="sum-r"><span>Subtotal</span><span>${inr(T.sub)}</span></div>
+      <div class="sum-r muted small"><span>Delivery</span><span>${need>0?inr(S.delFee):'FREE'} (or free store pickup)</span></div>
+      <div class="sum-r tot"><span>Estimated total</span><span>${inr(T.sub+(need>0?S.delFee:0))}</span></div>
+      <div class="pill p-green" style="margin:10px 0 16px;width:100%;justify-content:center;padding:8px">🎉 You're saving ${inr(T.save)} on this order</div>
+      <a href="#/checkout" class="btn btn-brand btn-lg w100">Proceed to checkout</a>
+      <p class="tiny muted" style="text-align:center;margin:12px 0 0">UPI · Cash on Delivery · Pay at store</p>
+    </aside>
+  </div></div>`;
+}
+
+function pgCheckout(){
+  const T=cartTotals(), S=DB.settings;
+  if(!T.lines.length){setTimeout(()=>go('#/cart'));return ''}
+  AFTER.push(ckCalc);
+  return `<div class="wrap"><form class="cart-g" onsubmit="placeOrder(event)" oninput="ckCalc()" onchange="ckCalc()">
+    <div>
+      <h1 style="font-size:30px;margin:6px 0 16px">Checkout</h1>
+      <div class="card pad" style="margin-bottom:16px"><h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:14px">1. Contact details</h3>
+        <div class="f2"><div class="field"><label>Full name</label><input class="inp" name="name" required></div>
+        <div class="field"><label>WhatsApp / mobile number</label><input class="inp" name="phone" required pattern="[0-9]{10}" inputmode="numeric" placeholder="10-digit number"></div></div></div>
+      <div class="card pad" style="margin-bottom:16px"><h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:14px">2. Delivery method</h3>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-bottom:14px">
+          <label class="opt"><input type="radio" name="mode" value="delivery" checked><div><b>🚚 Home delivery</b><div class="small muted">${inr(S.delFee)} · FREE above ${inr(S.freeAbove)}</div></div></label>
+          <label class="opt"><input type="radio" name="mode" value="pickup"><div><b>🏬 Store pickup</b><div class="small muted">FREE · MG Road, Gauribidanur</div></div></label>
+        </div>
+        <div id="addrBox"><div class="field"><label>Address</label><textarea class="inp" name="addr" placeholder="House no, street, area, town"></textarea></div>
+        <div class="f2"><div class="field"><label>Pincode</label><input class="inp" name="pin" maxlength="6" inputmode="numeric" placeholder="561208"></div><div class="field"><label>Landmark (optional)</label><input class="inp" name="lm"></div></div></div>
+      </div>
+      <div class="card pad" style="margin-bottom:16px"><h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:14px">3. Gift packing</h3>
+        <label class="check"><input type="checkbox" name="gift"> 🎁 Gift wrap this order (+${inr(S.gift)})</label>
+        <div class="field hide" id="giftMsg" style="margin-top:10px"><label>Gift message (printed on card)</label><input class="inp" name="msg" placeholder="Happy Birthday! With love…"></div>
+      </div>
+      <div class="card pad"><h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:14px">4. Payment</h3>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
+          <label class="opt"><input type="radio" name="pay" value="UPI" checked><div><b>UPI</b><div class="small muted">GPay, PhonePe, Paytm</div></div></label>
+          <label class="opt" id="codOpt"><input type="radio" name="pay" value="COD"><div><b>Cash on Delivery</b><div class="small muted">Pay when it arrives</div></div></label>
+          <label class="opt"><input type="radio" name="pay" value="Pay at store"><div><b>Pay at store</b><div class="small muted">For store pickup</div></div></label>
+        </div></div>
+    </div>
+    <aside class="card pad" style="position:sticky;top:90px">
+      <h3 style="font-family:var(--f);font-size:17px;font-weight:800;margin-bottom:12px">Your order</h3>
+      ${T.lines.map(l=>`<div class="row small" style="margin-bottom:10px"><div class="mini">${img(l.p)}</div><div style="flex:1;min-width:0"><div class="b" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(l.p.n)}</div><div class="muted">Qty ${l.q}</div></div><b>${inr(l.p.p*l.q)}</b></div>`).join('')}
+      <div style="border-top:1px solid var(--line);margin-top:6px;padding-top:6px">
+        <div class="sum-r"><span>Subtotal</span><span>${inr(T.sub)}</span></div>
+        <div class="sum-r"><span>Delivery</span><span id="ckDel"></span></div>
+        <div class="sum-r" id="ckGiftR"><span>Gift packing</span><span id="ckGift"></span></div>
+        <div class="field" style="margin:8px 0 0"><div class="row"><input class="inp" name="coupon" placeholder="Coupon code (try C2C50)" style="text-transform:uppercase"></div></div>
+        <div class="sum-r" id="ckDiscR" style="color:var(--green);font-weight:700"><span>Coupon</span><span id="ckDisc"></span></div>
+        <div class="sum-r tot"><span>Total</span><span id="ckTot"></span></div>
+        <div class="tiny" style="color:var(--green);font-weight:700;margin-bottom:14px">You save ${inr(T.save)} vs MRP</div>
+      </div>
+      <button class="btn btn-brand btn-lg w100">Place order</button>
+      <p class="tiny muted" style="text-align:center;margin:12px 0 0">You'll get your order confirmation on WhatsApp.</p>
+    </aside>
+  </form></div>`;
+}
+function ckVals(){
+  const f=$('form.cart-g'); if(!f) return null; const T=cartTotals(), S=DB.settings;
+  const mode=f.mode.value, gift=f.gift.checked?S.gift:0, del=mode==='pickup'||T.sub>=S.freeAbove?0:S.delFee;
+  const code=(f.coupon.value||'').trim().toUpperCase(); const disc=code==='C2C50'&&T.sub>=499?50:0;
+  return {f,T,mode,gift,del,disc,code,total:T.sub+del+gift-disc};
+}
+function ckCalc(){
+  const v=ckVals(); if(!v) return;
+  $('#addrBox').classList.toggle('hide',v.mode==='pickup');
+  $('#giftMsg').classList.toggle('hide',!v.gift);
+  $('#ckDel').textContent=v.del?inr(v.del):'FREE';
+  $('#ckGiftR').classList.toggle('hide',!v.gift); $('#ckGift').textContent=inr(v.gift);
+  $('#ckDiscR').classList.toggle('hide',!v.disc); $('#ckDisc').textContent='−'+inr(v.disc);
+  $('#ckTot').textContent=inr(v.total);
+}
+function orderText(o){return `Hi C2C Gift House! 🛍️ New order *${o.id}* from the website:\n\n${o.items.map(i=>`• ${P(i[0])?.n} × ${i[1]} = ${inr(i[1]*i[2])}`).join('\n')}\n\nSubtotal: ${inr(o.sub)}${o.del?`\nDelivery: ${inr(o.del)}`:''}${o.gift?`\nGift packing: ${inr(o.gift)}`:''}${o.disc?`\nCoupon: −${inr(o.disc)}`:''}\n*Total: ${inr(o.total)}* (${o.pay})\n\n${o.mode==='pickup'?'🏬 Store pickup':'🚚 Deliver to: '+o.cust.addr+' – '+o.cust.pin}${o.msg?`\n🎁 Gift message: ${o.msg}`:''}\nName: ${o.cust.name}\nPhone: ${o.cust.phone}`}
+function placeOrder(e){
+  e.preventDefault(); const v=ckVals(), f=v.f;
+  if(v.mode==='delivery'&&(!f.addr.value.trim()||!/^\d{6}$/.test(f.pin.value))){toast('Please enter your address and a 6-digit pincode','warn');return}
+  for(const l of v.T.lines) if(l.q>l.p.s){toast(`Sorry, only ${l.p.s} of ${esc(l.p.n)} left`,'err');return}
+  const id='C2C'+(DB.seq.ord++);
+  const o={id,ch:'online',ts:Date.now(),items:v.T.lines.map(l=>[l.p.id,l.q,l.p.p]),sub:v.T.sub,del:v.del,gift:v.gift,disc:v.disc,total:v.total,pay:f.pay.value,status:'Placed',mode:v.mode,msg:f.msg.value,
+    cust:{name:f.name.value.trim(),phone:f.phone.value.trim(),addr:v.mode==='pickup'?'Store pickup':f.addr.value.trim()+(f.lm.value?' (Near '+f.lm.value+')':''),pin:f.pin.value}};
+  v.T.lines.forEach(l=>l.p.s-=l.q);
+  DB.orders.push(o); DB.cart=[]; save();
+  window.open(waLink(STORE.wa,orderText(o)),'_blank');
+  go('#/order/'+id+'?new=1');
+}
+function orderSteps(o){
+  const st=['Placed','Packed',o.mode==='pickup'?'Ready':'Dispatched',o.mode==='pickup'?'Collected':'Delivered'];
+  const map={Placed:0,Packed:1,Dispatched:2,Delivered:3,Completed:3};
+  const i=map[o.status]??0;
+  return `<div class="steps">${st.map((s,k)=>`<div class="step ${k<=i?'done':''}"><i>${k<=i?'✓':k+1}</i>${s}</div>`).join('')}</div>`;
+}
+function pgOrder(id){
+  const o=DB.orders.find(x=>x.id===id); if(!o) return `<div class="wrap empty"><i>📦</i><b>Order not found</b><p><a href="#/track" class="btn">Track an order</a></p></div>`;
+  const isNew=parseHash().q.new;
+  const txt=orderText(o);
+  if(o.pay==='UPI'&&o.status==='Placed'&&DB.settings.upi) AFTER.push(()=>drawUPI('#oqr',o.total,o.id));
+  return `<div class="wrap" style="max-width:820px;padding-top:26px;padding-bottom:40px">
+    ${isNew?`<div class="card pad" style="text-align:center;padding:34px 20px;margin-bottom:16px;background:linear-gradient(180deg,var(--green-soft),var(--surface) 70%)"><div style="font-size:52px">🎉</div><h1 style="font-size:30px;margin:8px 0">Thank you, ${esc(o.cust.name.split(' ')[0])}!</h1><p class="muted" style="margin:0">Your order <b>${o.id}</b> has been placed. You saved ${inr(o.items.reduce((a,i)=>a+((cmpAt(P(i[0])||{})||i[2])-i[2])*i[1],0))} vs MRP.</p></div>`:''}
+    <div class="card pad">
+      <div class="row wrap-ok"><div><div class="tiny muted b" style="letter-spacing:.08em;text-transform:uppercase">Order</div><h2 style="font-size:24px">${o.id}</h2><div class="small muted">${fdt(o.ts)} · ${o.mode==='pickup'?'Store pickup':'Home delivery'} · ${o.pay}</div></div><span class="sp"></span><span class="pill ${o.status==='Delivered'?'p-green':'p-blue'}" style="font-size:13px">${o.status}</span></div>
+      ${orderSteps(o)}
+    </div>
+    ${o.pay==='UPI'&&o.status==='Placed'&&!DB.settings.upi?`<div class="card pad" style="margin-top:16px"><b>💳 UPI payment</b><p class="small muted" style="margin:4px 0 0">We'll share our UPI payment details with you on WhatsApp after confirming your order.</p></div>`:''}${o.pay==='UPI'&&o.status==='Placed'&&DB.settings.upi?`<div class="card pad" style="margin-top:16px"><div class="qrbox" style="background:none;padding:0"><div id="oqr"></div><div><b>Pay ${inr(o.total)} by UPI</b><p class="small muted" style="margin:4px 0 10px">Scan with GPay, PhonePe or Paytm. UPI ID: <b>${esc(DB.settings.upi)}</b></p></div></div></div>`:''}
+    <div class="card pad" style="margin-top:16px">
+      ${o.items.map(i=>{const p=P(i[0])||{n:'Item',b:'',e:'📦',c:'gifts'};return `<div class="row" style="padding:8px 0"><div class="mini">${img(p)}</div><div style="flex:1"><b class="small">${esc(p.n)}</b><div class="tiny muted">Qty ${i[1]} × ${inr(i[2])}</div></div><b>${inr(i[1]*i[2])}</b></div>`}).join('')}
+      <div style="border-top:1px solid var(--line);margin-top:8px;padding-top:8px">
+        <div class="sum-r"><span>Subtotal</span><span>${inr(o.sub)}</span></div>
+        <div class="sum-r"><span>Delivery</span><span>${o.del?inr(o.del):'FREE'}</span></div>
+        ${o.gift?`<div class="sum-r"><span>Gift packing</span><span>${inr(o.gift)}</span></div>`:''}
+        ${o.disc?`<div class="sum-r" style="color:var(--green)"><span>Coupon</span><span>−${inr(o.disc)}</span></div>`:''}
+        <div class="sum-r tot"><span>Total</span><span>${inr(o.total)}</span></div></div>
+      <p class="small muted">${o.mode==='pickup'?'📍 Pick up at: '+STORE.addr:'🚚 Deliver to: '+esc(o.cust.addr)+' – '+esc(o.cust.pin)}</p>
+    </div>
+    <div class="row wrap-ok" style="margin-top:16px"><a class="btn btn-wa btn-lg" target="_blank" rel="noopener" href="${waLink(STORE.wa,txt)}">💬 Send order on WhatsApp</a><a href="#/shop" class="btn btn-lg">Continue shopping</a></div>
+  </div>`;
+}
+function pgTrack(q){
+  const t=(q.id||'').trim().toUpperCase(), ph=(q.ph||'').trim();
+  const res=t||ph?DB.orders.filter(o=>o.ch==='online'&&((t&&o.id===t)||(ph&&o.cust.phone===ph))).reverse():[];
+  const sample=DB.orders.filter(o=>o.ch==='online').slice(-1)[0];
+  return `<div class="wrap" style="max-width:760px;padding:34px 20px 50px">
+    <h1 style="font-size:32px">Track your order</h1><p class="muted">Enter your order ID or the mobile number used at checkout.</p>
+    <form class="card pad" onsubmit="event.preventDefault();go('#/track?id='+encodeURIComponent(this.id_.value)+'&ph='+encodeURIComponent(this.ph.value))">
+      <div class="f2"><div class="field"><label>Order ID</label><input class="inp" name="id_" placeholder="e.g. ${sample?sample.id:'C2C501'}" value="${esc(q.id||'')}"></div><div class="field"><label>or Mobile number</label><input class="inp" name="ph" value="${esc(ph)}" inputmode="numeric"></div></div>
+      <button class="btn btn-brand">Track order</button>
+    </form>
+    ${t||ph?(res.length?res.map(o=>`<a href="#/order/${o.id}" class="card pad" style="display:block;margin-top:14px"><div class="row"><b>${o.id}</b><span class="muted small">${fdt(o.ts)}</span><span class="sp"></span><span class="pill p-blue">${o.status}</span></div>${orderSteps(o)}</a>`).join(''):`<div class="empty card" style="margin-top:14px"><i>🔎</i>No orders found. Check the ID or number.</div>`):''}
+  </div>`;
+}
+function pgWholesale(){
+  const W=visible().filter(p=>has(p,'wholesale'));
+  return `<div class="wrap" style="padding-top:30px">
+    <div class="hero-g" style="align-items:start">
+      <div><span class="eyebrow">📦 Wholesale & bulk orders</span><h1 style="font-size:clamp(30px,4vw,46px);margin:16px 0 12px">Buying in bulk? Get our best price.</h1>
+        <p class="lead muted" style="font-size:16px">We supply branded products in bulk for shops, schools, offices, weddings, housewarmings and corporate gifting — with gift packing on request.</p>
+        <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:20px">
+          ${[['💍','Wedding return gifts','Crockery & glassware from ₹99'],['🏪','Retailers & shops','FMCG & daily essentials'],['🏫','Schools & offices','Pens, paper, stationery'],['🏢','Corporate gifting','Branded gift sets & combos']].map(x=>`<div class="card pad" style="box-shadow:none;padding:16px"><div style="font-size:26px">${x[0]}</div><b>${x[1]}</b><div class="small muted">${x[2]}</div></div>`).join('')}
+        </div></div>
+      <form class="card pad" onsubmit="submitEnq(event)" style="padding:26px"><h3 style="font-size:22px;margin-bottom:6px">Request a bulk quote</h3><p class="small muted" style="margin:0 0 16px">We usually reply on WhatsApp within a few hours.</p>
+        <div class="f2"><div class="field"><label>Name</label><input class="inp" name="name" required></div><div class="field"><label>WhatsApp number</label><input class="inp" name="phone" required pattern="[0-9]{10}" inputmode="numeric"></div></div>
+        <div class="field"><label>Business / occasion</label><input class="inp" name="org" placeholder="e.g. Wedding on 12 Dec, 300 guests"></div>
+        <div class="field"><label>What do you need?</label><textarea class="inp" name="need" required placeholder="Products, quantity, budget per piece…"></textarea></div>
+        <button class="btn btn-brand btn-lg w100">Send enquiry</button></form>
+    </div>
+    <section class="sec"><div class="sec-h"><div><h2>Available for wholesale</h2><p>Bulk quantity in stock</p></div></div><div class="pgrid">${W.map(card).join('')}</div></section>
+  </div>`;
+}
+function submitEnq(e){e.preventDefault();const f=new FormData(e.target);window.open(waLink(STORE.wa,`Hi C2C Gift House! 📦 Bulk / wholesale enquiry from the website:\n\nName: ${f.get('name')}\nPhone: ${f.get('phone')}${f.get('org')?`\nFor: ${f.get('org')}`:''}\n\nNeed: ${f.get('need')}`),'_blank');DB.enq.unshift({id:'E'+Date.now(),name:f.get('name'),phone:f.get('phone'),org:f.get('org'),need:f.get('need'),ts:Date.now(),done:false});save();e.target.reset();toast('✓ Enquiry sent! We will contact you on WhatsApp soon.','ok')}
+function pgVisit(){
+  const faq=[['Are your products original?','Yes. All our products are 100% showroom articles — brand new and unused. We do not sell Flipkart/Amazon returns, lot or second-hand stock.'],
+    ['Why are your prices so low?','We buy surplus and closing stock directly in bulk from brands and distributors, and pass the savings to you. Every product shows MRP and online price so you can compare.'],
+    ['Do you deliver?','Yes — home delivery is available with optional gift packing. Delivery is free above '+inr(DB.settings.freeAbove)+'. You can also pick up free from our store.'],
+    ['What if an item is out of stock?','Most popular items are restocked regularly. Follow our Instagram or WhatsApp group for restock updates, or message us on WhatsApp to check availability.'],
+    ['Do you sell wholesale?','Yes. We offer special prices for bulk orders for weddings, events, shops, schools and offices. Send us an enquiry from the Wholesale page.'],
+    ['How do I pay?','UPI (GPay / PhonePe / Paytm), cash, card in-store, or Cash on Delivery.']];
+  return `<div class="wrap" style="padding-top:30px">
+    <div class="hero-g" style="align-items:start">
+      <div><span class="eyebrow">📍 Our store</span><h1 style="font-size:clamp(30px,4vw,46px);margin:16px 0 12px">Come visit C2C Gift House</h1>
+      <p class="lead muted" style="font-size:16px">We opened our doors on ${STORE.opened} on MG Road, Gauribidanur. What started as a WhatsApp group sharing branded deals is now a full store — with hundreds of new products arriving every month.</p>
+      <div class="card pad" style="margin-top:20px">
+        <p style="margin:0 0 10px"><b>Address</b><br>${STORE.addr}</p>
+        <p style="margin:0 0 10px"><b>Store hours</b><br>${esc(DB.settings.hours)}</p>
+        <p style="margin:0 0 16px"><b>Phone</b><br>${STORE.phone} · ${STORE.phone2} (${STORE.owner})</p>
+        <div class="row wrap-ok"><a class="btn btn-brand" target="_blank" rel="noopener" href="https://maps.google.com/?q=${STORE.geo}">Get directions</a><a class="btn" href="tel:+91${STORE.phone}">📞 Call</a><a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink(STORE.wa,'Hi C2C Gift House!')}">💬 WhatsApp</a></div>
+      </div></div>
+      <div class="card" style="overflow:hidden;min-height:420px"><iframe title="Map" src="https://maps.google.com/maps?q=${STORE.geo}&z=16&output=embed" style="border:0;width:100%;height:100%;min-height:420px" loading="lazy"></iframe></div>
+    </div>
+    <section class="sec" id="faq"><div class="sec-h"><h2>Frequently asked questions</h2></div>
+      <div class="card">${faq.map((f,i)=>`<details style="padding:16px 20px;${i?'border-top:1px solid var(--line)':''}"><summary class="b" style="cursor:pointer">${f[0]}</summary><p class="muted" style="margin:10px 0 0">${f[1]}</p></details>`).join('')}</div></section>
+  </div>`;
+}
+function pgWish(){
+  const L=DB.wish.map(P).filter(Boolean);
+  return `<div class="wrap" style="padding:26px 20px 40px"><h1 style="font-size:30px;margin-bottom:16px">My wishlist</h1>${L.length?`<div class="pgrid">${L.map(card).join('')}</div>`:`<div class="empty card"><i>♡</i><b>No saved items yet</b><p>Tap the heart on any product to save it here.</p><a class="btn btn-brand" href="#/shop">Browse products</a></div>`}</div>`;
+}
+
+/* ============================================================
+   ADMIN
+   ============================================================ */
+function pgLogin(){
+  AFTER.push(()=>{const i=$('.pin input');i&&i.focus()});
+  return `<div class="login"><div class="card" style="text-align:center">
+    <div class="logo" style="justify-content:center"><div class="logo-m">C2C</div><div class="logo-t" style="text-align:left"><b>C2C Gift House</b><span>Shop admin</span></div></div>
+    <h2 style="margin-top:22px;font-size:24px">Staff login</h2><p class="small muted" style="margin:6px 0 0">Enter your 4-digit PIN</p>
+    <form onsubmit="event.preventDefault();doLogin()"><div class="pin">${[0,1,2,3].map(i=>`<input maxlength="1" inputmode="numeric" type="password" oninput="if(this.value&&this.nextElementSibling)this.nextElementSibling.focus();if(${i}===3)doLogin()">`).join('')}</div>
+    <button class="btn btn-brand w100 btn-lg">Login</button></form>
+    <p class="tiny muted" style="margin:16px 0 0;background:var(--gold-soft);padding:8px;border-radius:8px">Demo PIN: <b>${DB.settings.pin}</b></p>
+    <a href="#/" class="small muted" style="display:inline-block;margin-top:14px">← Back to website</a>
+  </div></div>`;
+}
+function doLogin(){const v=$$('.pin input').map(i=>i.value).join('');if(v.length<4)return;if(v===DB.settings.pin){setAuth(true);render();toast('Welcome back, '+STORE.owner.split(' ')[0]+'! 👋','ok')}else{toast('Wrong PIN','err');$$('.pin input').forEach(i=>i.value='');$('.pin input').focus()}}
+
+function admShell(active,title,content,actions=''){
+  const pend=DB.orders.filter(o=>o.ch==='online'&&['Placed','Packed'].includes(o.status)).length;
+  const low=DB.products.filter(p=>p.s<=3).length;
+  const nl=(k,href,ic,l,badge)=>`<a href="${href}" class="nl ${active===k?'on':''}">${ic}${l}${badge?`<span class="nb">${badge}</span>`:''}</a>`;
+  return `<div class="adm">
+    <aside class="side" id="side">
+      <a href="#/admin" class="logo"><div class="logo-m">C2C</div><div class="logo-t"><b>C2C Gift House</b><span>Shop admin</span></div></a>
+      ${nl('dash','#/admin',I.dash,'Dashboard')}
+      ${nl('pos','#/admin/pos',I.scan,'Billing & Scanner')}
+      <div class="sd">Stock</div>
+      ${nl('inventory','#/admin/inventory',I.box,'Inventory',low?low+' low':'')}
+      ${nl('product','#/admin/product/new',I.plus,'Add product')}
+      ${nl('labels','#/admin/labels',I.label,'Barcode labels')}
+      <div class="sd">Sales</div>
+      ${nl('orders','#/admin/orders',I.truck,'Online orders',pend||'')}
+      ${nl('sales','#/admin/sales',I.chart,'Sales & reports')}
+      ${nl('settings','#/admin/settings',I.cog,'Store settings')}
+      <div class="side-f">
+        <a href="#/" class="nl">${I.globe}View website</a>
+        <a href="javascript:void(0)" class="nl" onclick="setAuth(false);go('#/')">${I.out}Logout</a>
+      </div>
+    </aside>
+    <div class="adm-main">
+      <header class="adm-top"><button class="icon-btn menu-btn" onclick="$('#side').classList.toggle('open')" aria-label="Menu">${I.menu}</button><h1>${title}</h1><span class="sp"></span>${actions}<button class="icon-btn theme-btn" onclick="toggleTheme()" aria-label="Switch light / dark mode" title="Light / dark mode"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button></header>
+      <div class="adm-body" onclick="if(innerWidth<860&&!event.target.closest('.menu-btn'))$('#side').classList.remove('open')">${content}</div>
+    </div>
+    <nav class="tabbar">
+      <a href="#/admin" class="${active==='dash'?'on':''}">${I.dash}Home</a>
+      <a href="#/admin/pos" class="${active==='pos'?'on':''}">${I.scan}Billing</a>
+      <a href="#/admin/inventory" class="${active==='inventory'?'on':''}">${I.box}Stock</a>
+      <a href="#/admin/orders" class="${active==='orders'?'on':''}">${I.truck}Orders${pend?`<span class="count">${pend}</span>`:''}</a>
+      <a href="javascript:void(0)" onclick="$('#side').classList.add('open')">${I.more}More</a>
+    </nav>
+  </div>`;
+}
+
+/* ---------- charts ---------- */
+function barChart(data,{h=230}={}){
+  const W=720,H=h,pl=46,pr=10,pt=22,pb=28,iw=W-pl-pr,ih=H-pt-pb;
+  const max=Math.max(...data.map(d=>d.v),1); const step=Math.pow(10,Math.floor(Math.log10(max))); const nice=Math.ceil(max/step/ (max/step>5?1:.5))*step*(max/step>5?1:.5)||1;
+  const cw=iw/data.length, bw=Math.min(28,cw*.62);
+  const mi=data.reduce((m,d,i)=>d.v>data[m].v?i:m,0);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Daily sales bar chart">`;
+  for(let i=0;i<=4;i++){const y=pt+ih-ih*i/4;s+=`<line class="gl" x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}"/><text class="ax" x="${pl-8}" y="${y+4}" text-anchor="end">${kfmt(nice*i/4)}</text>`}
+  data.forEach((d,i)=>{
+    const bh=Math.max(d.v?2:0,ih*d.v/nice), x=pl+i*cw+(cw-bw)/2, y=pt+ih-bh, r=Math.min(4,bw/2,bh);
+    const path=bh?`M${x},${y+bh}V${y+r}Q${x},${y} ${x+r},${y}H${x+bw-r}Q${x+bw},${y} ${x+bw},${y+r}V${y+bh}Z`:'';
+    s+=`<g class="col" data-tip="<b>${inr(d.v)}</b><br>${d.label}${d.sub?'<br>'+d.sub:''}"><rect class="hit" x="${pl+i*cw}" y="${pt}" width="${cw}" height="${ih}"/><path class="bar ${d.hl?'today':''}" d="${path}"/></g>`;
+    if(i===mi||i===data.length-1) s+=`<text class="dl" x="${x+bw/2}" y="${y-6}" text-anchor="middle">${kfmt(d.v)}</text>`;
+    const every=Math.ceil(data.length/10);
+    if(i%every===0||i===data.length-1) s+=`<text class="ax" x="${x+bw/2}" y="${H-8}" text-anchor="middle">${d.short}</text>`;
+  });
+  return `<div class="chart">${s}</svg></div>`;
+}
+function hbars(rows,fmt=inr){
+  const mx=Math.max(...rows.map(r=>r.v),1);
+  return `<div class="hb">${rows.map(r=>`<div class="hb-r" data-tip="<b>${esc(r.l)}</b><br>${fmt(r.v)}${r.sub?'<br>'+r.sub:''}"><span class="l" title="${esc(r.l)}">${esc(r.l)}</span><div class="hb-t"><div class="hb-f" style="width:${Math.max(2,r.v/mx*100)}%"></div></div><span class="v">${fmt(r.v)}</span></div>`).join('')}</div>`;
+}
+function dailySeries(days){
+  const out=[]; const t0=startOfDay();
+  for(let d=days-1;d>=0;d--){const s=t0-d*DAY,e=s+DAY;const os=DB.orders.filter(o=>o.ts>=s&&o.ts<e);
+    out.push({v:os.reduce((a,o)=>a+o.total,0),label:new Date(s).toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'}),short:d===0?'Today':new Date(s).toLocaleDateString('en-IN',{day:'numeric',month:'short'}),sub:os.length+' bills / orders',hl:d===0})}
+  return out;
+}
+
+function pgDash(){
+  const t0=startOfDay(), y0=t0-DAY, now=Date.now();
+  const today=DB.orders.filter(o=>o.ts>=t0), yest=DB.orders.filter(o=>o.ts>=y0&&o.ts<y0+(now-t0));
+  const rev=today.reduce((a,o)=>a+o.total,0), revY=yest.reduce((a,o)=>a+o.total,0);
+  const store=today.filter(o=>o.ch==='store'), online=today.filter(o=>o.ch==='online');
+  const pend=DB.orders.filter(o=>o.ch==='online'&&['Placed','Packed'].includes(o.status));
+  const low=DB.products.filter(p=>p.s<=3).sort((a,b)=>a.s-b.s);
+  const invVal=DB.products.reduce((a,p)=>a+p.p*Math.max(0,p.s),0), units=DB.products.reduce((a,p)=>a+Math.max(0,p.s),0);
+  const sm7=soldMap(t0-6*DAY); const top=Object.entries(sm7).sort((a,b)=>b[1]-a[1]).slice(0,6).map(([id,q])=>({l:P(id)?.n||id,v:q,sub:P(id)?.b}));
+  const recent=[...DB.orders].reverse().slice(0,7);
+  const chg=revY?Math.round((rev-revY)/revY*100):0;
+  const content=`
+    <div class="live"><span class="dot"></span><span>Website is live & synced — every sale you scan in the shop updates stock on the website instantly.</span></div>
+    <div class="kpis">
+      <div class="kpi"><span>💰 Today's sales</span><b>${inr(rev)}</b><small class="${chg>=0?'up':'dn'}">${chg>=0?'▲':'▼'} ${Math.abs(chg)}% vs yesterday (same time)</small></div>
+      <div class="kpi"><span>🧾 Shop bills today</span><b>${store.length}</b><small>${inr(store.reduce((a,o)=>a+o.total,0))} in-store</small></div>
+      <div class="kpi"><span>🌐 Online orders today</span><b>${online.length}</b><small>${pend.length} waiting to pack / dispatch</small></div>
+      <div class="kpi"><span>⚠️ Low / out of stock</span><b>${low.length}</b><small>${DB.products.filter(p=>p.s<=0).length} sold out · ${DB.products.filter(p=>p.s>0&&p.s<=3).length} running low</small></div>
+      <div class="kpi"><span>📦 Stock value (retail)</span><b>${kfmt(invVal)}</b><small>${num(units)} units · ${DB.products.length} products</small></div>
+    </div>
+    <div class="row wrap-ok" style="margin-bottom:18px">
+      <a href="#/admin/pos" class="btn btn-brand btn-lg">${I.scan.replace('<svg','<svg width="20" height="20"')} Start billing (scan)</a>
+      <a href="#/admin/product/new" class="btn btn-lg">＋ Add new product</a>
+      <a href="#/admin/pos?mode=stockin" class="btn btn-lg">📥 Receive stock</a>
+      <a href="#/admin/orders" class="btn btn-lg">🚚 Pack orders (${pend.length})</a>
+    </div>
+    <div class="dash-g">
+      <div class="card pad"><div class="ch-h"><div><h3>Sales — last 14 days</h3><p>Shop + online, ₹ per day · today highlighted in gold</p></div><a href="#/admin/sales" class="small b" style="color:var(--brand)">Full report →</a></div>
+        ${barChart(dailySeries(14))}
+        <details class="small" style="margin-top:8px"><summary class="muted" style="cursor:pointer">View as table</summary><table class="tbl" style="margin-top:8px">${dailySeries(14).map(d=>`<tr><td>${d.label}</td><td class="num">${inr(d.v)}</td><td class="num muted">${d.sub}</td></tr>`).join('')}</table></details>
+      </div>
+      <div class="card pad"><div class="ch-h"><div><h3>Top sellers — 7 days</h3><p>Units sold (shop + online)</p></div></div>${hbars(top,v=>v+' pcs')}</div>
+    </div>
+    <div class="dash-g">
+      <div class="card pad"><div class="ch-h"><h3>Recent bills & orders</h3><a href="#/admin/sales" class="small b" style="color:var(--brand)">All →</a></div>
+        ${recent.map(o=>`<div class="list-r"><span class="pill ${o.ch==='store'?'p-gray':'p-blue'}">${o.ch==='store'?'🏬 Shop':'🌐 Online'}</span><div style="flex:1;min-width:0"><b class="small">${o.id}</b> <span class="tiny muted">${fdt(o.ts)} · ${o.items.length} item${o.items.length>1?'s':''} · ${o.pay}</span></div><b>${inr(o.total)}</b><button class="btn btn-xs" onclick="showReceipt('${o.id}')">View</button></div>`).join('')}
+      </div>
+      <div class="card pad"><div class="ch-h"><h3>⚠️ Restock soon</h3><a href="#/admin/inventory?f=low" class="small b" style="color:var(--brand)">Inventory →</a></div>
+        ${low.slice(0,7).map(p=>`<div class="list-r"><div class="mini">${img(p)}</div><div style="flex:1;min-width:0"><b class="small" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(p.n)}</b><span class="tiny muted">${esc(p.b)}</span></div><span class="pill ${p.s<=0?'p-red':'p-amber'}">${p.s<=0?'Sold out':p.s+' left'}</span></div>`).join('')}
+      </div>
+    </div>`;
+  return admShell('dash','Dashboard',content,`<span class="small muted nowrap">${new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'})}</span>`);
+}
+
+/* ---------- POS / Billing & Scanner ---------- */
+const POS={mode:'bill',lines:[],disc:0,pay:'Cash',phone:'',recv:'',inn:[],last:null};
+function onPOS(){const r=parseHash();return r.parts[0]==='admin'&&r.parts[1]==='pos'&&AUTH}
+function pgPOS(r){
+  if(r.q.mode&&['bill','stockin','check'].includes(r.q.mode)) POS.mode=r.q.mode;
+  const demo=['p29','p5','p44','p38','p67','p64','p21','p48'].map(P).filter(Boolean);
+  AFTER.push(()=>{posRefresh();const i=$('#scanInput');i&&i.focus()});
+  const content=`<div class="pos">
+    <section class="card pad">
+      <div class="row wrap-ok"><div class="seg" id="posSeg">
+        <button class="${POS.mode==='bill'?'on':''}" onclick="posMode('bill')">🧾 Billing</button>
+        <button class="${POS.mode==='stockin'?'on':''}" onclick="posMode('stockin')">📥 Stock in</button>
+        <button class="${POS.mode==='check'?'on':''}" onclick="posMode('check')">🔍 Price check</button></div></div>
+      <div class="scanbox" id="scanbox">
+        <div id="reader"></div>
+        <div class="scan-ph" id="scanPh"><div class="ic">📷</div><div><b style="color:#fff">Scan with phone camera</b><div class="small">Point the camera at the product barcode</div></div><button class="btn btn-gold" onclick="posCam()">Start camera scanner</button></div>
+      </div>
+      <form class="scan-in" onsubmit="event.preventDefault();scanSubmit()" autocomplete="off">${I.scan}<input class="inp" id="scanInput" placeholder="Scan with USB/Bluetooth scanner, or type barcode / product name" oninput="scanSugg(this.value)"><button class="btn btn-dark">Add</button><div class="sugg hide" id="sugg"></div></form>
+      <div class="tiny muted" style="margin-top:8px">💡 USB & Bluetooth barcode scanners work automatically — just scan, no need to click anywhere.</div>
+      <div style="margin-top:16px;border-top:1px solid var(--line);padding-top:14px"><div class="small b">Demo: no barcode handy? Tap to simulate a scan</div>
+        <div class="dchips">${demo.map(p=>`<button class="dchip" onclick="handleScan('${p.bc}')"><div class="mini">${img(p)}</div><div><b>${esc(p.n.length>22?p.n.slice(0,21)+'…':p.n)}</b><code>${p.bc}</code></div></button>`).join('')}
+          <button class="dchip" onclick="handleScan('8901030865278')"><div class="mini" style="display:grid;place-items:center;background:var(--surface2)">❓</div><div><b>Unknown barcode</b><code>8901030865278</code></div></button></div>
+      </div>
+    </section>
+    <section class="card pad" id="posPanel"></section>
+  </div>`;
+  return admShell('pos','Billing & Scanner',content,`<a class="btn btn-sm" href="#/admin/sales">Today's bills</a>`);
+}
+function posMode(m){POS.mode=m;$$('#posSeg button').forEach((b,i)=>b.classList.toggle('on',['bill','stockin','check'][i]===m));posRefresh();$('#scanInput').focus()}
+async function posCam(){
+  $('#scanPh').classList.add('hide');
+  const ok=await startCamera('reader',code=>handleScan(code));
+  if(!ok){$('#scanPh').classList.remove('hide');return}
+  if(!$('#scanbox .scan-line')) $('#scanbox').insertAdjacentHTML('beforeend','<div class="scan-line"></div><button class="btn btn-sm" style="position:absolute;top:10px;right:10px" onclick="stopCamera().then(()=>{$(\'#scanPh\').classList.remove(\'hide\');$(\'.scan-line\')?.remove();this.remove()})">Stop camera</button>');
+}
+function scanSubmit(){const i=$('#scanInput');const v=i.value.trim();if(!v)return;
+  const byCode=DB.products.find(p=>p.bc===v||p.id===v.toLowerCase());
+  if(byCode||/^\d{6,}$/.test(v)){handleScan(v)}else{const m=DB.products.filter(p=>(p.n+' '+p.b).toLowerCase().includes(v.toLowerCase()));if(m.length===1)handleScan(m[0].bc);else if(m.length)toast('Pick a product from the list','warn');else toast('No product matches “'+esc(v)+'”','warn')}
+  i.value='';$('#sugg').classList.add('hide')}
+function scanSugg(v){const s=$('#sugg');v=v.trim().toLowerCase();if(v.length<2||/^\d+$/.test(v)){s.classList.add('hide');return}
+  const m=DB.products.filter(p=>(p.n+' '+p.b).toLowerCase().includes(v)).slice(0,6);
+  if(!m.length){s.classList.add('hide');return}
+  s.innerHTML=m.map(p=>`<button type="button" onclick="handleScan('${p.bc}');$('#scanInput').value='';$('#sugg').classList.add('hide')"><div class="mini" style="width:32px;height:32px">${img(p)}</div><div style="flex:1"><b>${esc(p.n)}</b><div class="tiny muted">${esc(p.b)} · ${p.bc} · stock ${p.s}</div></div><b>${inr(p.p)}</b></button>`).join('');s.classList.remove('hide')}
+function handleScan(code){
+  code=String(code).trim(); const p=DB.products.find(x=>x.bc===code||x.id===code.toLowerCase());
+  if(!p){beep(false);
+    modal('New barcode scanned',`<div style="text-align:center"><div style="font-size:46px">🆕</div><p>Barcode <b style="font-family:monospace;font-size:16px">${esc(code)}</b> is not in your inventory yet.</p><p class="small muted">Add it as a new product — the barcode will be saved so next time it scans instantly.</p>
+      <div class="row" style="justify-content:center;margin-top:16px"><button class="btn" onclick="closeModal()">Cancel</button><a class="btn btn-brand" href="#/admin/product/new?bc=${encodeURIComponent(code)}">＋ Add as new product</a></div></div>`);
+    return}
+  beep(true); POS.last=p.id;
+  if(POS.mode==='bill'){
+    const l=POS.lines.find(x=>x.id===p.id), inBill=l?l.q:0;
+    if(inBill+1>p.s) toast(`⚠ Stock shows only ${Math.max(0,p.s)} of ${esc(p.n)} — check inventory`,'warn');
+    if(l) l.q++; else POS.lines.unshift({id:p.id,q:1,price:p.p});
+    toast(`+1 ${esc(p.n)} · ${inr(p.p)}`,'ok');
+  } else if(POS.mode==='stockin'){
+    const l=POS.inn.find(x=>x.id===p.id); if(l) l.q++; else POS.inn.unshift({id:p.id,q:1});
+    toast(`📥 +1 ${esc(p.n)} to receiving list`,'ok');
+  }
+  posRefresh(p.id);
+}
+function posRefresh(flashId){
+  const el=$('#posPanel'); if(!el) return;
+  if(POS.mode==='bill') el.innerHTML=posBillHTML();
+  else if(POS.mode==='stockin') el.innerHTML=posInHTML();
+  else el.innerHTML=posCheckHTML();
+  if(flashId){const r=$(`[data-line="${flashId}"]`);r&&r.classList.add('flash')}
+  if(POS.mode==='bill'){posTotals(); if(POS.pay==='UPI'&&DB.settings.upi) drawUPI('#upiqr',posCalc().total,'BILL')}
+}
+function posCalc(){const sub=POS.lines.reduce((a,l)=>a+l.q*l.price,0), mrp=POS.lines.reduce((a,l)=>a+l.q*(cmpAt(P(l.id))||l.price),0); const disc=Math.min(sub,Math.max(0,+POS.disc||0)); return {sub,mrp,disc,total:sub-disc,items:POS.lines.reduce((a,l)=>a+l.q,0)}}
+function posBillHTML(){
+  const c=posCalc();
+  return `<div class="row"><div><h3 style="font-family:var(--f);font-size:17px;font-weight:800">Bill #B${DB.seq.bill}</h3><div class="tiny muted">${fdt(Date.now())} · Counter 1</div></div><span class="sp"></span>${POS.lines.length?`<button class="btn btn-xs btn-ghost" onclick="if(confirm('Clear this bill?')){POS.lines=[];POS.disc=0;posRefresh()}">Clear</button>`:''}</div>
+  <div style="margin-top:8px;max-height:42vh;overflow:auto">${POS.lines.length?POS.lines.map(l=>{const p=P(l.id);return `<div class="bl" data-line="${p.id}"><div class="mini">${img(p)}</div><div style="min-width:0"><div class="nm">${esc(p.n)}</div><div class="tiny muted">${esc(p.b)} · ${inr(l.price)} ${cmpAt(p)>l.price?`<s>${inr(cmpAt(p))}</s>`:''} · stock ${p.s}</div></div>
+    <div class="qty sm"><button onclick="posQty('${p.id}',-1)">−</button><span>${l.q}</span><button onclick="posQty('${p.id}',1)">+</button></div><div class="lt">${inr(l.q*l.price)}</div></div>`}).join('')
+    :`<div class="empty" style="padding:40px 10px"><i>🧾</i><b style="color:var(--ink)">Scan a product to start the bill</b><p class="small">Use the camera, a barcode scanner, or tap a demo product.</p></div>`}</div>
+  <div class="f2" style="margin-top:14px"><div class="field" style="margin:0"><label>Extra discount (₹)</label><input class="inp" type="number" min="0" value="${POS.disc||''}" placeholder="0" oninput="POS.disc=this.value;posTotals()"></div>
+    <div class="field" style="margin:0"><label>Customer WhatsApp (optional)</label><input class="inp" inputmode="numeric" maxlength="10" value="${esc(POS.phone)}" placeholder="For e-receipt" oninput="POS.phone=this.value"></div></div>
+  <div class="bill-tot" id="posTot"></div>
+  <div class="pay">${[['Cash','💵'],['UPI','📱'],['Card','💳']].map(m=>`<button class="${POS.pay===m[0]?'on':''}" onclick="POS.pay='${m[0]}';posRefresh()"><span>${m[1]}</span>${m[0]}</button>`).join('')}</div>
+  ${POS.pay==='Cash'?`<div class="row"><div class="field" style="margin:0;flex:1"><label>Cash received (₹)</label><input class="inp" type="number" min="0" value="${POS.recv}" oninput="POS.recv=this.value;posTotals()"></div><div style="flex:1"><div class="small muted b">Change to return</div><div id="posChg" style="font-size:24px;font-weight:800">—</div></div></div>`:''}
+  ${POS.pay==='UPI'&&!DB.settings.upi?`<div class="qrbox"><div><b>No UPI ID added yet</b><p class="small muted" style="margin:4px 0">Add your UPI ID in <a href="#/admin/settings" style="text-decoration:underline">Store settings</a> to show a payment QR here.</p></div></div>`:''}${POS.pay==='UPI'&&DB.settings.upi?`<div class="qrbox"><div id="upiqr"></div><div><b>Customer scans to pay</b><p class="small muted" style="margin:4px 0">UPI ID: <b>${esc(DB.settings.upi)}</b><br>Amount is filled in automatically.</p></div></div>`:''}
+  <button class="btn btn-brand btn-lg w100" style="margin-top:14px;font-size:16px;padding:16px" ${POS.lines.length?'':'disabled'} onclick="completeSale()">✓ Complete sale & update stock</button>`;
+}
+function posTotals(){const c=posCalc(),e=$('#posTot');if(!e)return;
+  e.innerHTML=`<div class="sum-r"><span>${c.items} item${c.items===1?'':'s'} · MRP ${inr(c.mrp)}</span><span>${inr(c.sub)}</span></div>${c.disc?`<div class="sum-r" style="color:var(--green)"><span>Extra discount</span><span>−${inr(c.disc)}</span></div>`:''}
+  <div class="grand"><span>Total</span><b>${inr(c.total)}</b></div>${c.mrp>c.total?`<div class="tiny b" style="color:var(--green)">Customer saves ${inr(c.mrp-c.total)} vs MRP 🎉</div>`:''}`;
+  const ch=$('#posChg'); if(ch){const r=+POS.recv||0; ch.textContent=r?(r>=c.total?inr(r-c.total):'Short '+inr(c.total-r)):'—'; ch.style.color=r&&r<c.total?'var(--red)':'var(--green)'}
+}
+function posQty(id,d){const l=POS.lines.find(x=>x.id===id);if(!l)return;l.q+=d;if(l.q<=0)POS.lines=POS.lines.filter(x=>x.id!==id);posRefresh()}
+function completeSale(){
+  const c=posCalc(); if(!POS.lines.length) return;
+  if(POS.pay==='Cash'&&POS.recv&&+POS.recv<c.total){toast('Cash received is less than total','warn');return}
+  const id='B'+(DB.seq.bill++);
+  const o={id,ch:'store',ts:Date.now(),items:POS.lines.map(l=>[l.id,l.q,l.price]),sub:c.sub,disc:c.disc,total:c.total,pay:POS.pay,status:'Completed',phone:POS.phone,recv:+POS.recv||0};
+  const lowNow=[];
+  POS.lines.forEach(l=>{const p=P(l.id);p.s-=l.q;if(p.s<=3)lowNow.push(p)});
+  DB.orders.push(o); save();
+  POS.lines=[];POS.disc=0;POS.recv='';const ph=POS.phone;POS.phone='';
+  posRefresh(); showReceipt(id,true);
+  toast('✓ Sale saved · stock updated on website','ok');
+  if(lowNow.length) setTimeout(()=>toast(`⚠ Low stock: ${lowNow.map(p=>esc(p.n)+' ('+Math.max(0,p.s)+')').join(', ')}`,'warn'),900);
+}
+function receiptHTML(o){
+  const mrp=o.items.reduce((a,i)=>a+i[1]*(cmpAt(P(i[0])||{})||i[2]),0);
+  return `<div class="rcpt printable"><h4>C2C Gift House</h4><div class="c">MG Road, Gauribidanur – 561208<br>Ph: ${STORE.phone} / ${STORE.phone2}</div><hr>
+  <div class="r"><span>${o.ch==='store'?'Bill':'Order'}: ${o.id}</span><span>${fdt(o.ts)}</span></div>${o.cust?`<div>Customer: ${esc(o.cust.name)}</div>`:''}<hr>
+  ${o.items.map(i=>{const p=P(i[0])||{n:'Item'};return `<div>${esc(p.n)}</div><div class="r"><span>&nbsp; ${i[1]} × ${num(i[2])}</span><span>${num(i[1]*i[2])}</span></div>`}).join('')}<hr>
+  <div class="r"><span>Subtotal</span><span>${num(o.sub)}</span></div>${o.disc?`<div class="r"><span>Discount</span><span>-${num(o.disc)}</span></div>`:''}${o.del?`<div class="r"><span>Delivery</span><span>${num(o.del)}</span></div>`:''}${o.gift?`<div class="r"><span>Gift packing</span><span>${num(o.gift)}</span></div>`:''}
+  <div class="r big"><span>TOTAL</span><span>₹${num(o.total)}</span></div><div class="r"><span>Paid by</span><span>${o.pay}</span></div>${o.recv?`<div class="r"><span>Cash / Change</span><span>${num(o.recv)} / ${num(o.recv-o.total)}</span></div>`:''}<hr>
+  ${mrp>o.total?`<div class="c"><b>You saved ₹${num(mrp-o.total)} on MRP!</b></div><hr>`:''}
+  <div class="c">100% showroom articles<br>Thank you! Visit again 🙏<br>Instagram @${STORE.insta}</div></div>`;
+}
+function showReceipt(id,fresh){
+  const o=DB.orders.find(x=>x.id===id); if(!o) return;
+  const txt=`*C2C Gift House* — Bill ${o.id}\n${fdt(o.ts)}\n\n${o.items.map(i=>`${P(i[0])?.n} × ${i[1]} = ₹${num(i[1]*i[2])}`).join('\n')}\n\n*Total: ₹${num(o.total)}* (${o.pay})\n\nThank you for shopping with us! 🙏\nNew offers daily: instagram.com/${STORE.insta}`;
+  const ph=o.phone||o.cust?.phone;
+  modal(fresh?'✓ Sale complete':'Receipt',`${receiptHTML(o)}
+    <div class="row wrap-ok" style="margin-top:16px;justify-content:center"><button class="btn" onclick="window.print()">🖨 Print</button>
+    <a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink(ph?'91'+ph:'',txt)}">💬 Send on WhatsApp</a>
+    ${fresh?`<button class="btn btn-brand" onclick="closeModal();$('#scanInput')?.focus()">New bill</button>`:''}</div>`);
+}
+function posInHTML(){
+  return `<h3 style="font-family:var(--f);font-size:17px;font-weight:800">📥 Receive new stock</h3><p class="small muted" style="margin:4px 0 10px">Scan each piece as it comes out of the box. Each scan adds +1. Then tap “Update inventory”.</p>
+  ${POS.inn.length?POS.inn.map(l=>{const p=P(l.id);return `<div class="bl" data-line="${p.id}"><div class="mini">${img(p)}</div><div style="min-width:0"><div class="nm">${esc(p.n)}</div><div class="tiny muted">Stock ${p.s} → <b style="color:var(--green)">${p.s+l.q}</b></div></div>
+    <div class="qty sm"><button onclick="inQty('${p.id}',-1)">−</button><input value="${l.q}" inputmode="numeric" onchange="inSet('${p.id}',this.value)"><button onclick="inQty('${p.id}',1)">+</button></div><div class="lt">+${l.q}</div></div>`}).join('')
+  :`<div class="empty" style="padding:40px 10px"><i>📦</i><b style="color:var(--ink)">Scan products to add stock</b><p class="small">Unknown barcode? You'll be asked to add it as a new product.</p></div>`}
+  <button class="btn btn-brand btn-lg w100" style="margin-top:16px" ${POS.inn.length?'':'disabled'} onclick="applyStockIn()">Update inventory (+${POS.inn.reduce((a,l)=>a+l.q,0)} units)</button>`;
+}
+function inQty(id,d){const l=POS.inn.find(x=>x.id===id);l.q+=d;if(l.q<=0)POS.inn=POS.inn.filter(x=>x.id!==id);posRefresh()}
+function inSet(id,v){const l=POS.inn.find(x=>x.id===id);l.q=Math.max(0,parseInt(v)||0);if(!l.q)POS.inn=POS.inn.filter(x=>x.id!==id);posRefresh()}
+function applyStockIn(){
+  POS.inn.forEach(l=>{const p=P(l.id);p.s=Math.max(0,p.s)+l.q});
+  const n=POS.inn.reduce((a,l)=>a+l.q,0); POS.inn=[]; save(); posRefresh();
+  toast(`✓ ${n} units added — website stock updated`,'ok');
+}
+function posCheckHTML(){
+  const p=POS.last&&P(POS.last);
+  if(!p) return `<div class="empty" style="padding:60px 10px"><i>🔍</i><b style="color:var(--ink)">Scan any product to check its price & stock</b><p class="small">Useful when a customer asks “how much is this?”</p></div>`;
+  const sm=soldMap(startOfDay()-29*DAY)[p.id]||0;
+  return `<div class="pcheck"><div class="pc-hero">${img(p)}</div><div class="pc-brand">${esc(p.b)}</div><h2 style="font-size:24px;margin:4px 0 10px">${esc(p.n)}</h2>
+    <div style="font-size:42px;font-weight:800;letter-spacing:-.02em">${inr(p.p)}</div>${cmpAt(p)>p.p?`<div class="muted">MRP <s>${inr(p.mrp||p.on)}</s>${p.on?` · Online ${inr(p.on)}+`:''} · <b style="color:var(--green)">${off(p)}% off</b></div>`:''}
+    <div class="row" style="justify-content:center;margin-top:14px;gap:8px"><span class="pill ${p.s<=0?'p-red':p.s<=3?'p-amber':'p-green'}">Stock: ${Math.max(0,p.s)}</span><span class="pill p-gray">Sold (30d): ${sm}</span><span class="pill p-gray" style="font-family:monospace">${p.bc}</span></div>
+    <div class="row" style="justify-content:center;margin-top:18px"><button class="btn btn-brand" onclick="posMode('bill');handleScan('${p.bc}')">Add to bill</button><a class="btn" href="#/admin/product/${p.id}">Edit product</a></div></div>`;
+}
+
+/* ---------- camera scanner ---------- */
+let cam=null;
+async function startCamera(elId,onCode){
+  if(typeof Html5Qrcode==='undefined'){toast('Scanner library needs internet to load. You can still use the barcode box or demo buttons.','warn');return false}
+  await stopCamera();
+  const F=Html5QrcodeSupportedFormats;
+  try{
+    cam=new Html5Qrcode(elId,{verbose:false,formatsToSupport:[F.EAN_13,F.EAN_8,F.UPC_A,F.UPC_E,F.CODE_128,F.CODE_39,F.QR_CODE],experimentalFeatures:{useBarCodeDetectorIfSupported:true}});
+    let last='',lt=0;
+    await cam.start({facingMode:'environment'},{fps:12,qrbox:(w,h)=>({width:Math.max(60,Math.floor(Math.min(w*.85,340))),height:Math.max(60,Math.floor(Math.min(h*.5,150)))})},
+      txt=>{const t=Date.now();if(txt===last&&t-lt<2200)return;last=txt;lt=t;onCode(txt)},()=>{});
+    return true;
+  }catch(e){toast('Camera not available: '+esc(e&&e.message||e)+'. Allow camera access, or use the barcode box.','warn');cam=null;return false}
+}
+async function stopCamera(){if(cam){const c=cam;cam=null;try{await c.stop()}catch(e){}try{c.clear()}catch(e){}}}
+let actx;
+function beep(ok){try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();const o=actx.createOscillator(),g=actx.createGain();o.type='square';o.frequency.value=ok?1320:300;g.gain.value=.05;o.connect(g);g.connect(actx.destination);o.start();o.stop(actx.currentTime+(ok?.08:.28))}catch(e){}}
+// USB / Bluetooth scanners type very fast and end with Enter — capture them anywhere on the billing page
+const KB={buf:'',t:0};
+document.addEventListener('keydown',e=>{
+  if(!onPOS()||$('#ov')) return; const tg=e.target;
+  if(tg.id==='scanInput'||tg.matches('input,textarea,select')) return;
+  const n=Date.now(); if(n-KB.t>80) KB.buf=''; KB.t=n;
+  if(e.key==='Enter'){if(KB.buf.length>=6){e.preventDefault();handleScan(KB.buf)}KB.buf=''}
+  else if(e.key.length===1) KB.buf+=e.key;
+});
+function drawUPI(sel,amt,ref){
+  const el=$(sel); if(!el) return; el.innerHTML='';
+  const url=`upi://pay?pa=${encodeURIComponent(DB.settings.upi)}&pn=${encodeURIComponent('C2C Gift House')}&am=${(+amt).toFixed(2)}&cu=INR&tn=${encodeURIComponent(ref)}`;
+  if(typeof QRCode==='undefined'){el.innerHTML='<div style="width:120px;height:120px;display:grid;place-items:center;font-size:11px;text-align:center;color:#888">QR needs internet</div>';return}
+  try{new QRCode(el,{text:url,width:120,height:120,correctLevel:QRCode.CorrectLevel.M})}catch(e){}
+}
+
+/* ---------- inventory ---------- */
+function pgInv(r){
+  const f=r.q.f||'', cat=r.q.cat||'';
+  let L=[...DB.products];
+  if(cat) L=L.filter(p=>p.c===cat);
+  if(f==='low') L=L.filter(p=>p.s>0&&p.s<=3); if(f==='out') L=L.filter(p=>p.s<=0); if(f==='hidden') L=L.filter(p=>p.vis===false);
+  L.sort((a,b)=>b.added-a.added);
+  const setF=(k,v)=>{const q={...r.q};if(v)q[k]=v;else delete q[k];return '#/admin/inventory'+(Object.keys(q).length?'?'+new URLSearchParams(q):'')};
+  const content=`
+    <div class="toolbar">
+      <input class="inp" placeholder="🔍 Search name, brand or barcode…" oninput="invSearch(this.value)">
+      <select class="inp" style="width:auto" onchange="invCat(this.value)"><option value="">All categories</option>${CATS.map(c=>`<option value="${c.id}" ${cat===c.id?'selected':''}>${c.n}</option>`).join('')}</select>
+      <div class="chips">${[['','All',DB.products.length],['low','Low stock',DB.products.filter(p=>p.s>0&&p.s<=3).length],['out','Sold out',DB.products.filter(p=>p.s<=0).length],['hidden','Hidden',DB.products.filter(p=>p.vis===false).length]].map(x=>`<a class="chip ${f===x[0]?'on':''}" href="${setF('f',x[0])}">${x[1]} · ${x[2]}</a>`).join('')}</div>
+      <span class="sp"></span><button class="btn btn-sm" onclick="exportInv()">⬇ Export CSV</button><a class="btn btn-sm btn-brand" href="#/admin/product/new">＋ Add product</a>
+    </div>
+    <div class="card" style="padding:4px 16px"><div class="tbl-wrap"><table class="tbl tbl-cards" id="invT">
+      <thead><tr><th></th><th>Product</th><th>Barcode</th><th class="num">MRP</th><th class="num">Price</th><th>Stock</th><th>Status</th><th></th></tr></thead>
+      <tbody>${L.map(p=>`<tr data-s="${esc((p.n+' '+p.b+' '+p.bc).toLowerCase())}">
+        <td class="c-img"><div class="mini">${img(p)}</div></td>
+        <td><b class="small">${esc(p.n)}</b><div class="tiny muted">${esc(p.b)} · ${catOf(p.c).n}</div></td>
+        <td class="c-hide"><code class="tiny">${p.bc}</code></td>
+        <td class="num muted c-hide">${cmpAt(p)?inr(cmpAt(p)):'—'}</td>
+        <td class="num b">${inr(p.p)}</td>
+        <td><div class="stk"><button class="btn btn-xs" onclick="adjStock('${p.id}',-1)">−</button><b id="st_${p.id}">${p.s}</b><button class="btn btn-xs" onclick="adjStock('${p.id}',1)">+</button></div></td>
+        <td class="c-hide">${p.vis===false?'<span class="pill p-gray">Hidden</span>':p.s<=0?'<span class="pill p-red">Sold out</span>':p.s<=3?'<span class="pill p-amber">Low</span>':'<span class="pill p-green">Live</span>'}</td>
+        <td class="c-act nowrap"><a class="btn btn-xs" href="#/admin/product/${p.id}">Edit</a> <button class="btn btn-xs" onclick="waPost('${p.id}')">WhatsApp post</button> <a class="btn btn-xs" href="#/p/${p.id}" target="_blank">View</a></td>
+      </tr>`).join('')}</tbody></table></div>
+      ${L.length?'':'<div class="empty"><i>📦</i>No products in this view</div>'}</div>`;
+  return admShell('inventory','Inventory',content,`<a class="btn btn-sm" href="#/admin/pos?mode=stockin">📥 Scan stock in</a>`);
+}
+function invCat(v){const q=parseHash().q;if(v)q.cat=v;else delete q.cat;const t=new URLSearchParams(q).toString();go('#/admin/inventory'+(t?'?'+t:''))}
+function invSearch(v){v=v.toLowerCase().trim();$$('#invT tbody tr').forEach(tr=>tr.style.display=!v||tr.dataset.s.includes(v)?'':'none')}
+function adjStock(id,d){const p=P(id);p.s=Math.max(0,p.s+d);save();const e=$('#st_'+id);if(e)e.textContent=p.s;toast(`${esc(p.n)}: stock ${p.s}`)}
+function csv(rows){return rows.map(r=>r.map(c=>`"${String(c??'').replace(/"/g,'""')}"`).join(',')).join('\n')}
+function download(name,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+text],{type:'text/csv'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function exportInv(){download('c2c-inventory.csv',csv([['ID','Barcode','Product','Brand','Category','MRP','Online price','Our price','Stock','Visible'],...DB.products.map(p=>[p.id,p.bc,p.n,p.b,catOf(p.c).n,p.mrp,p.on,p.p,p.s,p.vis!==false?'Yes':'No'])]));toast('Inventory exported')}
+function waText(p){
+  return `${p.b&&p.b!=='C2C Select'?`Brand - ${p.b}\n\n`:''}Product - ${p.n}\n\n${p.mrp?`MRP - ${num(p.mrp)}/-\n`:''}${p.on?`Online Price - ${num(p.on)}+\n`:''}Our Offer Price - ${num(p.p)}/-${has(p,'limited')||p.s<=3?'\n\nLimited Quantity only !':''}${has(p,'restock')?'\n\n🔁 Restocked!':''}\n\n🛒 Order online: ${siteURL()}#/p/${p.id}\n📍 C2C Gift House, MG Road, Gauribidanur`;
+}
+function waPost(id){
+  const p=P(id),t=waText(p);
+  modal('WhatsApp / Instagram post',`<p class="small muted" style="margin-top:0">Ready-made post in your usual format. Copy it, or share straight to your WhatsApp group.</p>
+    <div class="wa-prev"><div class="wa-bub"><div class="wa-img">${img(p)}</div>${esc(t)}<small>${ftime(Date.now())}</small></div></div>
+    <div class="row wrap-ok" style="margin-top:14px"><button class="btn" onclick="navigator.clipboard&&navigator.clipboard.writeText(${JSON.stringify(t).replace(/"/g,'&quot;')});toast('Copied!','ok')">📋 Copy text</button><a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t)}">Share on WhatsApp</a></div>`);
+}
+
+/* ---------- add / edit product ---------- */
+let FORM={};
+function pgForm(id,q){
+  const isNew=!id||id==='new'; const p=isNew?null:P(id);
+  if(!isNew&&!p) return admShell('inventory','Product not found','<div class="empty card"><i>😕</i>Product not found. <a href="#/admin/inventory">Back</a></div>');
+  FORM={img:p?.img||'',e:p?.e||'🎁'};
+  const v=p||{n:'',b:'',c:'kitchen',mrp:'',on:'',p:'',s:1,bc:q.bc||'',t:['new'],sp:'',vis:true};
+  const emojis=['🎁','🍳','🍲','☕','🥛','🫖','🍶','🔥','🔌','🌀','💡','🛏️','🧣','🕰️','💐','🩺','💊','🌡️','🧴','🧼','🌸','💇‍♀️','🏋️','🧳','🎒','👶','🧸','✏️','🖊️','📄','🪔','🥂','🍵','🧽','🛁','⚖️'];
+  AFTER.push(()=>{formPreview(); if(q.bc) toast('Barcode '+esc(q.bc)+' filled in from scanner','ok')});
+  const content=`<form class="dash-g" id="pf" style="grid-template-columns:1.25fr 1fr;align-items:start" oninput="formPreview()" onchange="formPreview()" onsubmit="saveProduct(event,'${isNew?'':p.id}')">
+    <div>
+      <div class="card pad" style="margin-bottom:16px"><h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:14px">Product details</h3>
+        <div class="field"><label>Product name *</label><input class="inp" name="n" required value="${esc(v.n)}" placeholder="e.g. Stainless Steel Pressure Cooker 5L"></div>
+        <div class="f2"><div class="field"><label>Brand</label><input class="inp" name="b" value="${esc(v.b)}" placeholder="e.g. Pigeon" list="brands"><datalist id="brands">${[...new Set(DB.products.map(x=>x.b))].map(b=>`<option>${esc(b)}</option>`).join('')}</datalist></div>
+        <div class="field"><label>Category</label><select class="inp" name="c">${CATS.map(c=>`<option value="${c.id}" ${v.c===c.id?'selected':''}>${c.e} ${c.n}</option>`).join('')}</select></div></div>
+        <div class="field"><label>Details / specs <span class="muted" style="font-weight:500">(one per line, e.g. “Capacity: 5 Litres”)</span></label><textarea class="inp" name="sp" placeholder="Capacity: 5 Litres&#10;Warranty: 1 year">${esc((v.sp||'').split('|').join('\n'))}</textarea></div>
+      </div>
+      <div class="card pad" style="margin-bottom:16px"><h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:14px">Price & stock</h3>
+        <div class="f3"><div class="field"><label>MRP (₹)</label><input class="inp" name="mrp" type="number" min="0" step="any" value="${v.mrp||''}"></div>
+        <div class="field"><label>Online price (₹)</label><input class="inp" name="on" type="number" min="0" step="any" value="${v.on||''}" placeholder="Amazon / Flipkart"></div>
+        <div class="field"><label>Our price (₹) *</label><input class="inp" name="p" type="number" min="0" step="any" required value="${v.p}"></div></div>
+        <div class="f2"><div class="field"><label>Stock quantity *</label><input class="inp" name="s" type="number" min="0" required value="${v.s}"></div>
+        <div class="field"><label>Barcode</label><div class="row" style="gap:6px"><input class="inp" name="bc" id="fbc" value="${esc(v.bc)}" placeholder="Scan or type" inputmode="numeric"><button type="button" class="btn btn-sm" onclick="scanToField()">📷</button><button type="button" class="btn btn-sm" title="Generate a new barcode" onclick="$('#fbc').value=ean('8906012'+String(Date.now()).slice(-5));formPreview()">Generate</button></div></div></div>
+        <div class="field" style="margin:0"><label>Tags</label><div class="chips">${Object.entries(TAGS).map(([k,l])=>`<label class="chip" style="display:flex;gap:6px;align-items:center"><input type="checkbox" name="t" value="${k}" ${(v.t||[]).includes(k)?'checked':''} style="accent-color:var(--brand)">${l}</label>`).join('')}</div></div>
+      </div>
+      <div class="card pad"><h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:14px">Photo</h3>
+        <div class="row wrap-ok"><label class="btn btn-sm">🖼️ Choose from photos<input type="file" accept="image/*" hidden onchange="formPhoto(this)"></label><label class="btn btn-sm">📷 Take photo<input type="file" accept="image/*" capture="environment" hidden onchange="formPhoto(this)"></label>${FORM.img?`<button type="button" class="btn btn-sm btn-ghost" onclick="FORM.img='';formPreview();this.remove()">Remove photo</button>`:''}<span class="small muted">or pick an icon:</span></div>
+        <div class="chips" style="margin-top:10px">${emojis.map(e=>`<button type="button" class="chip" style="font-size:18px;padding:4px 9px" onclick="FORM.e='${e}';formPreview()">${e}</button>`).join('')}</div>
+        <label class="check" style="margin-top:14px"><input type="checkbox" name="vis" ${v.vis!==false?'checked':''}> Show this product on the website</label>
+      </div>
+    </div>
+    <div style="position:sticky;top:80px">
+      <div class="card pad" style="margin-bottom:16px"><div class="ch-h"><h3>Website preview</h3><span class="pill p-green">Live</span></div><div id="fprev" style="max-width:250px;margin:0 auto"></div></div>
+      <div class="card pad" style="margin-bottom:16px"><div class="ch-h"><h3>WhatsApp post (auto-written)</h3></div><div class="wa-prev"><div class="wa-bub" id="fwa"></div></div>
+        <div class="row" style="margin-top:10px"><button type="button" class="btn btn-sm" onclick="navigator.clipboard&&navigator.clipboard.writeText($('#fwa').dataset.t);toast('Copied!','ok')">📋 Copy</button><a class="btn btn-sm btn-wa" id="fwal" target="_blank" rel="noopener">Share to WhatsApp group</a></div></div>
+      <div class="card pad" style="margin-bottom:16px;text-align:center"><div class="ch-h"><h3>Barcode label</h3></div><svg id="fbcs" style="max-width:100%;height:70px"></svg></div>
+      <div class="row"><a class="btn btn-lg btn-ghost" href="#/admin/inventory">Cancel</a>${isNew?'':`<button type="button" class="btn btn-lg btn-ghost" style="color:var(--red)" onclick="delProduct('${p.id}')">Delete</button>`}<button class="btn btn-brand btn-lg" style="flex:1">${isNew?'Save & publish':'Save changes'}</button></div>
+    </div>
+  </form>`;
+  return admShell('product',isNew?'Add new product':'Edit product',content);
+}
+function formData(){
+  const f=$('#pf'); if(!f) return null;
+  return {n:f.n.value.trim()||'Product name',b:f.b.value.trim()||'C2C Select',c:f.c.value,mrp:+f.mrp.value||0,on:+f.on.value||0,p:+f.p.value||0,s:parseInt(f.s.value)||0,bc:f.bc.value.trim(),
+    t:$$('input[name=t]:checked',f).map(i=>i.value),sp:f.sp.value.split('\n').map(s=>s.trim()).filter(Boolean).join('|'),vis:f.vis.checked,e:FORM.e,img:FORM.img};
+}
+function formPreview(){
+  const d=formData(); if(!d) return; const p={...d,id:'preview'};
+  $('#fprev').innerHTML=card(p).replace(/onclick="[^"]*"/g,'').replace(/href="[^"]*"/g,'');
+  const t=waText({...p,id:'new'}); const w=$('#fwa'); w.dataset.t=t; w.innerHTML=`<div class="wa-img">${img(p)}</div>${esc(t)}<small>${ftime(Date.now())}</small>`;
+  $('#fwal').href='https://wa.me/?text='+encodeURIComponent(t);
+  drawBarcode($('#fbcs'),d.bc||'000000000000',{height:50});
+}
+function drawBarcode(svg,code,o={}){
+  if(!svg) return; if(typeof JsBarcode==='undefined'){svg.outerHTML=`<div style="font-family:monospace;padding:8px">${esc(code)}</div>`;return}
+  const opts={height:o.height||46,width:o.width||1.6,fontSize:13,margin:2,displayValue:true};
+  try{ if(/^\d{13}$/.test(code)) JsBarcode(svg,code,{...opts,format:'EAN13'}); else JsBarcode(svg,code,{...opts,format:'CODE128'}) }
+  catch(e){ try{JsBarcode(svg,code,{...opts,format:'CODE128'})}catch(_){} }
+}
+function formPhoto(inp){
+  const f=inp.files[0]; if(!f) return; const rd=new FileReader();
+  rd.onload=()=>{const im=new Image();im.onerror=()=>toast('Could not read this photo. Please try a JPG or PNG.','err');im.onload=()=>{const c=document.createElement('canvas'),m=520,s=Math.min(1,m/Math.max(im.width,im.height));c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);FORM.img=c.toDataURL('image/jpeg',.72);formPreview();toast('Photo added','ok')};im.src=rd.result};
+  rd.readAsDataURL(f);
+}
+function scanToField(){
+  modal('Scan barcode',`<div class="scanbox" style="margin:0"><div id="reader2" style="width:100%"></div><div class="scan-line"></div></div><p class="small muted" style="text-align:center">Point the camera at the barcode on the product box.</p>`);
+  $('#ov').dataset.cam='1';
+  startCamera('reader2',code=>{beep(true);const ex=DB.products.find(p=>p.bc===code);$('#fbc').value=code;closeModal();formPreview();toast(ex?`⚠ This barcode already belongs to “${esc(ex.n)}”`:'Barcode scanned: '+esc(code),ex?'warn':'ok')}).then(ok=>{if(!ok)closeModal()});
+}
+function saveProduct(e,id){
+  e.preventDefault(); const d=formData();
+  if(d.bc){const dup=DB.products.find(p=>p.bc===d.bc&&p.id!==id); if(dup){toast(`Barcode already used by “${esc(dup.n)}”`,'err');return}}
+  else d.bc=ean('8906012'+String(Date.now()).slice(-5));
+  if(id){Object.assign(P(id),d);toast('✓ Product updated — live on website','ok')}
+  else{const np={...d,id:'p'+Date.now(),added:Date.now()};DB.products.unshift(np);toast('✓ Product published on website','ok');setTimeout(()=>waPost(np.id),400)}
+  save(); go('#/admin/inventory');
+}
+function delProduct(id){if(!confirm('Delete this product permanently?'))return;DB.products=DB.products.filter(p=>p.id!==id);save();toast('Product deleted');go('#/admin/inventory')}
+
+/* ---------- orders ---------- */
+function pgOrders(q){
+  const tab=q.tab||'online', st=q.st||'';
+  const NEXT={Placed:'Packed',Packed:'Dispatched',Dispatched:'Delivered'};
+  let L=DB.orders.filter(o=>o.ch==='online').reverse(); const all=L;
+  if(st) L=L.filter(o=>o.status===st);
+  const cnt=s=>all.filter(o=>o.status===s).length;
+  const enq=DB.enq;
+  const tabs=`<div class="seg" style="margin-bottom:16px">${[['online','🌐 Online orders'],['enq',`📦 Bulk enquiries (${enq.filter(x=>!x.done).length})`]].map(t=>`<button class="${tab===t[0]?'on':''}" onclick="go('#/admin/orders?tab=${t[0]}')">${t[1]}</button>`).join('')}</div>`;
+  let body='';
+  if(tab==='online'){
+    body=`<div class="chips" style="margin-bottom:14px">${[['','All',all.length],['Placed','🆕 New',cnt('Placed')],['Packed','📦 Packed',cnt('Packed')],['Dispatched','🚚 Dispatched',cnt('Dispatched')],['Delivered','✅ Delivered',cnt('Delivered')]].map(x=>`<a class="chip ${st===x[0]?'on':''}" href="#/admin/orders?st=${x[0]}">${x[1]} · ${x[2]}</a>`).join('')}</div>
+    ${cnt('Placed')+cnt('Packed')?`<div class="live" style="background:var(--blue-soft);color:var(--blue)"><span>📋</span>Tip: Pack & dispatch yesterday's orders first, then today's — one by one.</div>`:''}
+    <div class="card">${L.slice(0,40).map(o=>`<div class="oc"><div class="row wrap-ok"><b>${o.id}</b><span class="pill ${o.status==='Delivered'?'p-green':o.status==='Placed'?'p-brand':o.status==='Packed'?'p-amber':'p-blue'}">${o.status}</span><span class="pill p-gray">${o.mode==='pickup'?'🏬 Pickup':'🚚 Delivery'}</span><span class="pill p-gray">${o.pay}</span>${o.gift?'<span class="pill p-gold" style="background:var(--gold-soft);color:var(--amber)">🎁 Gift wrap</span>':''}<span class="sp"></span><span class="small muted">${fdt(o.ts)}</span><b>${inr(o.total)}</b></div>
+      <div class="small" style="margin:8px 0"><b>${esc(o.cust.name)}</b> · ${esc(o.cust.phone)} · <span class="muted">${esc(o.cust.addr)}${o.cust.pin&&o.mode!=='pickup'?' – '+esc(o.cust.pin):''}</span></div>
+      <div class="small muted">${o.items.map(i=>`${esc(P(i[0])?.n||'Item')} × ${i[1]}`).join(' · ')}${o.msg?` · <i>Gift note: “${esc(o.msg)}”</i>`:''}</div>
+      <div class="row wrap-ok" style="margin-top:10px">${NEXT[o.status]?`<button class="btn btn-sm btn-brand" onclick="advOrder('${o.id}')">Mark as ${NEXT[o.status]==='Dispatched'&&o.mode==='pickup'?'Ready for pickup':NEXT[o.status]}</button>`:''}
+        <a class="btn btn-sm btn-wa" target="_blank" rel="noopener" href="${waLink('91'+o.cust.phone,`Hi ${o.cust.name.split(' ')[0]}, your C2C Gift House order ${o.id} is now *${NEXT[o.status]||o.status}*. Thank you for shopping with us! 🙏`)}">💬 Update customer</a>
+        <a class="btn btn-sm" href="tel:+91${o.cust.phone}">📞 Call</a><button class="btn btn-sm" onclick="showReceipt('${o.id}')">🖨 Packing slip</button></div></div>`).join('')||'<div class="empty"><i>📭</i>No orders here</div>'}</div>`;
+  } else {
+    body=`<div class="card">${enq.map(x=>`<div class="oc"><div class="row wrap-ok"><b>${esc(x.name)}</b><span class="small muted">${esc(x.phone)} · ${fdt(x.ts)}</span><span class="sp"></span>${x.done?'<span class="pill p-green">Replied</span>':'<span class="pill p-brand">New</span>'}</div>
+      ${x.org?`<div class="small b" style="margin-top:6px">${esc(x.org)}</div>`:''}<div class="small muted" style="margin:4px 0 10px">${esc(x.need)}</div>
+      <div class="row"><a class="btn btn-sm btn-wa" target="_blank" rel="noopener" href="${waLink('91'+x.phone,`Hi ${x.name.split(' ')[0]}, thank you for your bulk enquiry at C2C Gift House. `)}" onclick="setTimeout(()=>doneX('enq','${x.id}'),300)">💬 Reply on WhatsApp</a>${x.done?'':`<button class="btn btn-sm" onclick="doneX('enq','${x.id}')">Mark replied</button>`}</div></div>`).join('')||'<div class="empty"><i>📭</i>No enquiries yet</div>'}</div>`;
+  }
+  return admShell('orders','Orders',tabs+body);
+}
+function advOrder(id){const NEXT={Placed:'Packed',Packed:'Dispatched',Dispatched:'Delivered'};const o=DB.orders.find(x=>x.id===id);o.status=NEXT[o.status]||o.status;save();render();toast(`${id} → ${o.status}`,'ok')}
+function doneX(k,id){const x=DB[k].find(y=>y.id===id);if(x){x.done=true;save();render()}}
+
+/* ---------- sales & reports ---------- */
+function pgSales(q){
+  const range=q.range||'7', days=range==='today'?1:+range;
+  const since=startOfDay()-(days-1)*DAY;
+  const L=DB.orders.filter(o=>o.ts>=since);
+  const prev=DB.orders.filter(o=>o.ts>=since-days*DAY&&o.ts<since);
+  const rev=L.reduce((a,o)=>a+o.total,0), prevRev=prev.reduce((a,o)=>a+o.total,0);
+  const st=L.filter(o=>o.ch==='store'), on=L.filter(o=>o.ch==='online');
+  const units=L.reduce((a,o)=>a+o.items.reduce((b,i)=>b+i[1],0),0);
+  const mrpTot=L.reduce((a,o)=>a+o.items.reduce((b,i)=>b+i[1]*(cmpAt(P(i[0])||{})||i[2]),0),0);
+  const pays={};L.forEach(o=>pays[o.pay]=(pays[o.pay]||0)+o.total);
+  const cats={};L.forEach(o=>o.items.forEach(i=>{const c=catOf(P(i[0])?.c).n;cats[c]=(cats[c]||0)+i[1]*i[2]}));
+  const prods={};L.forEach(o=>o.items.forEach(i=>{prods[i[0]]=prods[i[0]]||{q:0,v:0};prods[i[0]].q+=i[1];prods[i[0]].v+=i[1]*i[2]}));
+  const topP=Object.entries(prods).sort((a,b)=>b[1].v-a[1].v).slice(0,10);
+  const chg=prevRev?Math.round((rev-prevRev)/prevRev*100):0;
+  const content=`
+    <div class="toolbar"><div class="seg">${[['today','Today'],['7','7 days'],['30','30 days']].map(r=>`<button class="${range===r[0]?'on':''}" onclick="go('#/admin/sales?range=${r[0]}')">${r[1]}</button>`).join('')}</div><span class="sp"></span><button class="btn btn-sm" onclick="exportSales(${since})">⬇ Export CSV</button></div>
+    <div class="kpis">
+      <div class="kpi"><span>Total sales</span><b>${inr(rev)}</b><small class="${chg>=0?'up':'dn'}">${chg>=0?'▲':'▼'} ${Math.abs(chg)}% vs previous ${days===1?'day':days+' days'}</small></div>
+      <div class="kpi"><span>🏬 In-shop (billing)</span><b>${inr(st.reduce((a,o)=>a+o.total,0))}</b><small>${st.length} bills</small></div>
+      <div class="kpi"><span>🌐 Online (website)</span><b>${inr(on.reduce((a,o)=>a+o.total,0))}</b><small>${on.length} orders</small></div>
+      <div class="kpi"><span>Avg. bill value</span><b>${inr(L.length?Math.round(rev/L.length):0)}</b><small>${units} units sold</small></div>
+      <div class="kpi"><span>Customers saved vs MRP</span><b>${kfmt(Math.max(0,mrpTot-rev))}</b><small>great for marketing posts!</small></div>
+    </div>
+    ${days>1?`<div class="card pad" style="margin-bottom:16px"><div class="ch-h"><div><h3>Daily sales</h3><p>₹ per day, shop + online</p></div></div>${barChart(dailySeries(days),{h:250})}</div>`:''}
+    <div class="dash-g" style="grid-template-columns:1fr 1fr">
+      <div class="card pad"><div class="ch-h"><div><h3>Sales by category</h3><p>₹ revenue</p></div></div>${hbars(Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([l,v])=>({l,v})))}</div>
+      <div class="card pad"><div class="ch-h"><div><h3>Payment methods</h3><p>₹ collected</p></div></div>${hbars(Object.entries(pays).sort((a,b)=>b[1]-a[1]).map(([l,v])=>({l,v,sub:Math.round(v/rev*100)+'% of sales'})))}</div>
+    </div>
+    <div class="card pad" style="margin-bottom:16px"><div class="ch-h"><h3>Top products</h3></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Product</th><th class="num">Units</th><th class="num">Revenue</th><th class="num">Stock left</th></tr></thead><tbody>
+      ${topP.map(([id,x])=>{const p=P(id)||{n:id,b:'',s:0,e:'📦',c:'gifts'};return `<tr><td><div class="row" style="gap:10px"><div class="mini">${img(p)}</div><div><b class="small">${esc(p.n)}</b><div class="tiny muted">${esc(p.b)}</div></div></div></td><td class="num">${x.q}</td><td class="num b">${inr(x.v)}</td><td class="num"><span class="pill ${p.s<=0?'p-red':p.s<=3?'p-amber':'p-gray'}">${Math.max(0,p.s)}</span></td></tr>`}).join('')}</tbody></table></div></div>
+    <div class="card pad"><div class="ch-h"><h3>All bills & orders</h3><span class="small muted">${L.length} records</span></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>ID</th><th>Date & time</th><th>Channel</th><th>Items</th><th>Payment</th><th class="num">Total</th><th></th></tr></thead><tbody>
+      ${[...L].reverse().slice(0,60).map(o=>`<tr><td class="b">${o.id}</td><td class="small nowrap">${fdt(o.ts)}</td><td><span class="pill ${o.ch==='store'?'p-gray':'p-blue'}">${o.ch==='store'?'Shop':'Online'}</span></td><td class="small">${o.items.reduce((a,i)=>a+i[1],0)}</td><td class="small">${o.pay}</td><td class="num b">${inr(o.total)}</td><td><button class="btn btn-xs" onclick="showReceipt('${o.id}')">Receipt</button></td></tr>`).join('')}</tbody></table></div></div>`;
+  return admShell('sales','Sales & reports',content);
+}
+function exportSales(since){const L=DB.orders.filter(o=>o.ts>=since);download('c2c-sales.csv',csv([['ID','Date','Channel','Product','Qty','Price','Line total','Payment','Bill total'],...L.flatMap(o=>o.items.map(i=>[o.id,new Date(o.ts).toLocaleString('en-IN'),o.ch,P(i[0])?.n,i[1],i[2],i[1]*i[2],o.pay,o.total]))]));toast('Sales exported')}
+
+/* ---------- labels ---------- */
+const LSEL={};
+function pgLabels(){
+  AFTER.push(drawLabels);
+  const content=`<div class="dash-g" style="grid-template-columns:1fr 1.4fr;align-items:start">
+    <div class="card pad"><div class="ch-h"><div><h3>Choose products</h3><p>Print price + barcode stickers for items without a barcode, or for shelf labels.</p></div></div>
+      <input class="inp" placeholder="🔍 Search…" style="margin-bottom:10px" oninput="const v=this.value.toLowerCase();$$('#lsel>div').forEach(d=>d.style.display=d.dataset.s.includes(v)?'':'none')">
+      <div id="lsel" style="max-height:60vh;overflow:auto">${DB.products.map(p=>`<div class="list-r" data-s="${esc((p.n+' '+p.b).toLowerCase())}"><div class="mini">${img(p)}</div><div style="flex:1;min-width:0"><b class="small" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(p.n)}</b><span class="tiny muted">${inr(p.p)} · ${p.bc}</span></div>
+        <div class="qty sm"><button onclick="lAdj('${p.id}',-1)">−</button><span id="lq_${p.id}">${LSEL[p.id]||0}</span><button onclick="lAdj('${p.id}',1)">+</button></div></div>`).join('')}</div></div>
+    <div class="card pad"><div class="ch-h"><div><h3>Label sheet preview</h3><p id="lcount"></p></div><div class="row"><button class="btn btn-sm btn-ghost" onclick="for(const k in LSEL)delete LSEL[k];render()">Clear</button><button class="btn btn-sm btn-brand" onclick="window.print()">🖨 Print labels</button></div></div>
+      <div class="lsheet printable" id="lsheet"></div></div>
+  </div>`;
+  return admShell('labels','Barcode labels',content);
+}
+function lAdj(id,d){LSEL[id]=Math.max(0,(LSEL[id]||0)+d);if(!LSEL[id])delete LSEL[id];$('#lq_'+id).textContent=LSEL[id]||0;drawLabels()}
+function drawLabels(){
+  const el=$('#lsheet'); if(!el) return;
+  if(!Object.keys(LSEL).length){LSEL.p5=2;LSEL.p28=2;LSEL.p44=1;LSEL.p64=3;['p5','p28','p44','p64'].forEach(id=>{const q=$('#lq_'+id);if(q)q.textContent=LSEL[id]})}
+  const L=Object.entries(LSEL).flatMap(([id,n])=>Array(n).fill(P(id))).filter(Boolean);
+  $('#lcount').textContent=L.length+' labels';
+  el.innerHTML=L.map((p,i)=>`<div class="lbl"><div class="lb">C2C Gift House</div><div class="ln">${esc(p.n)}</div><svg id="lb${i}"></svg><div class="lp">${inr(p.p)}${cmpAt(p)>p.p?`<s>MRP ${inr(cmpAt(p))}</s>`:''}</div></div>`).join('');
+  L.forEach((p,i)=>drawBarcode($('#lb'+i),p.bc,{height:38,width:1.3}));
+}
+
+/* ---------- settings ---------- */
+function pgSettings(){
+  const S=DB.settings;
+  const content=`<div style="max-width:760px">
+    <form class="card pad" style="margin-bottom:16px" onsubmit="saveSettings(event)">
+      <h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:6px">📢 Store notice banner</h3><p class="small muted" style="margin:0 0 14px">Shows at the top of the website — for holidays, closures or big announcements.</p>
+      <label class="check" style="margin-bottom:10px"><input type="checkbox" name="noticeOn" ${S.noticeOn?'checked':''}> Show notice on website</label>
+      <div class="field"><textarea class="inp" name="notice">${esc(S.notice)}</textarea></div>
+      <div class="chips" style="margin-bottom:18px">${['📢 Dear Customers, our store will remain closed tomorrow due to personal work. All pending parcels will be dispatched today itself. 🙏','🌙 Eid Mubarak! Shop closed for 2 days for the festival. Orders will be dispatched after we reopen.','🔥 Weekend offer live — Saturday & Sunday only prices!'].map(t=>`<button type="button" class="chip" onclick="this.form.notice.value=${JSON.stringify(t).replace(/"/g,'&quot;')};this.form.noticeOn.checked=true">${esc(t.slice(0,38))}…</button>`).join('')}</div>
+      <h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:14px">🚚 Delivery & payments</h3>
+      <div class="f3"><div class="field"><label>Delivery fee (₹)</label><input class="inp" type="number" name="delFee" value="${S.delFee}"></div><div class="field"><label>Free delivery above (₹)</label><input class="inp" type="number" name="freeAbove" value="${S.freeAbove}"></div><div class="field"><label>Gift packing (₹)</label><input class="inp" type="number" name="gift" value="${S.gift}"></div></div>
+      <div class="f2"><div class="field"><label>UPI ID (for payment QR codes)</label><input class="inp" name="upi" value="${esc(S.upi)}" placeholder="e.g. 9110261958@ybl"></div><div class="field"><label>Store hours</label><input class="inp" name="hours" value="${esc(S.hours)}"></div></div>
+      <div class="f2"><div class="field"><label>Admin PIN</label><input class="inp" name="pin" maxlength="4" inputmode="numeric" value="${esc(S.pin)}"></div></div>
+      <button class="btn btn-brand">Save settings</button>
+    </form>
+    <div class="card pad"><h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:6px">🧪 Demo data</h3><p class="small muted" style="margin:0 0 14px">All data in this demo is saved in this browser only. In the real website, it will be saved on a secure server so the shop phone, the counter computer and customers all see the same live stock.</p>
+      <button class="btn" style="color:var(--red)" onclick="if(confirm('Reset all demo data (products, orders, stock)?')){localStorage.removeItem(KEY);DB=seed();save();toast('Demo data reset','ok');go('#/admin')}">Reset demo data</button></div>
+  </div>`;
+  return admShell('settings','Store settings',content);
+}
+function saveSettings(e){e.preventDefault();const f=e.target,S=DB.settings;S.noticeOn=f.noticeOn.checked;S.notice=f.notice.value;S.delFee=+f.delFee.value||0;S.freeAbove=+f.freeAbove.value||0;S.gift=+f.gift.value||0;S.upi=f.upi.value.trim();S.hours=f.hours.value;if(/^\d{4}$/.test(f.pin.value))S.pin=f.pin.value;save();toast('✓ Settings saved — live on website','ok')}
+
+/* ---------- demo guide ---------- */
+function demoGuide(){
+  const L=(i,h,b,s)=>`<a href="${h}" onclick="closeModal()"><i>${i}</i><div><b>${b}</b><span>${s}</span></div></a>`;
+  modal('Demo — all pages',`<div class="dlist">
+    <div class="dsec">Customer website</div>
+    ${L('🏠','#/','Home page','Deal of the day, categories, weekend offer, price comparison, store map')}
+    ${L('🛍️','#/shop','Shop / catalogue','Search, filter by category, price, brand, deals · sort')}
+    ${L('📦','#/p/p44','Product page','MRP vs online vs C2C price, live stock, WhatsApp order, delivery check')}
+    ${L('🔥','#/offers','Offers','Weekend countdown, 70%+ off, combos, limited stock')}
+    ${L('🛒','#/cart','Cart & checkout','Delivery / pickup, gift wrap, UPI / COD, coupon C2C50')}
+    ${L('🚚','#/track','Track order','Order status timeline')}
+    ${L('🏢','#/wholesale','Wholesale','Bulk quote form for weddings, shops, schools')}
+    ${L('📍','#/visit','Visit store & FAQ','Address, map, hours, FAQs')}
+    <div class="dsec">Shop admin (PIN ${DB.settings.pin})</div>
+    ${L('📊','#/admin','Dashboard','Today\'s sales, charts, low stock, recent bills')}
+    ${L('📷','#/admin/pos','Billing & barcode scanner','Scan → bill → payment → receipt · stock updates live')}
+    ${L('📥','#/admin/pos?mode=stockin','Receive stock by scanning','Scan new stock into inventory')}
+    ${L('🗃️','#/admin/inventory','Inventory','Stock +/−, low stock, export, WhatsApp post')}
+    ${L('➕','#/admin/product/new','Add product','Auto WhatsApp post, barcode scan/generate, photo')}
+    ${L('🚚','#/admin/orders','Online orders','Pack → dispatch → deliver · bulk enquiries')}
+    ${L('📈','#/admin/sales','Sales & reports','Shop vs online, categories, payments, top products, CSV')}
+    ${L('🏷️','#/admin/labels','Barcode labels','Print price + barcode stickers')}
+    ${L('⚙️','#/admin/settings','Store settings','Holiday notice banner, delivery fee, UPI')}
+  </div>
+  <div class="live" style="margin:14px 0 0;background:var(--gold-soft);color:var(--amber-ink)"><span>💡</span><span><b>Try this:</b> open a product page → note the stock → go to Billing, scan that product, complete the sale → come back: stock has gone down.</span></div>`);
+}
+
+/* ---------- photo credits ---------- */
+function photoCredits(){
+  const C=window.PHOTO_CREDITS||[];
+  modal('Photo credits',`<p class="small muted" style="margin-top:0">Demo product photos are sample images from free sources, used under their licences. In the real website these will be replaced with photos of C2C Gift House's own stock.</p>
+  <div class="small">${C.map(c=>{const p=P(c.id);return `<div class="list-r"><div class="mini">${p?img(p):''}</div><div style="flex:1;min-width:0"><b>${esc(p?p.n:c.id)}</b><div class="tiny muted">${esc(c.src)}${c.by?' · '+esc(c.by):''}${c.lic?' · '+esc(c.lic):''}</div></div>${c.url?`<a class="btn btn-xs" target="_blank" rel="noopener" href="${esc(c.url)}">Source</a>`:''}</div>`}).join('')}</div>`);
+}
+
+/* ---------- theme ---------- */
+function curTheme(){const t=document.documentElement.dataset.theme;return t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function toggleTheme(){const t=curTheme()==='dark'?'light':'dark';document.documentElement.dataset.theme=t;try{localStorage.setItem('c2c_theme',t)}catch(e){}toast(t==='dark'?'🌙 Dark mode on':'☀️ Light mode on')}
+try{const t=localStorage.getItem('c2c_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
+
+/* ---------- boot ---------- */
+load();
+window.addEventListener('DOMContentLoaded',()=>{});
+render();
+</script>
+</body>
+</html>
