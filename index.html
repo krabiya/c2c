@@ -1419,16 +1419,94 @@ function pgWish(){
    ADMIN
    ============================================================ */
 function pgLogin(){
-  AFTER.push(()=>{const i=$('.pin input');i&&i.focus()});
+  AFTER.push(bioLoginBox);
   return `<div class="login"><div class="card" style="text-align:center">
     <div class="logo" style="justify-content:center"><div class="logo-m">C2C</div><div class="logo-t" style="text-align:left"><b>C2C Gift House</b><span>Shop admin</span></div></div>
-    <h2 style="margin-top:22px;font-size:24px">Staff login</h2><p class="small muted" style="margin:6px 0 0">Enter your 4-digit PIN</p>
+    <h2 style="margin-top:22px;font-size:24px">Staff login</h2><div id="bioBox"></div><p class="small muted" style="margin:6px 0 0">Enter your 4-digit PIN</p>
     <form onsubmit="event.preventDefault();doLogin()"><div class="pin">${[0,1,2,3].map(i=>`<input maxlength="1" inputmode="numeric" type="password" oninput="if(this.value&&this.nextElementSibling)this.nextElementSibling.focus();if(${i}===3)doLogin()">`).join('')}</div>
     <button class="btn btn-brand w100 btn-lg">Login</button></form>
     <a href="#/" class="small muted" style="display:inline-block;margin-top:14px">← Back to website</a>
   </div></div>`;
 }
-function doLogin(){const v=$$('.pin input').map(i=>i.value).join('');if(v.length<4)return;if(v===DB.settings.pin){setAuth(true);render();toast('Welcome back, '+STORE.owner.split(' ')[0]+'! 👋','ok')}else{toast('Wrong PIN','err');$$('.pin input').forEach(i=>i.value='');$('.pin input').focus()}}
+function doLogin(){const v=$$('.pin input').map(i=>i.value).join('');if(v.length<4)return;if(v===DB.settings.pin){setAuth(true);render();toast('Welcome back, '+STORE.owner.split(' ')[0]+'! 👋','ok');setTimeout(bioOffer,700)}else{toast('Wrong PIN','err');$$('.pin input').forEach(i=>i.value='');$('.pin input').focus()}}
+
+/* ---------- Face ID / fingerprint unlock (WebAuthn passkey on this device) ----------
+   Set up only after a PIN login. The passkey lives in this phone's secure chip; unlocking
+   checks the phone's own Face ID / Touch ID / fingerprint and verifies the key's signature. */
+const BIO_KEY='c2c_admin_bio';
+const b64u=b=>btoa(String.fromCharCode(...new Uint8Array(b))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const unb64u=s=>{s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return Uint8Array.from(atob(s),c=>c.charCodeAt(0))};
+const cat=(...a)=>{const o=new Uint8Array(a.reduce((n,x)=>n+x.length,0));let i=0;a.forEach(x=>{o.set(x,i);i+=x.length});return o};
+function bioGet(){try{return JSON.parse(localStorage.getItem(BIO_KEY)||'null')}catch(e){return null}}
+function bioSet(v){try{v?localStorage.setItem(BIO_KEY,JSON.stringify(v)):localStorage.removeItem(BIO_KEY)}catch(e){}}
+function bioName(){const u=navigator.userAgent;
+  if(/iPhone|iPad|iPod/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1)) return 'Face ID / Touch ID';
+  if(/Macintosh/.test(u)) return 'Touch ID'; if(/Android/.test(u)) return 'fingerprint / face unlock';
+  if(/Windows/.test(u)) return 'Windows Hello'; return 'fingerprint / face';}
+async function bioSupported(){
+  try{return location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'?!!(window.PublicKeyCredential&&await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()):false}catch(e){return false}}
+async function bioRegister(){
+  try{
+    const cred=await navigator.credentials.create({publicKey:{
+      challenge:crypto.getRandomValues(new Uint8Array(32)),
+      rp:{name:'C2C Gift House Admin'},
+      user:{id:crypto.getRandomValues(new Uint8Array(16)),name:'C2C Admin',displayName:'C2C Gift House Admin'},
+      pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],
+      authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required',residentKey:'preferred'},
+      timeout:60000,attestation:'none'}});
+    const r=cred.response; let pub=null,alg=null;
+    try{if(r.getPublicKey){pub=b64u(r.getPublicKey());alg=r.getPublicKeyAlgorithm()}}catch(e){}
+    bioSet({id:b64u(cred.rawId),pub,alg,at:Date.now(),dev:bioName()});
+    toast(`✓ ${bioName()} unlock is on for this device`,'ok'); return true;
+  }catch(e){if(e&&e.name!=='NotAllowedError')toast('Could not set up: '+esc(e.message||e),'err');else toast('Setup cancelled','warn');return false}
+}
+function derToRaw(der){let i=2;if(der[1]&0x80)i=2+(der[1]&0x7f);
+  const rd=()=>{i++;const n=der[i++];let v=der.slice(i,i+n);i+=n;while(v.length>32&&v[0]===0)v=v.slice(1);const o=new Uint8Array(32);o.set(v,32-v.length);return o};
+  const r=rd(),s=rd();return cat(r,s)}
+async function bioVerify(cred,saved,challenge){
+  const r=cred.response;
+  if(b64u(cred.rawId)!==saved.id) return false;
+  const cd=JSON.parse(new TextDecoder().decode(r.clientDataJSON));
+  if(cd.type!=='webauthn.get'||cd.origin!==location.origin||cd.challenge!==b64u(challenge)) return false;
+  const ad=new Uint8Array(r.authenticatorData); if(!(ad[32]&0x01)||!(ad[32]&0x04)) return false; // user present + verified
+  if(!saved.pub) return true;
+  const data=cat(ad,new Uint8Array(await crypto.subtle.digest('SHA-256',r.clientDataJSON))), sig=new Uint8Array(r.signature), spki=unb64u(saved.pub);
+  if(saved.alg===-7){const k=await crypto.subtle.importKey('spki',spki,{name:'ECDSA',namedCurve:'P-256'},false,['verify']);return crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'},k,derToRaw(sig),data)}
+  if(saved.alg===-257){const k=await crypto.subtle.importKey('spki',spki,{name:'RSASSA-PKCS1-v1_5',hash:'SHA-256'},false,['verify']);return crypto.subtle.verify('RSASSA-PKCS1-v1_5',k,sig,data)}
+  return true;
+}
+async function bioUnlock(){
+  const saved=bioGet(); if(!saved) return;
+  try{
+    const challenge=crypto.getRandomValues(new Uint8Array(32));
+    const cred=await navigator.credentials.get({publicKey:{challenge,allowCredentials:[{type:'public-key',id:unb64u(saved.id),transports:['internal','hybrid']}],userVerification:'required',timeout:60000}});
+    if(await bioVerify(cred,saved,challenge)){setAuth(true);render();toast('Welcome back, '+STORE.owner.split(' ')[0]+'! 👋','ok')}
+    else toast('Could not verify — please use your PIN','err');
+  }catch(e){toast(e&&e.name==='NotAllowedError'?'Cancelled — you can use your PIN':'Unlock failed — please use your PIN','warn')}
+}
+async function bioLoginBox(){
+  const box=$('#bioBox'); if(!box) return;
+  if(bioGet()&&await bioSupported()){
+    box.innerHTML=`<button type="button" class="btn btn-dark w100 btn-lg" style="margin-top:18px" onclick="bioUnlock()">🔓 Unlock with ${bioName()}</button><div class="tiny muted" style="margin-top:12px">or enter your PIN</div>`;
+    const nx=box.nextElementSibling; if(nx) nx.style.display='none';
+  } else { const i=$('.pin input'); i&&i.focus(); }
+}
+async function bioOffer(){
+  if(bioGet()||!(await bioSupported())) return;
+  try{if(localStorage.getItem('c2c_bio_skip'))return}catch(e){}
+  modal('Unlock faster next time?',`<div style="text-align:center"><div style="font-size:46px">🔐</div>
+    <p>Use <b>${bioName()}</b> on this device instead of typing the PIN.</p>
+    <p class="small muted">Only faces / fingerprints saved in this phone's settings can unlock it. Other phones still need the PIN.</p>
+    <div class="row" style="justify-content:center;margin-top:16px"><button class="btn" onclick="try{localStorage.setItem('c2c_bio_skip','1')}catch(e){};closeModal()">Not now</button><button class="btn btn-brand" onclick="bioRegister().then(ok=>{if(ok)closeModal()})">Turn on</button></div></div>`);
+}
+async function bioSettingsBox(){
+  const el=$('#bioSet'); if(!el) return; const on=bioGet(), sup=await bioSupported();
+  el.innerHTML=`<h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:6px">🔐 Face ID / fingerprint unlock</h3>
+    <p class="small muted" style="margin:0 0 14px">Unlock admin on <b>this device</b> with ${sup?bioName():'Face ID or fingerprint'} instead of the PIN. Only faces / fingerprints saved in this phone can unlock it; other phones still need the PIN.</p>
+    ${!sup?`<div class="small" style="color:var(--amber)">This device or browser doesn't support it here. Open the website (https://) in Safari or Chrome on a phone with Face ID or fingerprint set up.</div>`
+     :on?`<div class="row wrap-ok"><span class="pill p-green">● On for this device</span><span class="tiny muted">since ${fdate(on.at)}</span><span class="sp"></span><button class="btn btn-sm" style="color:var(--red)" onclick="if(confirm('Turn off ${bioName()} unlock on this device?')){bioSet(null);bioSettingsBox();toast('Turned off. You can also delete the saved passkey in your phone\\'s Passwords settings.')}">Turn off</button></div>`
+     :`<button class="btn btn-brand" onclick="bioRegister().then(()=>bioSettingsBox())">Turn on ${bioName()} unlock</button>`}`;
+}
 
 function admShell(active,title,content,actions=''){
   const pend=DB.orders.filter(o=>o.ch==='online'&&['Placed','Packed'].includes(o.status)).length;
@@ -2104,7 +2182,7 @@ function drawLabels(){
 
 /* ---------- settings ---------- */
 function pgSettings(){
-  const S=DB.settings;
+  const S=DB.settings; AFTER.push(bioSettingsBox);
   const content=`<div style="max-width:760px">
     <form class="card pad" style="margin-bottom:16px" onsubmit="saveSettings(event)">
       <h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:6px">📢 Store notice banner</h3><p class="small muted" style="margin:0 0 14px">Shows at the top of the website — for holidays, closures or big announcements.</p>
@@ -2117,6 +2195,7 @@ function pgSettings(){
       <div class="f2"><div class="field"><label>Admin PIN</label><input class="inp" name="pin" maxlength="4" inputmode="numeric" value="${esc(S.pin)}"></div></div>
       <button class="btn btn-brand">Save settings</button>
     </form>
+    <div class="card pad" style="margin-bottom:16px" id="bioSet"></div>
     <div class="card pad"><h3 style="font-family:var(--f);font-size:16px;font-weight:800;margin-bottom:6px">🧪 Demo data</h3><p class="small muted" style="margin:0 0 14px">All data in this demo is saved in this browser only. In the real website, it will be saved on a secure server so the shop phone, the counter computer and customers all see the same live stock.</p>
       <button class="btn" style="color:var(--red)" onclick="if(confirm('Reset all demo data (products, orders, stock)?')){localStorage.removeItem(KEY);DB=seed();save();toast('Demo data reset','ok');go('#/admin')}">Reset demo data</button></div>
   </div>`;
