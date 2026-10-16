@@ -127,6 +127,21 @@ textarea.inp{resize:vertical;min-height:84px}
 .catnav .wrap::-webkit-scrollbar{display:none}
 .catnav a{white-space:nowrap;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:600;color:var(--ink2)}
 .catnav a:hover,.catnav a.on{background:var(--brand-soft);color:var(--brand)}
+.cat-track{display:flex}
+.cat-set{display:flex;gap:6px}
+.cat-set+.cat-set{display:none}
+@media (max-width:640px){
+  .catnav .wrap{overflow:hidden;padding-left:0;padding-right:0}
+  .cat-track{width:max-content;animation:ticker 32s linear infinite}
+  .cat-set+.cat-set{display:flex}
+  .cat-set{padding-right:6px}
+  .catnav:hover .cat-track,.catnav:active .cat-track,.catnav:focus-within .cat-track{animation-play-state:paused}
+}
+@media (max-width:640px) and (prefers-reduced-motion:reduce){
+  .cat-track{animation:none}
+  .catnav .wrap{overflow-x:auto}
+  .cat-set+.cat-set{display:none}
+}
 
 /* Hero */
 .hero{padding:40px 0 28px}
@@ -934,10 +949,8 @@ function shell(content,active){
     </div>
   </div></header>
   <div class="msearch"><form class="search" onsubmit="event.preventDefault();go('#/shop?q='+encodeURIComponent(this.q.value))">${I.search}<input name="q" placeholder="Search products…" value="${esc(parseHash().q.q||'')}"></form></div>
-  <nav class="catnav"><div class="wrap">
-    <a href="#/shop" class="${active==='shop'&&!parseHash().q.cat?'on':''}">All Products</a>
-    ${CATS.map(c=>`<a href="#/shop?cat=${c.id}" class="${parseHash().q.cat===c.id?'on':''}">${c.e} ${c.n}</a>`).join('')}
-  </div></nav>
+  ${(()=>{const links=tab=>`<a href="#/shop" class="${active==='shop'&&!parseHash().q.cat?'on':''}"${tab}>All Products</a>${CATS.map(c=>`<a href="#/shop?cat=${c.id}" class="${parseHash().q.cat===c.id?'on':''}"${tab}>${c.e} ${c.n}</a>`).join('')}`;
+    return `<nav class="catnav" ontouchstart=""><div class="wrap"><div class="cat-track"><div class="cat-set">${links('')}</div><div class="cat-set" aria-hidden="true">${links(' tabindex="-1"')}</div></div></div></nav>`})()}
   <main>${content}</main>
   ${footer()}
   <nav class="tabbar">
