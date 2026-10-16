@@ -633,7 +633,7 @@ const RAW = [
  ['Floor Cleaner — Buy 1 Get 1 Free','C2C Select','daily',119,0,99,20,'🧴','combo weekend','Offer: Buy 1 Get 1 free'],
 ];
 
-const NAMES = ['Ayesha K','Ravi Kumar','Syeda Fathima','Manjunath G','Imran Pasha','Kavya R','Farhan Ali','Lakshmi N','Sameer Baig','Divya S','Mohammed Asif','Shilpa M'];
+const NAMES = ['Ayesha K','Ravi Kumar','Syeda Fathima','Neha P','Rahul S','Kavya R','Farhan Ali','Priya D','Sameer Baig','Divya S','Varun T','Sneha M']; // made-up sample customers
 const PLACES = ['Gauribidanur','Chikkaballapur','Hindupur','Doddaballapur','Bengaluru','Tumakuru'];
 
 /* ---------- utils ---------- */
@@ -654,10 +654,11 @@ const fdt=ts=>fdate(ts)+', '+ftime(ts);
 const startOfDay=(t=Date.now())=>{const d=new Date(t);d.setHours(0,0,0,0);return d.getTime()};
 function ean(b12){let s=0;for(let i=0;i<12;i++)s+=(+b12[i])*(i%2?3:1);return b12+((10-s%10)%10)}
 function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const cl=(rec,href,blank=true)=>`href="${href}"${blank?' target="_blank" rel="noopener"':''}`;
 const waLink=(phone,text)=>`https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 
 /* ---------- data store ---------- */
-const KEY='c2c_gifthouse_site_v1';
+const KEY='c2c_gifthouse_site_v3';
 let DB;
 function seed(){
   const r=rng(20241020), now=Date.now();
@@ -688,9 +689,9 @@ function seed(){
       const sub=items.reduce((a,i)=>a+i[1]*i[2],0), del=sub>=499?0:49, gift=r()<.3?30:0;
       const st=d>=3?'Delivered':d===2?(r()<.5?'Delivered':'Dispatched'):d===1?'Packed':'Placed';
       const nm=NAMES[Math.floor(r()*NAMES.length)], pl=PLACES[Math.floor(r()*PLACES.length)];
-      orders.push({id:'C2C'+(ord++),ch:'online',ts,items,sub,del,gift,disc:0,total:sub+del+gift,pay:r()<.6?'UPI':'COD',status:st,
+      orders.push({id:'C2C'+(ord++),ch:'online',ts,items,sub,del,gift,disc:0,total:sub+del+gift,pay:r()<.6?'UPI':'COD',status:st,demo:true,
         mode:pl==='Gauribidanur'&&r()<.5?'pickup':'delivery',
-        cust:{name:nm,phone:'9'+String(Math.floor(r()*1e9)).padStart(9,'0'),addr:'#'+(10+Math.floor(r()*300))+', '+['Main Road','2nd Cross','Station Road','MG Road','Market Street'][Math.floor(r()*5)]+', '+pl,pin:pl==='Gauribidanur'?'561208':'5'+String(Math.floor(r()*99999)).padStart(5,'0')}});
+        cust:{name:nm,phone:String(6+Math.floor(r()*4))+String(Math.floor(r()*1e9)).padStart(9,'0'),addr:'#'+(10+Math.floor(r()*300))+', '+['Main Road','2nd Cross','Station Road','MG Road','Market Street'][Math.floor(r()*5)]+', '+pl,pin:pl==='Gauribidanur'?'561208':'5'+String(Math.floor(r()*99999)).padStart(5,'0')}});
     }
   }
   orders.sort((a,b)=>a.ts-b.ts);
@@ -698,8 +699,8 @@ function seed(){
   return {
     products, orders, cart:[], wish:[],
     enq:[
-      {id:'E1',name:'Farhan Ali',phone:'9535021827',org:'Wedding — 250 guests',need:'Return gift crockery sets ~250 pcs, budget ₹150/pc',ts:now-1*DAY,done:false},
-      {id:'E2',name:'Divya S',phone:'9632993326',org:'Sri Sai School',need:'Classmate pens 500 pcs + A4 paper 20 packs',ts:now-3*DAY,done:true},
+      {id:'E1',demo:true,name:'Farhan Ali',phone:'6929013129',org:'Wedding — 250 guests',need:'Return gift crockery sets ~250 pcs, budget ₹150/pc',ts:now-1*DAY,done:false},
+      {id:'E2',demo:true,name:'Divya S',phone:'9583259478',org:'Sri Sai School',need:'Classmate pens 500 pcs + A4 paper 20 packs',ts:now-3*DAY,done:true},
     ],
     seq:{bill, ord},
     settings:{noticeOn:false, notice:'📢 Dear Customers, our store will remain closed tomorrow due to personal work. All pending parcels will be dispatched today itself. 🙏',
@@ -1354,7 +1355,6 @@ function pgLogin(){
     <h2 style="margin-top:22px;font-size:24px">Staff login</h2><p class="small muted" style="margin:6px 0 0">Enter your 4-digit PIN</p>
     <form onsubmit="event.preventDefault();doLogin()"><div class="pin">${[0,1,2,3].map(i=>`<input maxlength="1" inputmode="numeric" type="password" oninput="if(this.value&&this.nextElementSibling)this.nextElementSibling.focus();if(${i}===3)doLogin()">`).join('')}</div>
     <button class="btn btn-brand w100 btn-lg">Login</button></form>
-    <p class="tiny muted" style="margin:16px 0 0;background:var(--gold-soft);padding:8px;border-radius:8px">Demo PIN: <b>${DB.settings.pin}</b></p>
     <a href="#/" class="small muted" style="display:inline-block;margin-top:14px">← Back to website</a>
   </div></div>`;
 }
@@ -1588,7 +1588,7 @@ function showReceipt(id,fresh){
   const ph=o.phone||o.cust?.phone;
   modal(fresh?'✓ Sale complete':'Receipt',`${receiptHTML(o)}
     <div class="row wrap-ok" style="margin-top:16px;justify-content:center"><button class="btn" onclick="window.print()">🖨 Print</button>
-    <a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink(ph?'91'+ph:'',txt)}">💬 Send on WhatsApp</a>
+    <a class="btn btn-wa" ${cl(o,waLink(ph?'91'+ph:'',txt))}>💬 Send on WhatsApp</a>
     ${fresh?`<button class="btn btn-brand" onclick="closeModal();$('#scanInput')?.focus()">New bill</button>`:''}</div>`);
 }
 function posInHTML(){
@@ -1790,12 +1790,12 @@ function pgOrders(q){
       <div class="small" style="margin:8px 0"><b>${esc(o.cust.name)}</b> · ${esc(o.cust.phone)} · <span class="muted">${esc(o.cust.addr)}${o.cust.pin&&o.mode!=='pickup'?' – '+esc(o.cust.pin):''}</span></div>
       <div class="small muted">${o.items.map(i=>`${esc(P(i[0])?.n||'Item')} × ${i[1]}`).join(' · ')}${o.msg?` · <i>Gift note: “${esc(o.msg)}”</i>`:''}</div>
       <div class="row wrap-ok" style="margin-top:10px">${NEXT[o.status]?`<button class="btn btn-sm btn-brand" onclick="advOrder('${o.id}')">Mark as ${NEXT[o.status]==='Dispatched'&&o.mode==='pickup'?'Ready for pickup':NEXT[o.status]}</button>`:''}
-        <a class="btn btn-sm btn-wa" target="_blank" rel="noopener" href="${waLink('91'+o.cust.phone,`Hi ${o.cust.name.split(' ')[0]}, your C2C Gift House order ${o.id} is now *${NEXT[o.status]||o.status}*. Thank you for shopping with us! 🙏`)}">💬 Update customer</a>
-        <a class="btn btn-sm" href="tel:+91${o.cust.phone}">📞 Call</a><button class="btn btn-sm" onclick="showReceipt('${o.id}')">🖨 Packing slip</button></div></div>`).join('')||'<div class="empty"><i>📭</i>No orders here</div>'}</div>`;
+        <a class="btn btn-sm btn-wa" ${cl(o,waLink('91'+o.cust.phone,`Hi ${o.cust.name.split(' ')[0]}, your C2C Gift House order ${o.id} is now *${NEXT[o.status]||o.status}*. Thank you for shopping with us! 🙏`))}>💬 Update customer</a>
+        <a class="btn btn-sm" ${cl(o,'tel:+91'+o.cust.phone,false)}>📞 Call</a><button class="btn btn-sm" onclick="showReceipt('${o.id}')">🖨 Packing slip</button></div></div>`).join('')||'<div class="empty"><i>📭</i>No orders here</div>'}</div>`;
   } else {
     body=`<div class="card">${enq.map(x=>`<div class="oc"><div class="row wrap-ok"><b>${esc(x.name)}</b><span class="small muted">${esc(x.phone)} · ${fdt(x.ts)}</span><span class="sp"></span>${x.done?'<span class="pill p-green">Replied</span>':'<span class="pill p-brand">New</span>'}</div>
       ${x.org?`<div class="small b" style="margin-top:6px">${esc(x.org)}</div>`:''}<div class="small muted" style="margin:4px 0 10px">${esc(x.need)}</div>
-      <div class="row"><a class="btn btn-sm btn-wa" target="_blank" rel="noopener" href="${waLink('91'+x.phone,`Hi ${x.name.split(' ')[0]}, thank you for your bulk enquiry at C2C Gift House. `)}" onclick="setTimeout(()=>doneX('enq','${x.id}'),300)">💬 Reply on WhatsApp</a>${x.done?'':`<button class="btn btn-sm" onclick="doneX('enq','${x.id}')">Mark replied</button>`}</div></div>`).join('')||'<div class="empty"><i>📭</i>No enquiries yet</div>'}</div>`;
+      <div class="row">${false?``:`<a class="btn btn-sm btn-wa" target="_blank" rel="noopener" href="${waLink('91'+x.phone,`Hi ${x.name.split(' ')[0]}, thank you for your bulk enquiry at C2C Gift House. `)}" onclick="setTimeout(()=>doneX('enq','${x.id}'),300)">💬 Reply on WhatsApp</a>`}${x.done?'':`<button class="btn btn-sm" onclick="doneX('enq','${x.id}')">Mark replied</button>`}</div></div>`).join('')||'<div class="empty"><i>📭</i>No enquiries yet</div>'}</div>`;
   }
   return admShell('orders','Orders',tabs+body);
 }
