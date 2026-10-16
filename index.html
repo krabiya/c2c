@@ -506,6 +506,40 @@ html,body{overflow-x:hidden}
 body,.card,.hdr,.pc,.adm-top{transition:background-color .2s,border-color .2s}
 
 
+/* ===== Phone layout fixes for admin (desktop unchanged) ===== */
+@media (max-width:860px){
+  .dash-g{grid-template-columns:1fr!important}
+  #pf>div:last-child{position:static!important}
+  .adm-top{gap:10px}
+  .adm-top h1{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}
+  .adm-top .sp{display:none}
+  .adm~.demo-fab{display:none}
+  .kpis{grid-template-columns:1fr 1fr;gap:10px}
+  .kpi{padding:12px 14px}
+  .kpi b{font-size:21px}
+  .kpi span,.kpi small{font-size:12px}
+  .lsheet{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .qa{display:grid!important;grid-template-columns:1fr 1fr;gap:8px}
+  .qa .btn{padding:12px 10px;font-size:13.5px;white-space:normal;text-align:center;line-height:1.25}
+  #pf .row>.inp{flex:1;min-width:0}
+  .pos .card.pad{padding:16px}
+}
+@media (max-width:640px){
+  .adm .seg{display:flex;width:100%;overflow-x:auto;scrollbar-width:none}
+  .adm .seg button{flex:1;white-space:nowrap;padding:8px 10px;font-size:12.5px}
+  .bl{grid-template-columns:44px 1fr auto;row-gap:6px}
+  .bl>.mini{grid-row:span 2;align-self:start}
+  .bl>div:nth-child(2){grid-column:2 / 4}
+  .bl>.qty{grid-column:2;justify-self:start}
+  .bl>.lt{grid-column:3}
+  .scan-in .inp{font-size:15px}
+  .bill-tot .grand b{font-size:28px}
+  .adm-top .btn-sm{padding:7px 11px;font-size:12px}
+  .toolbar .inp{max-width:none}
+  .ch-h{flex-wrap:wrap}
+  .pd .row.wrap-ok>.btn{flex:1 1 auto}
+}
+
 @media print{
   body *{visibility:hidden!important}
   .printable,.printable *{visibility:visible!important}
@@ -1378,6 +1412,7 @@ function admShell(active,title,content,actions=''){
       ${nl('sales','#/admin/sales',I.chart,'Sales & reports')}
       ${nl('settings','#/admin/settings',I.cog,'Store settings')}
       <div class="side-f">
+        <a href="javascript:void(0)" class="nl" onclick="$('#side').classList.remove('open');demoGuide()">${I.grid}Demo pages</a>
         <a href="#/" class="nl">${I.globe}View website</a>
         <a href="javascript:void(0)" class="nl" onclick="setAuth(false);go('#/')">${I.out}Logout</a>
       </div>
@@ -1445,7 +1480,7 @@ function pgDash(){
       <div class="kpi"><span>⚠️ Low / out of stock</span><b>${low.length}</b><small>${DB.products.filter(p=>p.s<=0).length} sold out · ${DB.products.filter(p=>p.s>0&&p.s<=3).length} running low</small></div>
       <div class="kpi"><span>📦 Stock value (retail)</span><b>${kfmt(invVal)}</b><small>${num(units)} units · ${DB.products.length} products</small></div>
     </div>
-    <div class="row wrap-ok" style="margin-bottom:18px">
+    <div class="row wrap-ok qa" style="margin-bottom:18px">
       <a href="#/admin/pos" class="btn btn-brand btn-lg">${I.scan.replace('<svg','<svg width="20" height="20"')} Start billing (scan)</a>
       <a href="#/admin/product/new" class="btn btn-lg">＋ Add new product</a>
       <a href="#/admin/pos?mode=stockin" class="btn btn-lg">📥 Receive stock</a>
