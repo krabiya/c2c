@@ -91,6 +91,22 @@ textarea.inp{resize:vertical;min-height:84px}
 .strip{background:#1d1715;color:#e9e2da;font-size:12.5px}
 .strip .wrap{display:flex;gap:28px;justify-content:center;padding-top:8px;padding-bottom:8px;overflow:hidden;white-space:nowrap}
 .strip b{color:#fff}
+.strip-track{display:flex;justify-content:center;flex:1;min-width:0}
+.strip-set{display:flex;gap:28px}
+.strip-set+.strip-set{display:none}
+@keyframes ticker{to{transform:translateX(-50%)}}
+@media (max-width:640px){
+  .strip .wrap{padding-left:0;padding-right:0}
+  .strip-track{flex:none;justify-content:flex-start;width:max-content;animation:ticker 20s linear infinite}
+  .strip-set+.strip-set{display:flex}
+  .strip-set{padding-right:28px}
+  .strip:hover .strip-track,.strip:active .strip-track{animation-play-state:paused}
+}
+@media (max-width:640px) and (prefers-reduced-motion:reduce){
+  .strip-track{animation:none}
+  .strip .wrap{overflow-x:auto}
+  .strip-set+.strip-set{display:none}
+}
 .hdr{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
 .hdr .wrap{display:flex;align-items:center;gap:20px;height:72px}
 .logo{display:flex;align-items:center;gap:11px;flex:none}
@@ -445,8 +461,7 @@ textarea.inp{resize:vertical;min-height:84px}
   .msearch{display:block!important;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
   .msearch .search{max-width:none;display:block}
   .strip .wrap{justify-content:flex-start}
-  .strip .wrap span:nth-child(n+2){display:none}
-  .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .hscroll{grid-auto-columns:minmax(160px,172px);gap:10px}
   .pc-body{padding:10px 11px 12px}
   .pc-price b{font-size:16px}
@@ -902,7 +917,7 @@ function shell(content,active){
   const S=DB.settings;
   return `
   ${S.noticeOn?`<div class="notice">${esc(S.notice)}</div>`:''}
-  <div class="strip"><div class="wrap"><span>🚚 <b>Free delivery</b> on orders above ${inr(S.freeAbove)}</span><span>🎁 <b>Gift packing</b> available</span><span>✅ <b>100% showroom articles</b> — not return / lot stock</span><span>📞 <b>${STORE.phone}</b></span></div></div>
+  ${(()=>{const t=`<span>🚚 <b>Free delivery</b> on orders above ${inr(S.freeAbove)}</span><span>🎁 <b>Gift packing</b> available</span><span>✅ <b>100% showroom articles</b> — not return / lot stock</span><span>📞 <b>${STORE.phone}</b></span>`;return `<div class="strip"><div class="wrap"><div class="strip-track"><div class="strip-set">${t}</div><div class="strip-set" aria-hidden="true">${t}</div></div></div></div>`})()}
   <header class="hdr"><div class="wrap">
     <a href="#/" class="logo"><div class="logo-m">C2C</div><div class="logo-t"><b>C2C Gift House</b><span>Gauribidanur</span></div></a>
     <form class="search" onsubmit="event.preventDefault();go('#/shop?q='+encodeURIComponent(this.q.value))">${I.search}<input name="q" placeholder="Search cookers, bedsheets, bottles, gifts…" value="${esc(parseHash().q.q||'')}"></form>
