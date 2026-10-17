@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("c2c_theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#8b1e3f">
 <meta property="og:type" content="website">
@@ -2543,7 +2544,7 @@ function photoCredits(){
 }
 
 /* ---------- theme ---------- */
-function curTheme(){const t=document.documentElement.dataset.theme;return t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function curTheme(){return document.documentElement.dataset.theme||'dark'}
 function toggleTheme(){const t=curTheme()==='dark'?'light':'dark';document.documentElement.dataset.theme=t;try{localStorage.setItem('c2c_theme',t)}catch(e){}toast(t==='dark'?'🌙 Dark mode on':'☀️ Light mode on')}
 try{const t=localStorage.getItem('c2c_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
 
