@@ -694,6 +694,10 @@ html,body,*{scrollbar-width:none!important;-ms-overflow-style:none}
 .pst-box{background:var(--surface2);border-radius:14px;padding:10px;display:grid;place-items:center;min-height:140px}
 .pst-box img{display:block;max-width:100%;max-height:52vh;max-height:52dvh;width:auto;height:auto;border-radius:8px;box-shadow:var(--sh)}
 
+.share-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.share-grid .btn{justify-content:center;white-space:normal;line-height:1.2;text-align:center;padding-left:10px;padding-right:10px}
+@media (max-width:360px){.share-grid{grid-template-columns:1fr}}
+
 @media print{
   body *{visibility:hidden!important}
   .printable,.printable *{visibility:visible!important}
@@ -898,7 +902,6 @@ function seed(){
 }
 function load(){try{const s=localStorage.getItem(KEY);if(s){DB=JSON.parse(s);return}}catch(e){} DB=seed(); save();}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(DB));return true}catch(e){if(!save.warned){save.warned=1;setTimeout(()=>toast('⚠ Phone storage is full — some changes may not be saved. Try removing a few product photos.','err'))}return false}}
-const siteURL=()=>location.origin+location.pathname.replace(/index\.html$/,'');
 let AUTH=false; try{AUTH=sessionStorage.getItem('c2c_auth')==='1'}catch(e){}
 function setAuth(v){AUTH=v;try{sessionStorage.setItem('c2c_auth',v?'1':'0')}catch(e){}}
 
@@ -2102,14 +2105,19 @@ function adjStock(id,d){const p=P(id);p.s=Math.max(0,p.s+d);save();const e=$('#s
 function csv(rows){return rows.map(r=>r.map(c=>`"${String(c??'').replace(/"/g,'""')}"`).join(',')).join('\n')}
 function download(name,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+text],{type:'text/csv'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function exportInv(){download('c2c-inventory.csv',csv([['ID','Barcode','Product','Brand','Category','MRP','Online price','Our price','Stock','Visible'],...DB.products.map(p=>[p.id,p.bc,p.n,p.b,catOf(p.c).n,p.mrp,p.on,p.p,p.s,p.vis!==false?'Yes':'No'])]));toast('Inventory exported')}
+const siteURL=()=>location.origin+location.pathname.replace(/index\.html$/,'');
 function waText(p){
-  return `${p.b&&p.b!=='C2C Select'?`Brand - ${p.b}\n\n`:''}Product - ${p.n}\n\n${p.mrp?`MRP - ${num(p.mrp)}/-\n`:''}${p.on?`Online Price - ${num(p.on)}+\n`:''}Our Offer Price - ${num(p.p)}/-${has(p,'limited')||p.s<=3?'\n\nLimited Quantity only !':''}${has(p,'restock')?'\n\n🔁 Restocked!':''}\n\n🛒 Order online: ${siteURL()}#/p/${p.id}\n📍 C2C Gift House, MG Road, Gauribidanur`;
+  return `${p.b&&p.b!=='C2C Select'?`Brand - ${p.b}\n\n`:''}Product - ${p.n}\n\n${p.mrp?`MRP - ${num(p.mrp)}/-\n`:''}${p.on?`Online Price - ${num(p.on)}+\n`:''}Our Offer Price - ${num(p.p)}/-${has(p,'limited')||p.s<=3?'\n\nLimited Quantity only !':''}${has(p,'restock')?'\n\n🔁 Restocked!':''}\n\n🛒 Order online: ${p.id&&p.id!=='new'?siteURL()+'#/p/'+p.id:siteURL()}\n📍 C2C Gift House, MG Road, Gauribidanur`;
 }
 function waPost(id){
   const p=P(id),t=waText(p);
-  modal('WhatsApp / Instagram post',`<p class="small muted" style="margin-top:0">Ready-made post in your usual format. Copy it, or share straight to your WhatsApp group.</p>
+  modal('Share product',`<p class="small muted" style="margin-top:0">Ready-made post in your usual format.</p>
     <div class="wa-prev"><div class="wa-bub"><div class="wa-img">${img(p)}</div>${esc(t)}<small>${ftime(Date.now())}</small></div></div>
-    <div class="row wrap-ok" style="margin-top:14px"><button class="btn" onclick="navigator.clipboard&&navigator.clipboard.writeText(${JSON.stringify(t).replace(/"/g,'&quot;')});toast('Copied!','ok')">📋 Copy text</button><a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t)}">Share on WhatsApp</a><button class="btn btn-brand" onclick="openPoster(P('${id}'))">📸 Instagram / poster</button></div>`);
+    <div class="row wrap-ok" style="margin-top:14px"><button class="btn" onclick="navigator.clipboard&&navigator.clipboard.writeText(${JSON.stringify(t).replace(/"/g,'&quot;')});toast('Copied!','ok')">📋 Copy text</button></div>
+    <div class="b small" style="margin:18px 0 8px">Send with the photo poster</div>
+    ${shareBtns("P('"+id+"')")}
+    <p class="tiny muted" style="margin:12px 0 0">Tap a button: the caption is copied and your phone's share menu opens. Choose <b>WhatsApp</b> (then the group, or <b>My Status</b>) or <b>Instagram</b> (Story / Feed). <a href="javascript:void(0)" onclick="openPoster(P('${id}'))" style="text-decoration:underline">Preview poster / edit caption</a></p>`);
+  posterPrepare(p);
 }
 
 /* ---------- poster + Instagram / WhatsApp image share ----------
@@ -2199,11 +2207,55 @@ async function posterCanvas(p,fmt){
 }
 const canvasBlob=(cv,type,q)=>new Promise(res=>cv.toBlob(res,type,q));
 let POST={};
-async function openPoster(p){
-  POST={p,fmt:'post',cap:igCaption(p),file:null,url:''};
-  modal('Share poster',`<div class="seg" id="pstSeg" style="margin-bottom:12px"><button class="on" onclick="posterFmt('post')">Post · 4:5</button><button onclick="posterFmt('story')">Story · 9:16</button></div>
+const POSTER_CACHE=new Map();
+const posterSig=(p,fmt)=>fmt+'|'+JSON.stringify([p.id,p.n,p.b,p.c,p.mrp,p.on,p.p,p.s,p.e,(p.t||[]).join(','),(p.img||'').length+':'+(p.img||'').slice(0,60)+(p.img||'').slice(-20)]);
+const posterFileFor=(p,fmt)=>POSTER_CACHE.get(posterSig(p,fmt))||null;
+async function posterFile(p,fmt){
+  const k=posterSig(p,fmt); if(POSTER_CACHE.has(k)) return POSTER_CACHE.get(k);
+  const cv=await posterCanvas(p,fmt), blob=await canvasBlob(cv,'image/jpeg',.92);
+  const name=(p.n||'product').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)+'-'+fmt+'.jpg';
+  const file=new File([blob],name,{type:'image/jpeg'}); POSTER_CACHE.set(k,file);
+  if(POSTER_CACHE.size>8) POSTER_CACHE.delete(POSTER_CACHE.keys().next().value);
+  return file;
+}
+const posterPrepare=p=>Promise.all([posterFile(p,'story'),posterFile(p,'post')]).catch(()=>{});
+let _pw; function posterPrewarm(){clearTimeout(_pw);_pw=setTimeout(()=>{const f=$('#pf');if(!f||!f.n.value.trim())return;const d=formData();if(d)posterPrepare({...d,id:formPid()})},1200)}
+function formPid(){const r=parseHash();return r.parts[1]==='product'&&r.parts[2]&&r.parts[2]!=='new'?r.parts[2]:null}
+function downloadFile(file){const u=URL.createObjectURL(file),a=document.createElement('a');a.href=u;a.download=file.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
+/* One tap: copy the caption, then open the phone's share menu with the poster attached.
+   Targets: WhatsApp group/chat (Post), WhatsApp Status (Story), Instagram Story, Instagram Post. */
+const SHARE_KINDS={
+  'wa-chat':  {fmt:'post', wa:true,  label:'WhatsApp Group'},
+  'wa-status':{fmt:'story',wa:true,  label:'WhatsApp Status'},
+  'ig-story': {fmt:'story',wa:false, label:'Instagram Story'},
+  'ig-post':  {fmt:'post', wa:false, label:'Instagram Post'}
+};
+const capFor=(kind,p)=>SHARE_KINDS[kind]&&SHARE_KINDS[kind].wa?waText(p):igCaption(p);
+function shareFile(file,p,cap,kind){
+  const data={files:[file],title:p.n,text:cap};
+  if(navigator.share&&navigator.canShare&&navigator.canShare(data)){
+    navigator.share(data).then(()=>toast('Caption copied 📋 — paste it if it is not filled in','ok')).catch(e=>{if(e&&e.name!=='AbortError')toast('Could not open the share menu — use Preview poster → Save image','warn')});
+  } else { downloadFile(file); toast('Image saved & caption copied — now open '+((SHARE_KINDS[kind]||{}).wa?'WhatsApp':'Instagram')+' and attach it','ok'); }
+}
+function shareTo(kind,p){
+  const K=SHARE_KINDS[kind]; if(!K||!p) return;
+  const cap=capFor(kind,p);
+  if(navigator.clipboard) navigator.clipboard.writeText(cap).catch(()=>{});      // caption copied by default
+  const file=posterFileFor(p,K.fmt);
+  if(!file){toast('Making your poster…');openPoster(p,K.fmt,kind);return}       // not ready yet: show it, then one more tap on Share
+  shareFile(file,p,cap,kind);
+}
+const shareToId=(kind,id)=>shareTo(kind,P(id));
+function formShareP(){const d=formData();if(!d)return null;if(!$('#pf').n.value.trim()){toast('Type the product name first','warn');return null}return {...d,id:formPid()}}
+const shareToForm=kind=>{const p=formShareP();if(p)shareTo(kind,p)};
+const shareBtns=(arg)=>`<div class="share-grid"><button type="button" class="btn btn-wa" onclick="shareTo('wa-chat',${arg})">💬 WhatsApp Group</button><button type="button" class="btn btn-wa" onclick="shareTo('wa-status',${arg})">🟢 WhatsApp Status</button><button type="button" class="btn btn-brand" onclick="shareTo('ig-story',${arg})">📱 Instagram Story</button><button type="button" class="btn btn-brand" onclick="shareTo('ig-post',${arg})">🖼️ Instagram Post</button></div>`;
+async function openPoster(p,fmt,kind){
+  fmt=fmt==='story'?'story':'post'; kind=kind||'ig-'+fmt;
+  POST={p,fmt,kind,cap:capFor(kind,p),file:null,url:''};
+  if(navigator.clipboard) navigator.clipboard.writeText(POST.cap).catch(()=>{});   // caption is copied by default
+  modal('Share poster',`<div class="seg" id="pstSeg" style="margin-bottom:12px"><button class="${fmt==='post'?'on':''}" onclick="posterFmt('post')">Post · 4:5</button><button class="${fmt==='story'?'on':''}" onclick="posterFmt('story')">Story · 9:16</button></div>
     <div class="pst-box" id="pstBox"><span class="muted small">Making your poster…</span></div>
-    <div class="row wrap-ok pst-act" style="margin-top:12px"><button class="btn btn-brand" onclick="posterShare()">📲 Share — Instagram, WhatsApp…</button><button class="btn" onclick="posterSave()">⬇ Save image</button><button class="btn" onclick="posterCopy()">📋 Copy caption</button></div>
+    <div class="row wrap-ok pst-act" style="margin-top:12px"><button class="btn btn-brand" onclick="posterShare()">📲 Share — WhatsApp, Instagram…</button><button class="btn" onclick="posterSave()">⬇ Save image</button><button class="btn" onclick="posterCopy()">📋 Copy caption</button></div>
     <div class="field" style="margin:16px 0 0"><label>Caption <span class="muted" style="font-weight:500">(copied automatically when you share)</span></label><textarea class="inp" id="pstCap" rows="7" oninput="POST.cap=this.value">${esc(POST.cap)}</textarea></div>
     <p class="tiny muted" style="margin:12px 0 0">On a phone: tap <b>Share</b> and choose <b>Instagram</b> → Story or Feed, then paste the caption. On a laptop: save the image and upload it on <a href="https://www.instagram.com/" target="_blank" rel="noopener" style="text-decoration:underline">instagram.com</a>.</p>`);
   posterRender();
@@ -2212,12 +2264,10 @@ async function posterRender(){
   const my=POST.p, fmt=POST.fmt, box=$('#pstBox'); if(!box) return;
   box.innerHTML='<span class="muted small">Making your poster…</span>'; POST.file=null;
   try{
-    const cv=await posterCanvas(my,fmt), blob=await canvasBlob(cv,'image/jpeg',.92);
+    const file=await posterFile(my,fmt);
     if(!$('#pstBox')||POST.p!==my||POST.fmt!==fmt) return;
     if(POST.url) URL.revokeObjectURL(POST.url);
-    POST.url=URL.createObjectURL(blob);
-    const name=(my.n||'product').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)+'-'+fmt+'.jpg';
-    POST.file=new File([blob],name,{type:'image/jpeg'});
+    POST.url=URL.createObjectURL(file); POST.file=file;
     box.innerHTML=`<img src="${POST.url}" alt="Poster preview">`;
   }catch(e){box.innerHTML='<span class="small" style="color:var(--red)">Could not make the poster for this photo. Try another photo.</span>'}
 }
@@ -2228,12 +2278,9 @@ function posterShare(){
   const cap=($('#pstCap')||{}).value||POST.cap;
   if(!POST.file){toast('Poster is still being made…','warn');return}
   if(navigator.clipboard) navigator.clipboard.writeText(cap).catch(()=>{});   // copy during the tap, then open the share menu
-  const data={files:[POST.file],title:POST.p.n,text:cap};
-  if(navigator.share&&navigator.canShare&&navigator.canShare(data)){
-    navigator.share(data).then(()=>toast('Shared! If the caption is missing, tap Copy caption and paste it.','ok')).catch(e=>{if(e&&e.name!=='AbortError')toast('Could not open the share menu — use Save image','warn')});
-  } else { posterSave(); toast('Image saved & caption copied — now open Instagram and upload it','ok'); }
+  shareFile(POST.file,POST.p,cap,POST.kind);
 }
-function posterFromForm(){const d=formData();if(!d)return;if(!$('#pf').n.value.trim()){toast('Type the product name first','warn');return}openPoster({...d,id:null})}
+function posterFromForm(){const d=formData();if(!d)return;if(!$('#pf').n.value.trim()){toast('Type the product name first','warn');return}openPoster({...d,id:formPid()})}
 
 /* ---------- add / edit product ---------- */
 let FORM={};
@@ -2241,7 +2288,8 @@ function pgForm(id,q){
   const isNew=!id||id==='new'; const p=isNew?null:P(id);
   if(!isNew&&!p) return admShell('inventory','Product not found','<div class="empty card"><i>😕</i>Product not found. <a href="#/admin/inventory">Back</a></div>');
   FORM={img:p?.img||'',e:p?.e||'🎁'};
-  const v=p||{n:'',b:'',c:'kitchen',mrp:'',on:'',p:'',s:1,bc:q.bc||'',t:['new'],sp:'',vis:true};
+  const v=p?{...p}:{n:'',b:'',c:'kitchen',mrp:'',on:'',p:'',s:1,bc:q.bc||'',t:['new'],sp:'',vis:true};
+  const dr=draftTake(isNew?'new':id); if(dr){Object.assign(v,dr.d);if(dr.img)FORM.img=dr.img;if(dr.e)FORM.e=dr.e}
   const emojis=['🎁','🍳','🍲','☕','🥛','🫖','🍶','🔥','🔌','🌀','💡','🛏️','🧣','🕰️','💐','🩺','💊','🌡️','🧴','🧼','🌸','💇‍♀️','🏋️','🧳','🎒','👶','🧸','✏️','🖊️','📄','🪔','🥂','🍵','🧽','🛁','⚖️'];
   AFTER.push(()=>{formPreview(); if(q.bc){toast('Barcode '+esc(q.bc)+' filled in from scanner','ok');fillFromBarcode(q.bc,true)}});
   const content=`<form class="dash-g" id="pf" style="grid-template-columns:1.25fr 1fr;align-items:start" oninput="formPreview()" onchange="formPreview()" onsubmit="saveProduct(event,'${isNew?'':p.id}')">
@@ -2274,13 +2322,22 @@ function pgForm(id,q){
     <div style="position:sticky;top:80px">
       <div class="card pad" style="margin-bottom:16px"><div class="ch-h"><h3>Website preview</h3><span class="pill p-green">Live</span></div><div id="fprev" style="max-width:250px;margin:0 auto"></div></div>
       <div class="card pad" style="margin-bottom:16px"><div class="ch-h"><h3>WhatsApp post (auto-written)</h3></div><div class="wa-prev"><div class="wa-bub" id="fwa"></div></div>
-        <div class="row" style="margin-top:10px"><button type="button" class="btn btn-sm" onclick="navigator.clipboard&&navigator.clipboard.writeText($('#fwa').dataset.t);toast('Copied!','ok')">📋 Copy</button><a class="btn btn-sm btn-wa" id="fwal" target="_blank" rel="noopener">Share to WhatsApp group</a><button type="button" class="btn btn-sm btn-brand" onclick="posterFromForm()">📸 Instagram / poster</button></div></div>
+        <div class="row wrap-ok" style="margin-top:10px"><button type="button" class="btn btn-sm" onclick="navigator.clipboard&&navigator.clipboard.writeText($('#fwa').dataset.t);toast('Copied!','ok')">📋 Copy text</button></div>
+        ${shareBtns('formShareP()')}
+        <div class="tiny muted" style="margin-top:8px;text-align:left">Caption is copied automatically. Pick <b>WhatsApp</b> or <b>Instagram</b> in the share menu. <a href="javascript:void(0)" onclick="posterFromForm()" style="text-decoration:underline">Preview poster</a></div></div>
       <div class="card pad" style="margin-bottom:16px;text-align:center"><div class="ch-h"><h3>Barcode label</h3></div><svg id="fbcs" style="max-width:100%;height:70px"></svg></div>
       <div class="row wrap-ok"><a class="btn btn-lg btn-ghost" href="#/admin/inventory">Cancel</a>${isNew?'':`<button type="button" class="btn btn-lg btn-ghost" style="color:var(--red)" onclick="delProduct('${p.id}')">Delete</button>`}<button class="btn btn-brand btn-lg" style="flex:1">${isNew?'Save & publish':'Save changes'}</button></div>
     </div>
   </form>`;
   return admShell('product',isNew?'Add new product':'Edit product',content);
 }
+let ANDROID=/Android/i.test(navigator.userAgent);
+let navTo=u=>{location.href=u};
+const APP_PKG={amazon:'in.amazon.mShop.android.shopping',flipkart:'com.flipkart.android'};
+/* the form is kept for 10 minutes in case the browser has to leave this page to open another site/app */
+function draftSave(){const f=$('#pf');if(!f)return;try{sessionStorage.setItem('c2c_draft',JSON.stringify({k:formPid()||'new',at:Date.now(),img:FORM.img||'',e:FORM.e||'',d:{n:f.n.value,b:f.b.value,c:f.c.value,mrp:f.mrp.value,on:f.on.value,p:f.p.value,s:f.s.value,bc:f.bc.value,sp:f.sp.value.split('\n').filter(Boolean).join('|'),t:$$('input[name=t]:checked',f).map(i=>i.value),vis:f.vis.checked}}))}catch(e){}}
+function draftTake(key){try{const j=sessionStorage.getItem('c2c_draft');const d=j&&JSON.parse(j);if(d&&d.k===key&&Date.now()-d.at<6e5){setTimeout(()=>{try{sessionStorage.removeItem('c2c_draft')}catch(e){}},4000);return d}return null}catch(e){return null}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){try{sessionStorage.removeItem('c2c_draft')}catch(e){}}});
 function openSearch(site,byName){
   const f=$('#pf'); if(!f) return;
   const br=f.b.value.trim()==='C2C Select'?'':f.b.value.trim(), nm=f.n.value.trim();
@@ -2292,7 +2349,10 @@ function openSearch(site,byName){
   else q=realBc?bc:name+' MRP';
   if(!q){toast('Type the product name or scan its barcode first','warn');return}
   const url={amazon:'https://www.amazon.in/s?k=',flipkart:'https://www.flipkart.com/search?q=',google:'https://www.google.com/search?q='}[site]+encodeURIComponent(q);
-  window.open(url,'_blank','noopener');
+  if(ANDROID&&APP_PKG[site]){   // opens the Amazon / Flipkart app directly; falls back to the website if it is not installed
+    draftSave(); const u=new URL(url);
+    navTo(`intent://${u.host}${u.pathname}${u.search}#Intent;scheme=https;package=${APP_PKG[site]};S.browser_fallback_url=${encodeURIComponent(url)};end`);
+  } else window.open(url,'_blank','noopener');
 }
 function formData(){
   const f=$('#pf'); if(!f) return null;
@@ -2303,8 +2363,8 @@ function formPreview(){
   const d=formData(); if(!d) return; const p={...d,id:'preview'};
   $('#fprev').innerHTML=card(p).replace(/onclick="[^"]*"/g,'').replace(/href="[^"]*"/g,'');
   const t=waText({...p,id:'new'}); const w=$('#fwa'); w.dataset.t=t; w.innerHTML=`<div class="wa-img">${img(p)}</div>${esc(t)}<small>${ftime(Date.now())}</small>`;
-  $('#fwal').href='https://wa.me/?text='+encodeURIComponent(t);
   drawBarcode($('#fbcs'),d.bc||'000000000000',{height:50});
+  posterPrewarm();
 }
 function drawBarcode(svg,code,o={}){
   if(!svg) return; if(typeof JsBarcode==='undefined'){svg.outerHTML=`<div style="font-family:monospace;padding:8px">${esc(code)}</div>`;return}
