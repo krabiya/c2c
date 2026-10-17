@@ -688,6 +688,12 @@ html,body,*{scrollbar-width:none!important;-ms-overflow-style:none}
 .foot .logo-m,.side .logo-m{filter:invert(1)}
 .login-logo{display:block;margin:0 auto;width:min(230px,72%);height:auto;filter:var(--logo-filter,none)}
 
+/* ===== Poster / Instagram share ===== */
+.pst-act .btn{flex:1 1 0;justify-content:center}
+.pst-act .btn:first-child{flex:1 1 100%}
+.pst-box{background:var(--surface2);border-radius:14px;padding:10px;display:grid;place-items:center;min-height:140px}
+.pst-box img{display:block;max-width:100%;max-height:52vh;max-height:52dvh;width:auto;height:auto;border-radius:8px;box-shadow:var(--sh)}
+
 @media print{
   body *{visibility:hidden!important}
   .printable,.printable *{visibility:visible!important}
@@ -2103,8 +2109,131 @@ function waPost(id){
   const p=P(id),t=waText(p);
   modal('WhatsApp / Instagram post',`<p class="small muted" style="margin-top:0">Ready-made post in your usual format. Copy it, or share straight to your WhatsApp group.</p>
     <div class="wa-prev"><div class="wa-bub"><div class="wa-img">${img(p)}</div>${esc(t)}<small>${ftime(Date.now())}</small></div></div>
-    <div class="row wrap-ok" style="margin-top:14px"><button class="btn" onclick="navigator.clipboard&&navigator.clipboard.writeText(${JSON.stringify(t).replace(/"/g,'&quot;')});toast('Copied!','ok')">📋 Copy text</button><a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t)}">Share on WhatsApp</a></div>`);
+    <div class="row wrap-ok" style="margin-top:14px"><button class="btn" onclick="navigator.clipboard&&navigator.clipboard.writeText(${JSON.stringify(t).replace(/"/g,'&quot;')});toast('Copied!','ok')">📋 Copy text</button><a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t)}">Share on WhatsApp</a><button class="btn btn-brand" onclick="openPoster(P('${id}'))">📸 Instagram / poster</button></div>`);
 }
+
+/* ---------- poster + Instagram / WhatsApp image share ----------
+   Websites can't post to Instagram by themselves, so this makes a poster image and opens the phone's
+   Share menu (Instagram Story / Feed / message, WhatsApp…). The caption is copied so it can be pasted. */
+function igCaption(p){
+  const c=cmpAt(p), o=off(p), brand=p.b&&p.b!=='C2C Select'?p.b:'';
+  const prices=[p.mrp?`MRP ₹${num(p.mrp)}`:'',p.on?`Online ₹${num(p.on)}+`:'',`Our price ₹${num(p.p)}`].filter(Boolean).join(' | ')+' 💥';
+  const tags=['#C2CGiftHouse','#Gauribidanur','#BrandedForLess','#GiftShop']; const bt=brand.replace(/[^A-Za-z0-9]/g,''); if(bt) tags.push('#'+bt);
+  const flags=[c>p.p?`You save ₹${num(c-p.p)}${o?` (${o}% off)`:''}!`:'',p.s>0&&(has(p,'limited')||p.s<=3)?'⚠️ Limited stock!':'',has(p,'restock')?'🔁 Back in stock!':'',has(p,'new')?'🆕 New arrival!':''].filter(Boolean);
+  const title=brand&&!p.n.toLowerCase().startsWith(brand.toLowerCase())?brand+' '+p.n:p.n;
+  return [`${title} ✨`,[prices,...flags].join('\n'),`📍 C2C Gift House, M G Road, Gauribidanur\n📞 ${STORE.phone} (WhatsApp to order)\n🛒 Order online — link in bio`,tags.join(' ')].join('\n\n');
+}
+const loadImg=(src,cors)=>new Promise(res=>{const i=new Image();if(cors)i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=()=>res(null);i.src=src});
+async function posterPhoto(p){
+  if(p.img) return {im:await loadImg(p.img,true),cut:false,fit:true};   // uploaded / barcode-database photos: show the whole photo
+  if(p.id&&window.PHOTOS&&PHOTOS[p.id]!=null){
+    const t=document.createElement('i');t.className='pi pi-'+p.id;t.style.cssText='position:absolute;left:-9999px;width:1px;height:1px';document.body.appendChild(t);
+    const bg=getComputedStyle(t).backgroundImage;t.remove();const m=/url\(["']?(.*?)["']?\)/.exec(bg);
+    if(m) return {im:await loadImg(m[1],false),cut:!!PHOTOS[p.id]};
+  }
+  return {im:null,cut:false};
+}
+function rrect(x,xx,y,w,h,r){x.beginPath();x.moveTo(xx+r,y);x.arcTo(xx+w,y,xx+w,y+h,r);x.arcTo(xx+w,y+h,xx,y+h,r);x.arcTo(xx,y+h,xx,y,r);x.arcTo(xx,y,xx+w,y,r);x.closePath()}
+function wrapLines(x,text,maxW,maxLines){
+  const words=text.split(/\s+/),lines=[];let cur='';
+  for(const w of words){const t=cur?cur+' '+w:w;if(x.measureText(t).width>maxW&&cur){lines.push(cur);cur=w}else cur=t}
+  if(cur)lines.push(cur);
+  if(lines.length>maxLines){lines.length=maxLines;let l=lines[maxLines-1];while(x.measureText(l+'…').width>maxW&&l.length>1)l=l.slice(0,-1);lines[maxLines-1]=l+'…'}
+  return lines;
+}
+async function posterCanvas(p,fmt){
+  const W=1080,H=fmt==='story'?1920:1350,M=60,story=fmt==='story',cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d');
+  try{await Promise.all([document.fonts.load('700 54px Fraunces'),document.fonts.load("800 40px 'Plus Jakarta Sans'"),document.fonts.load("600 28px 'Plus Jakarta Sans'")])}catch(e){}
+  const SERIF="Fraunces, Georgia, 'Times New Roman', serif", SANS="'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
+  const BRAND='#8b1e3f',INK='#1d1715',MUT='#7a6f67',GREEN='#17784a';
+  const [ph,logo]=await Promise.all([posterPhoto(p),loadImg(LOGO_FULL,false)]);
+  const c=cmpAt(p),o=off(p),tint=catOf(p.c).bg;
+  x.fillStyle='#faf6f0';x.fillRect(0,0,W,H);
+  // top tag
+  const tag=has(p,'new')?'NEW ARRIVAL':has(p,'restock')?'BACK IN STOCK':has(p,'weekend')?'WEEKEND OFFER':(p.s>0&&(has(p,'limited')||p.s<=3))?'LIMITED STOCK':"TODAY'S DEAL";
+  x.font=`800 26px ${SANS}`;if('letterSpacing' in x)x.letterSpacing='4px';const tw=x.measureText(tag).width+56;
+  x.fillStyle=BRAND;rrect(x,M,52,tw,60,30);x.fill();x.fillStyle='#fff';x.textBaseline='middle';x.fillText(tag,M+28,83);
+  if('letterSpacing' in x)x.letterSpacing='0px';
+  // photo card
+  const cy=140,ch=story?1040:580,cw=W-2*M;
+  x.save();rrect(x,M,cy,cw,ch,44);x.clip();
+  x.fillStyle=ph.fit&&ph.im?'#ffffff':tint;x.fillRect(M,cy,cw,ch);
+  const g=x.createRadialGradient(M+cw*.3,cy+ch*.2,10,M+cw*.3,cy+ch*.2,cw*.8);g.addColorStop(0,'rgba(255,255,255,.85)');g.addColorStop(1,'rgba(255,255,255,0)');if(!(ph.fit&&ph.im)){x.fillStyle=g;x.fillRect(M,cy,cw,ch)}
+  if(ph.im){const im=ph.im,iw=im.naturalWidth,ih=im.naturalHeight;
+    if(ph.fit){const pad=Math.round(ch*.04),s2=Math.min((cw-2*pad)/iw,(ch-2*pad)/ih),w=iw*s2,h=ih*s2;x.drawImage(im,M+(cw-w)/2,cy+(ch-h)/2,w,h)}
+    else if(ph.cut){const pad=Math.round(ch*.07),s2=Math.min((cw-2*pad)/iw,(ch-2*pad)/ih),w=iw*s2,h=ih*s2;x.shadowColor='rgba(0,0,0,.18)';x.shadowBlur=40;x.shadowOffsetY=20;x.drawImage(im,M+(cw-w)/2,cy+(ch-h)/2,w,h);x.shadowColor='transparent'}
+    else{const s2=Math.max(cw/iw,ch/ih),w=iw*s2,h=ih*s2;x.drawImage(im,M+(cw-w)/2,cy+(ch-h)/2,w,h)}
+  } else {x.font=`${story?420:300}px ${SANS}`;x.textAlign='center';x.textBaseline='middle';x.fillStyle='#000';x.fillText(p.e||'🎁',W/2,cy+ch/2+10);x.textAlign='left'}
+  x.restore();
+  // discount badge
+  if(o>0){const bx=W-M-78,by=cy+6,br=92;x.beginPath();x.arc(bx,by,br,0,Math.PI*2);x.fillStyle=BRAND;x.fill();x.lineWidth=10;x.strokeStyle='#faf6f0';x.stroke();
+    x.fillStyle='#fff';x.textAlign='center';x.textBaseline='alphabetic';x.font=`800 52px ${SANS}`;x.fillText('-'+o+'%',bx,by+14);x.font=`800 24px ${SANS}`;x.fillText('OFF',bx,by+46);x.textAlign='left'}
+  // brand + name
+  let y=cy+ch+56;x.textBaseline='alphabetic';
+  const brand=p.b&&p.b!=='C2C Select'?p.b.toUpperCase():'';
+  if(brand){x.font=`800 28px ${SANS}`;if('letterSpacing' in x)x.letterSpacing='4px';x.fillStyle=MUT;x.fillText(brand,M,y);if('letterSpacing' in x)x.letterSpacing='0px';y+=20}
+  x.font=`700 58px ${SERIF}`;x.fillStyle=INK;const lines=wrapLines(x,p.n,cw,story?3:2);
+  lines.forEach((l,i)=>x.fillText(l,M,y+58+i*70));y+=58+(lines.length-1)*70+26;
+  // old prices
+  const strikes=[p.mrp?`MRP ₹${num(p.mrp)}`:'',p.on?`Online ₹${num(p.on)}+`:''].filter(Boolean);
+  x.font=`600 34px ${SANS}`;x.fillStyle=MUT;let sx=M;y+=34;
+  strikes.forEach(t=>{x.fillText(t,sx,y);const w=x.measureText(t).width;x.strokeStyle=MUT;x.lineWidth=3;x.beginPath();x.moveTo(sx,y-12);x.lineTo(sx+w,y-12);x.stroke();sx+=w+44});
+  if(strikes.length) y+=22;
+  // our price
+  x.font=`800 26px ${SANS}`;if('letterSpacing' in x)x.letterSpacing='4px';x.fillStyle=GREEN;x.fillText('OUR PRICE',M,y+26);if('letterSpacing' in x)x.letterSpacing='0px';
+  x.font=`700 132px ${SERIF}`;x.fillStyle=BRAND;const pt='₹'+num(p.p);y+=26+120;x.fillText(pt,M,y);
+  // save pill
+  if(c>p.p){
+    const t='You save ₹'+num(c-p.p);
+    x.font=`700 132px ${SERIF}`;const priceW=x.measureText(pt).width;
+    x.font=`800 34px ${SANS}`;const pw=x.measureText(t).width+56,ph2=64;
+    let pxx=M+priceW+34,py=y-ph2-8; if(pxx+pw>W-M){pxx=M;py=y+24}
+    x.fillStyle='#e3f4ea';rrect(x,pxx,py,pw,ph2,32);x.fill();x.fillStyle=GREEN;x.textBaseline='middle';x.fillText(t,pxx+28,py+ph2/2+2);x.textBaseline='alphabetic';
+  }
+  // footer
+  const fy=H-176;x.strokeStyle='#e4dacb';x.lineWidth=3;x.beginPath();x.moveTo(M,fy);x.lineTo(W-M,fy);x.stroke();
+  if(logo){const lw=250,lh=lw*logo.naturalHeight/logo.naturalWidth;x.drawImage(logo,M,fy+(176-lh)/2,lw,lh)}
+  x.textAlign='right';x.fillStyle=INK;x.font=`700 30px ${SANS}`;x.fillText('M G Road, Gauribidanur',W-M,fy+62);
+  x.font=`600 28px ${SANS}`;x.fillStyle=MUT;x.fillText('WhatsApp  '+STORE.phone,W-M,fy+104);x.fillText('@'+STORE.insta,W-M,fy+142);x.textAlign='left';
+  return cv;
+}
+const canvasBlob=(cv,type,q)=>new Promise(res=>cv.toBlob(res,type,q));
+let POST={};
+async function openPoster(p){
+  POST={p,fmt:'post',cap:igCaption(p),file:null,url:''};
+  modal('Share poster',`<div class="seg" id="pstSeg" style="margin-bottom:12px"><button class="on" onclick="posterFmt('post')">Post · 4:5</button><button onclick="posterFmt('story')">Story · 9:16</button></div>
+    <div class="pst-box" id="pstBox"><span class="muted small">Making your poster…</span></div>
+    <div class="row wrap-ok pst-act" style="margin-top:12px"><button class="btn btn-brand" onclick="posterShare()">📲 Share — Instagram, WhatsApp…</button><button class="btn" onclick="posterSave()">⬇ Save image</button><button class="btn" onclick="posterCopy()">📋 Copy caption</button></div>
+    <div class="field" style="margin:16px 0 0"><label>Caption <span class="muted" style="font-weight:500">(copied automatically when you share)</span></label><textarea class="inp" id="pstCap" rows="7" oninput="POST.cap=this.value">${esc(POST.cap)}</textarea></div>
+    <p class="tiny muted" style="margin:12px 0 0">On a phone: tap <b>Share</b> and choose <b>Instagram</b> → Story or Feed, then paste the caption. On a laptop: save the image and upload it on <a href="https://www.instagram.com/" target="_blank" rel="noopener" style="text-decoration:underline">instagram.com</a>.</p>`);
+  posterRender();
+}
+async function posterRender(){
+  const my=POST.p, fmt=POST.fmt, box=$('#pstBox'); if(!box) return;
+  box.innerHTML='<span class="muted small">Making your poster…</span>'; POST.file=null;
+  try{
+    const cv=await posterCanvas(my,fmt), blob=await canvasBlob(cv,'image/jpeg',.92);
+    if(!$('#pstBox')||POST.p!==my||POST.fmt!==fmt) return;
+    if(POST.url) URL.revokeObjectURL(POST.url);
+    POST.url=URL.createObjectURL(blob);
+    const name=(my.n||'product').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)+'-'+fmt+'.jpg';
+    POST.file=new File([blob],name,{type:'image/jpeg'});
+    box.innerHTML=`<img src="${POST.url}" alt="Poster preview">`;
+  }catch(e){box.innerHTML='<span class="small" style="color:var(--red)">Could not make the poster for this photo. Try another photo.</span>'}
+}
+function posterFmt(f){POST.fmt=f;$$('#pstSeg button').forEach((b,i)=>b.classList.toggle('on',['post','story'][i]===f));posterRender()}
+function posterCopy(){const t=($('#pstCap')||{}).value||POST.cap;if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast('Caption copied','ok'),()=>toast('Could not copy — select the text and copy it','warn'));else toast('Select the caption text and copy it','warn')}
+function posterSave(){if(!POST.file){toast('Poster is still being made…','warn');return}const a=document.createElement('a');a.href=POST.url;a.download=POST.file.name;document.body.appendChild(a);a.click();a.remove()}
+function posterShare(){
+  const cap=($('#pstCap')||{}).value||POST.cap;
+  if(!POST.file){toast('Poster is still being made…','warn');return}
+  if(navigator.clipboard) navigator.clipboard.writeText(cap).catch(()=>{});   // copy during the tap, then open the share menu
+  const data={files:[POST.file],title:POST.p.n,text:cap};
+  if(navigator.share&&navigator.canShare&&navigator.canShare(data)){
+    navigator.share(data).then(()=>toast('Shared! If the caption is missing, tap Copy caption and paste it.','ok')).catch(e=>{if(e&&e.name!=='AbortError')toast('Could not open the share menu — use Save image','warn')});
+  } else { posterSave(); toast('Image saved & caption copied — now open Instagram and upload it','ok'); }
+}
+function posterFromForm(){const d=formData();if(!d)return;if(!$('#pf').n.value.trim()){toast('Type the product name first','warn');return}openPoster({...d,id:null})}
 
 /* ---------- add / edit product ---------- */
 let FORM={};
@@ -2145,7 +2274,7 @@ function pgForm(id,q){
     <div style="position:sticky;top:80px">
       <div class="card pad" style="margin-bottom:16px"><div class="ch-h"><h3>Website preview</h3><span class="pill p-green">Live</span></div><div id="fprev" style="max-width:250px;margin:0 auto"></div></div>
       <div class="card pad" style="margin-bottom:16px"><div class="ch-h"><h3>WhatsApp post (auto-written)</h3></div><div class="wa-prev"><div class="wa-bub" id="fwa"></div></div>
-        <div class="row" style="margin-top:10px"><button type="button" class="btn btn-sm" onclick="navigator.clipboard&&navigator.clipboard.writeText($('#fwa').dataset.t);toast('Copied!','ok')">📋 Copy</button><a class="btn btn-sm btn-wa" id="fwal" target="_blank" rel="noopener">Share to WhatsApp group</a></div></div>
+        <div class="row" style="margin-top:10px"><button type="button" class="btn btn-sm" onclick="navigator.clipboard&&navigator.clipboard.writeText($('#fwa').dataset.t);toast('Copied!','ok')">📋 Copy</button><a class="btn btn-sm btn-wa" id="fwal" target="_blank" rel="noopener">Share to WhatsApp group</a><button type="button" class="btn btn-sm btn-brand" onclick="posterFromForm()">📸 Instagram / poster</button></div></div>
       <div class="card pad" style="margin-bottom:16px;text-align:center"><div class="ch-h"><h3>Barcode label</h3></div><svg id="fbcs" style="max-width:100%;height:70px"></svg></div>
       <div class="row wrap-ok"><a class="btn btn-lg btn-ghost" href="#/admin/inventory">Cancel</a>${isNew?'':`<button type="button" class="btn btn-lg btn-ghost" style="color:var(--red)" onclick="delProduct('${p.id}')">Delete</button>`}<button class="btn btn-brand btn-lg" style="flex:1">${isNew?'Save & publish':'Save changes'}</button></div>
     </div>
